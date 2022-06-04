@@ -20,7 +20,7 @@ export default {
     }
   },
   methods: {
-    setThumbsSwiper (swiper) {
+    setThumbsSwiper(swiper) {
       this.thumbsSwiper = swiper
     },
     handleView() {
@@ -33,7 +33,7 @@ export default {
   },
   setup() {
     return {
-      modules: [ FreeMode, Navigation, Thumbs ],
+      modules: [FreeMode, Navigation, Thumbs],
     };
   }
 }
@@ -42,58 +42,48 @@ export default {
 
 <template>
 
-<div class="w-full h-64 sm:h-80 lg:h-112 flex flex-col space-y-4 rounded overflow-hidden">
-  <Swiper
-    :spaceBetween="10"
-    :thumbs="{ swiper: thumbsSwiper }"
-    :modules="modules"
-    class="mySwiper2 w-full h-5/6"
-  >
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/71/500/300"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/12/500/300"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/11/500/300"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/31/500/300"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/41/500/300"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/42/500/300"></SwiperSlide>
-  </Swiper>
-  
-  <Swiper
-    @swiper="setThumbsSwiper"
-    :spaceBetween="10"
-    :slidesPerView="slidesPerView"
-    :freeMode="true"
-    :watchSlidesProgress="true"
-    :navigation="true"
-    :modules="modules"
-    class="mySwiper w-full h-1/6 custom_swiper"
-  >
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/71/200/100"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/12/200/100"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/11/200/100"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/31/200/100"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/41/200/100"></SwiperSlide>
-    <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/42/200/100"></SwiperSlide>
-  </Swiper>
-</div>
+  <div class="w-full h-64 sm:h-80 lg:h-112 flex flex-col space-y-4 rounded overflow-hidden">
+    <Swiper :spaceBetween="10" :thumbs="{ swiper: thumbsSwiper }" :modules="modules" class="mySwiper2 w-full h-5/6">
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/71/500/300"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/12/500/300"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/11/500/300"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/31/500/300"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/41/500/300"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/42/500/300"></SwiperSlide>
+    </Swiper>
+
+    <Swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="slidesPerView" :freeMode="true"
+      :watchSlidesProgress="true" :navigation="true" :modules="modules" class="mySwiper w-full h-1/6 custom_swiper">
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/71/200/100"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/12/200/100"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/11/200/100"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/31/200/100"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/41/200/100"></SwiperSlide>
+      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/42/200/100"></SwiperSlide>
+    </Swiper>
+  </div>
 
 </template>
 
 
 <style>
-.custom_swiper > .swiper-button-prev::after {
+.custom_swiper>.swiper-button-prev::after {
   content: none;
 }
-.custom_swiper > .swiper-button-prev {
+
+.custom_swiper>.swiper-button-prev {
   left: 0;
   top: calc(50% + 0.5rem);
   background-image: url('../assets/icons/circlePrev.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.custom_swiper > .swiper-button-next::after {
+
+.custom_swiper>.swiper-button-next::after {
   content: none;
 }
-.custom_swiper > .swiper-button-next {
+
+.custom_swiper>.swiper-button-next {
   right: 0;
   top: calc(50% + 0.5rem);
   background-image: url('../assets/icons/circleNext.svg');
@@ -102,14 +92,17 @@ export default {
 }
 
 @media (max-width: 1024px) {
-  .custom_swiper > .swiper-button-prev, .custom_swiper > .swiper-button-next {
+
+  .custom_swiper>.swiper-button-prev,
+  .custom_swiper>.swiper-button-next {
     display: none;
   }
 }
 
-.mySwiper  > .swiper-wrapper > .swiper-slide {
+.mySwiper>.swiper-wrapper>.swiper-slide {
   opacity: 0.5;
 }
+
 .swiper-slide-thumb-active {
   opacity: 1 !important;
 }

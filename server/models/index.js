@@ -1,14 +1,28 @@
-const { Game, Genre, Image, Developer, MinimumSR, RecommendedSR, GameKey, Platform } = require('./gameModels')
-const { Customer, Payment, GameRating, Review, Cart, OrderInfo } = require('./userModels')
-const { News, NewsImage } = require('./newsModels')
+const {
+  Game,
+  Genre,
+  Image,
+  Developer,
+  MinimumSR,
+  RecommendedSR,
+  GameKey,
+  Platform,
+} = require("./gameModels");
+const {
+  Customer,
+  Payment,
+  GameRating,
+  Review,
+  Cart,
+  OrderInfo,
+} = require("./userModels");
+const { News, NewsImage } = require("./newsModels");
 
-
-module.exports = 
-[
+module.exports = [
   // -------------------------- gameModels --------------------------
 
-  Game.belongsToMany(Genre, { through: 'gameGenres', timestamps: false }),
-  Genre.belongsToMany(Game, { through: 'gameGenres', timestamps: false }),
+  Game.belongsToMany(Genre, { through: "gameGenres", timestamps: false }),
+  Genre.belongsToMany(Game, { through: "gameGenres", timestamps: false }),
 
   Game.hasMany(Image),
   Image.belongsTo(Game),
@@ -22,8 +36,8 @@ module.exports =
   Game.hasOne(RecommendedSR),
   RecommendedSR.belongsTo(Game),
 
-  Game.belongsToMany(Platform, { through: 'gamePlatforms', timestamps: false }),
-  Platform.belongsToMany(Game, { through: 'gamePlatforms', timestamps: false }),
+  Game.belongsToMany(Platform, { through: "gamePlatforms", timestamps: false }),
+  Platform.belongsToMany(Game, { through: "gamePlatforms", timestamps: false }),
 
   Game.hasMany(GameKey),
   GameKey.belongsTo(Game),
@@ -31,9 +45,8 @@ module.exports =
   Platform.hasMany(GameKey),
   GameKey.belongsTo(Platform),
 
-
   // -------------------------- userModels --------------------------
-  
+
   Customer.hasOne(Payment),
   Payment.belongsTo(Customer),
 
@@ -45,13 +58,12 @@ module.exports =
 
   Customer.hasOne(Cart),
   Cart.belongsTo(Customer),
-  
+
   Cart.belongsToMany(Game, { through: OrderInfo }),
   Game.belongsToMany(Cart, { through: OrderInfo }),
-
 
   // -------------------------- newsModels --------------------------
 
   News.hasMany(NewsImage),
-  NewsImage.belongsTo(News)
-]
+  NewsImage.belongsTo(News),
+];

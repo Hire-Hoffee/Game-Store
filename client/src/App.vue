@@ -12,20 +12,20 @@ export default {
 
 <template>
 
-<div class="min-h-full flex flex-col items-center">
+  <div class="min-h-full flex flex-col items-center">
 
-  <CustomHeader class="mb-24 sticky top-0" />
+    <CustomHeader class="mb-24 sticky top-0" />
 
-  <main class="container 2xl:w-5/6 flex-auto p-3">
-   <RouterView v-slot="{ Component, route }">
-    <Transition name="fade" mode="out-in">
-      <component :is="Component" :key="route.path" />
-    </Transition>
-  </RouterView>
-  </main>
+    <main class="container 2xl:w-5/6 flex-auto p-3">
+      <RouterView v-slot="{ Component, route }">
+        <Transition name="fade" mode="out-in">
+          <component :is="Component" :key="route.path" />
+        </Transition>
+      </RouterView>
+    </main>
 
-  <CustomFooter class="mt-24" />
-</div>
+    <CustomFooter class="mt-24" />
+  </div>
 
 </template>
 
@@ -34,6 +34,7 @@ export default {
 .fade-leave-active {
   transition: opacity 0.2s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;

@@ -10,10 +10,9 @@ export default {
 
 
 <template>
-<GameInfo />
+  <GameInfo />
 </template>
 
 
 <style>
-
 </style>

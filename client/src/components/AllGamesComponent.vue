@@ -12,27 +12,30 @@ export default {
 
 
 <template>
-<div>
-  <div class="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-4 gap-x-4 md:gap-x-0 grid_games_cards justify-items-center">
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
-    <GameCard class="xl:w-52 lg:w-44" />
+  <div>
+    <div
+      class="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-y-4 gap-x-4 md:gap-x-0 grid_games_cards justify-items-center">
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+      <GameCard class="xl:w-52 lg:w-44" />
+    </div>
+    <div class="flex justify-center">
+      <PagesSwitcher class="mt-10 mb-5" />
+    </div>
   </div>
-  <div class="flex justify-center"><PagesSwitcher class="mt-10 mb-5"/></div>
-</div>
 </template>
 
 

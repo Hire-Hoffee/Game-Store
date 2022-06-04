@@ -23,17 +23,18 @@
   background: #28252a;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
-html, body, #app {
+html,
+body,
+#app {
   width: 100%;
   height: 100%;
 }
 body {
   background-color: #19171a;
-  font-family: 'Jaldi';
+  font-family: "Jaldi";
   color: #fff;
 }
 .router-link-active {

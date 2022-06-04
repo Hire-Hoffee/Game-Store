@@ -9,9 +9,9 @@ import "swiper/css/navigation"
 
 export default {
   components: {
-  Swiper,
-  SwiperSlide,
-  GameCard
+    Swiper,
+    SwiperSlide,
+    GameCard
   },
   setup() {
     return {
@@ -37,50 +37,47 @@ export default {
 
 
 <template>
-<Swiper
-  class="flex items-center custom_swiper"
-  :slidesPerView="slidesPerView"
-  :space-between="10"
-  :loop="true"
-  :navigation="true"
-  :modules="modules"
->
+  <Swiper class="flex items-center custom_swiper" :slidesPerView="slidesPerView" :space-between="10" :loop="true"
+    :navigation="true" :modules="modules">
 
-<SwiperSlide class="flex justify-center">
-  <GameCard />
-</SwiperSlide>
-<SwiperSlide class="flex justify-center">
-  <GameCard />
-</SwiperSlide>
-<SwiperSlide class="flex justify-center">
-  <GameCard />
-</SwiperSlide>
-<SwiperSlide class="flex justify-center">
-  <GameCard />
-</SwiperSlide>
-<SwiperSlide class="flex justify-center">
-  <GameCard />
-</SwiperSlide> 
+    <SwiperSlide class="flex justify-center">
+      <GameCard />
+    </SwiperSlide>
+    <SwiperSlide class="flex justify-center">
+      <GameCard />
+    </SwiperSlide>
+    <SwiperSlide class="flex justify-center">
+      <GameCard />
+    </SwiperSlide>
+    <SwiperSlide class="flex justify-center">
+      <GameCard />
+    </SwiperSlide>
+    <SwiperSlide class="flex justify-center">
+      <GameCard />
+    </SwiperSlide>
 
-</Swiper>
+  </Swiper>
 </template>
 
 
 <style>
-.custom_swiper > .swiper-button-prev::after {
+.custom_swiper>.swiper-button-prev::after {
   content: none;
 }
-.custom_swiper > .swiper-button-prev {
+
+.custom_swiper>.swiper-button-prev {
   left: 0;
   width: 2rem;
   background-image: url('../assets/icons/circlePrev.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
-.custom_swiper > .swiper-button-next::after {
+
+.custom_swiper>.swiper-button-next::after {
   content: none;
 }
-.custom_swiper > .swiper-button-next {
+
+.custom_swiper>.swiper-button-next {
   right: 0;
   width: 2rem;
   background-image: url('../assets/icons/circleNext.svg');
@@ -89,7 +86,9 @@ export default {
 }
 
 @media (max-width: 1024px) {
-  .custom_swiper > .swiper-button-prev, .custom_swiper > .swiper-button-next {
+
+  .custom_swiper>.swiper-button-prev,
+  .custom_swiper>.swiper-button-next {
     display: none;
   }
 }
