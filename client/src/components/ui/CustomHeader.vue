@@ -76,7 +76,7 @@ export default {
         class="absolute top-4 left-6" 
         v-if="!isMobileMenuOpen" 
         @click="clickToOpenMobileMenu" 
-        src="../../assets/icons/hamburger_menu.svg" 
+        src="../../assets/icons/hamburgerMenu.svg" 
         alt="">
       <img 
         class="absolute top-4 left-6" 
@@ -96,7 +96,7 @@ export default {
   <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-custom-black w-full p-6 mt-1 h-screen text-2xl">
     <ul class="flex flex-col justify-evenly px-6 py-4 tracking-wide custom_inner_shadow rounded-xl h-[90%]">
       <li class="flex" @click="clickToOpenMobileMenu">
-        <img src="../../assets/icons/all_games.svg" alt=""> 
+        <img src="../../assets/icons/allGames.svg" alt=""> 
         <div class="ml-5">
           <RouterLink to="/games/all">All games</RouterLink>
         </div>

@@ -73,7 +73,7 @@ export default {
 .custom_swiper > .swiper-button-prev {
   left: 0;
   width: 2rem;
-  background-image: url('../assets/icons/circle_prev.svg');
+  background-image: url('../assets/icons/circlePrev.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -83,7 +83,7 @@ export default {
 .custom_swiper > .swiper-button-next {
   right: 0;
   width: 2rem;
-  background-image: url('../assets/icons/circle_next.svg');
+  background-image: url('../assets/icons/circleNext.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }

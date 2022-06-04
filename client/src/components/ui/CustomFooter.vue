@@ -5,9 +5,9 @@
     <h1>GameMuffin</h1>
   </div>
   <div class="space-x-12 px-4 py-2 rounded inner_shadow hidden sm:flex">
-    <img src="../../assets/icons/github_logo.svg" alt="github_logo">
-    <img src="../../assets/icons/telegram_logo.svg" alt="telegram_logo">
-    <img src="../../assets/icons/vk_logo.svg" alt="vk_logo">
+    <img src="../../assets/icons/githubLogo.svg" alt="githubLogo">
+    <img src="../../assets/icons/telegramLogo.svg" alt="telegramLogo">
+    <img src="../../assets/icons/vkLogo.svg" alt="vkLogo">
   </div>
   <div>
     <img class="w-[80%] h-[80%] sm:w-full sm:h-full" src="../../assets/icons/logo.svg" alt="site logo">
