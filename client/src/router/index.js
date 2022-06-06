@@ -7,7 +7,7 @@ const routes = [
     component: () => import("../views/HomeView.vue"),
   },
   {
-    path: "/games/all",
+    path: "/games",
     name: "allGames",
     component: () => import("../views/AllGamesView.vue"),
   },
@@ -37,7 +37,7 @@ const routes = [
     component: () => import("../views/CategoriesView.vue"),
   },
   {
-    path: "/game/info",
+    path: "/games/:title",
     name: "gameInfo",
     component: () => import("../views/GameInfoView.vue"),
   },

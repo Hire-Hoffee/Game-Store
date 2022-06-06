@@ -42,7 +42,7 @@ export default {
     <nav>
       <ul class="flex space-x-6 md:space-x-8 xl:space-x-12 text-xl">
         <li>
-          <RouterLink to="/games/all">All games</RouterLink>
+          <RouterLink to="/games">All games</RouterLink>
         </li>
         <li>
           <RouterLink to="/news">News</RouterLink>
@@ -60,7 +60,7 @@ export default {
       </ul>
     </nav>
     <div>
-      <div class="sm:block lg:hidden" @click="clickToSearch">
+      <div class="sm:block lg:hidden hover:scale-105 active:scale-95" @click="clickToSearch">
         <img src="../../assets/icons/search.svg" alt="">
       </div>
       <div class="sm:hidden lg:block hidden">
@@ -73,14 +73,16 @@ export default {
       </div>
     </div>
 
-    <div v-if="search" class="absolute right-0 top-16 px-5 mt-5 w-full">
-      <form class="flex space-x-7">
-        <input type="text"
-          class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2 w-10/12"
-          placeholder="Search game">
-        <CustomBtn class="bg-custom-black w-2/12">Search</CustomBtn>
-      </form>
-    </div>
+    <Transition name="bounce">
+      <div v-if="search" class="absolute right-0 top-16 px-5 mt-5 w-full">
+        <form class="flex space-x-7">
+          <input type="text"
+            class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2 w-10/12"
+            placeholder="Search game">
+          <CustomBtn class="bg-custom-black w-2/12">Search</CustomBtn>
+        </form>
+      </div>
+    </Transition>
   </header>
 
 

@@ -1,6 +1,6 @@
 
 <template>
-  <RouterLink to="/game/info">
+  <RouterLink to="/games/:title">
     <div class="xl:w-56 lg:w-48 w-40 h-full flex flex-col relative">
       <div class="xl:h-56 lg:h-48 h-40">
         <img class="rounded-xl w-full h-full" src="https://picsum.photos/220/260" alt="">
