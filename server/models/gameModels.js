@@ -24,7 +24,7 @@ module.exports = {
   Genre: sequelize.define(
     "genre",
     {
-      genre: { type: DataTypes.STRING, allowNull: false },
+      genreName: { type: DataTypes.STRING, allowNull: false },
     },
     { timestamps: false, schema }
   ),
@@ -32,7 +32,7 @@ module.exports = {
   Image: sequelize.define(
     "image",
     {
-      image: { type: DataTypes.STRING, allowNull: false },
+      imageURL: { type: DataTypes.STRING, allowNull: false },
     },
     { timestamps: false, schema }
   ),
@@ -40,7 +40,7 @@ module.exports = {
   Developer: sequelize.define(
     "developer",
     {
-      developer: { type: DataTypes.STRING, allowNull: false },
+      developerName: { type: DataTypes.STRING, allowNull: false },
     },
     { timestamps: false, schema }
   ),
@@ -78,7 +78,7 @@ module.exports = {
   Platform: sequelize.define(
     "platform",
     {
-      platform: { type: DataTypes.STRING, allowNull: false },
+      platformName: { type: DataTypes.STRING, allowNull: false },
     },
     { timestamps: false, schema }
   ),

@@ -17,7 +17,7 @@ module.exports = {
   NewsImage: sequelize.define(
     "newsImages",
     {
-      image: { type: DataTypes.STRING, allowNull: false },
+      imageURL: { type: DataTypes.STRING, allowNull: false },
     },
     { timestamps: false, freezeTableName: true, schema }
   ),

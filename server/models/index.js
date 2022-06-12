@@ -8,6 +8,7 @@ const {
   GameKey,
   Platform,
 } = require("./gameModels");
+
 const {
   Customer,
   Payment,
@@ -16,6 +17,7 @@ const {
   Cart,
   OrderInfo,
 } = require("./userModels");
+
 const { News, NewsImage } = require("./newsModels");
 
 module.exports = [
