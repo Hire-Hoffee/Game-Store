@@ -1,6 +1,6 @@
 <script>
-import AllGamesComponent from "../components/AllGamesComponent.vue"
-import FilterComponent from "../components/FilterComponent.vue"
+import AllGamesComponent from "@/components/AllGamesComponent.vue"
+import FilterComponent from "@/components/FilterComponent.vue"
 
 export default {
   components: {

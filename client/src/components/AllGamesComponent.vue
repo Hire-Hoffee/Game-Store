@@ -1,6 +1,6 @@
 <script>
-import GameCard from "../components/GameCard.vue"
-import PagesSwitcher from "../components/ui/PagesSwitcher.vue"
+import GameCard from "@/components/GameCard.vue"
+import PagesSwitcher from "@/components/ui/PagesSwitcher.vue"
 
 export default {
   components: {

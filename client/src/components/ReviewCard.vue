@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 
 <template>
   <div class="w-80 min-h-[24rem] p-3 rounded custom_shadow_out m-2">
@@ -18,7 +14,3 @@
     </div>
   </div>
 </template>
-
-
-<style>
-</style>

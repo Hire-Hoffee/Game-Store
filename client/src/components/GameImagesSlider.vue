@@ -105,5 +105,6 @@ export default {
 
 .swiper-slide-thumb-active {
   opacity: 1 !important;
+  transform: scale(0.97) !important;
 }
 </style>

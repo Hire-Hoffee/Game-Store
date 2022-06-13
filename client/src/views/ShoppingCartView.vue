@@ -1,5 +1,5 @@
 <script>
-import CartItem from "../components/CartItem.vue"
+import CartItem from "@/components/CartItem.vue"
 
 export default {
   components: {

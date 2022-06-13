@@ -1,5 +1,5 @@
 <script>
-import NewsComponent from "../components/NewsComponent.vue"
+import NewsComponent from "@/components/NewsComponent.vue"
 
 export default {
   components: {

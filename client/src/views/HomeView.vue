@@ -1,8 +1,8 @@
 <script>
-import MainSlider from "../components/MainSlider.vue"
-import CustomSlider from "../components/CustomSlider.vue"
-import GameNews from "../components/GameNews.vue"
-import CategoryCard from "../components/CategoryCard.vue"
+import MainSlider from "@/components/MainSlider.vue"
+import CustomSlider from "@/components/CustomSlider.vue"
+import GameNews from "@/components/GameNews.vue"
+import CategoryCard from "@/components/CategoryCard.vue"
 
 export default {
   components: {

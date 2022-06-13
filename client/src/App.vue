@@ -1,6 +1,6 @@
 <script>
-import CustomHeader from "./components/ui/CustomHeader.vue"
-import CustomFooter from "./components/ui/CustomFooter.vue"
+import CustomHeader from "@/components/ui/CustomHeader.vue"
+import CustomFooter from "@/components/ui/CustomFooter.vue"
 
 export default {
   components: {

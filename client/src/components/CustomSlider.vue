@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/vue"
 import { Navigation } from "swiper"
 
-import GameCard from './GameCard.vue'
+import GameCard from '@/components/GameCard.vue'
 
 import "swiper/css"
 import "swiper/css/navigation"

@@ -1,6 +1,6 @@
 <script>
-import GameImagesSlider from "./GameImagesSlider.vue"
-import ReviewsSlider from "./ReviewsSlider.vue"
+import GameImagesSlider from "@/components/GameImagesSlider.vue"
+import ReviewsSlider from "@/components/ReviewsSlider.vue"
 
 export default {
   components: {

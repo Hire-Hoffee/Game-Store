@@ -1,5 +1,5 @@
 <script>
-import LoginComponent from "../components/LoginComponent.vue"
+import LoginComponent from "@/components/LoginComponent.vue"
 
 export default {
   components: {

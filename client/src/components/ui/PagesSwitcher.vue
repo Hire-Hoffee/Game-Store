@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 
 <template>
   <div class="md:w-112 w-full flex justify-between items-center inner_shadow_custom p-3 rounded-xl">
@@ -21,7 +17,3 @@
     </div>
   </div>
 </template>
-
-
-<style>
-</style>

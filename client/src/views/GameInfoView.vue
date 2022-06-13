@@ -1,5 +1,5 @@
 <script>
-import GameInfo from "../components/GameInfo.vue"
+import GameInfo from "@/components/GameInfo.vue"
 
 export default {
   components: {
