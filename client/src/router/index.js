@@ -4,42 +4,42 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("../views/HomeView.vue"),
+    component: () => import("@/views/HomeView.vue"),
   },
   {
     path: "/games",
     name: "allGames",
-    component: () => import("../views/AllGamesView.vue"),
+    component: () => import("@/views/AllGamesView.vue"),
   },
   {
     path: "/auth/login",
     name: "login",
-    component: () => import("../views/UserAuthView.vue"),
+    component: () => import("@/views/UserAuthView.vue"),
   },
   {
     path: "/user",
     name: "userAccount",
-    component: () => import("../views/UserAccountView.vue"),
+    component: () => import("@/views/UserAccountView.vue"),
   },
   {
     path: "/cart",
     name: "shoppingCart",
-    component: () => import("../views/ShoppingCartView.vue"),
+    component: () => import("@/views/ShoppingCartView.vue"),
   },
   {
     path: "/news",
     name: "gamesNews",
-    component: () => import("../views/NewsView.vue"),
+    component: () => import("@/views/NewsView.vue"),
   },
   {
     path: "/categories",
     name: "allCategories",
-    component: () => import("../views/CategoriesView.vue"),
+    component: () => import("@/views/CategoriesView.vue"),
   },
   {
     path: "/games/:title",
     name: "gameInfo",
-    component: () => import("../views/GameInfoView.vue"),
+    component: () => import("@/views/GameInfoView.vue"),
   },
 ];
 
