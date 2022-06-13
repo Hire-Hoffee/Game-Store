@@ -5,12 +5,12 @@
       <h1>GameMuffin</h1>
     </div>
     <div class="space-x-12 px-4 py-2 rounded inner_shadow hidden sm:flex">
-      <img src="../../assets/icons/githubLogo.svg" alt="githubLogo">
-      <img src="../../assets/icons/telegramLogo.svg" alt="telegramLogo">
-      <img src="../../assets/icons/vkLogo.svg" alt="vkLogo">
+      <img src="@/assets/icons/githubLogo.svg" alt="githubLogo">
+      <img src="@/assets/icons/telegramLogo.svg" alt="telegramLogo">
+      <img src="@/assets/icons/vkLogo.svg" alt="vkLogo">
     </div>
     <div>
-      <img class="w-[80%] h-[80%] sm:w-full sm:h-full" src="../../assets/icons/logo.svg" alt="site logo">
+      <img class="w-[80%] h-[80%] sm:w-full sm:h-full" src="@/assets/icons/logo.svg" alt="site logo">
     </div>
   </footer>
 </template>

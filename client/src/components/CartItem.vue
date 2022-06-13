@@ -10,9 +10,9 @@
     </div>
     <div class="flex flex-col sm:flex-row items-center sm:justify-between sm:w-6/12 sm:pr-14">
       <div class="flex items-center justify-between sm:w-96 w-36 mb-3 sm:mb-0">
-        <button><img src="../assets/icons/minus.svg" alt=""></button>
+        <button><img src="@/assets/icons/minus.svg" alt=""></button>
         <h1>1</h1>
-        <button><img src="../assets/icons/plus.svg" alt=""></button>
+        <button><img src="@/assets/icons/plus.svg" alt=""></button>
       </div>
       <div class="w-full mb-3 sm:mb-0">
         <h1 class="text-center sm:font-bold sm:text-2xl sm:hidden">Price</h1>

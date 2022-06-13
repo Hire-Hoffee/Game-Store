@@ -33,8 +33,8 @@ export default {
   <header v-if="!isMobile"
     class="bg-custom-black w-full h-16 flex justify-between items-center px-12 font-bold z-50 drop_shadow_custom_down">
     <div class="flex items-center space-x-7 text-2xl text-custom-red">
-      <RouterLink v-if="isTablet" to="/"><img src="../../assets/icons/logo.svg" alt="site logo"></RouterLink>
-      <img v-else src="../../assets/icons/logo.svg" alt="site logo">
+      <RouterLink v-if="isTablet" to="/"><img src="@/assets/icons/logo.svg" alt="site logo"></RouterLink>
+      <img v-else src="@/assets/icons/logo.svg" alt="site logo">
       <h1 class="sm:hidden xl:block hidden">
         <router-link to="/">GameMuffin</router-link>
       </h1>
@@ -61,7 +61,7 @@ export default {
     </nav>
     <div>
       <div class="sm:block lg:hidden hover:scale-105 active:scale-95" @click="clickToSearch">
-        <img src="../../assets/icons/search.svg" alt="">
+        <img src="@/assets/icons/search.svg" alt="">
       </div>
       <div class="sm:hidden lg:block hidden">
         <form class="flex space-x-7">
@@ -92,8 +92,8 @@ export default {
       <div class="w-full">
         <Transition name="bounce">
           <img class="absolute top-4 left-6" v-if="!isMobileMenuOpen" @click="clickToOpenMobileMenu"
-            src="../../assets/icons/hamburgerMenu.svg" alt="">
-          <img class="absolute top-4 left-6" v-else @click="clickToOpenMobileMenu" src="../../assets/icons/exit.svg"
+            src="@/assets/icons/hamburgerMenu.svg" alt="">
+          <img class="absolute top-4 left-6" v-else @click="clickToOpenMobileMenu" src="@/assets/icons/exit.svg"
             alt="">
         </Transition>
       </div>
@@ -107,37 +107,37 @@ export default {
       <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-custom-black w-full p-6 mt-1 h-screen text-2xl">
         <ul class="flex flex-col justify-evenly px-6 py-4 tracking-wide custom_inner_shadow rounded-xl h-[90%]">
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="../../assets/icons/allGames.svg" alt="">
+            <img src="@/assets/icons/allGames.svg" alt="">
             <div class="ml-5">
               <RouterLink to="/games/all">All games</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="../../assets/icons/news.svg" alt="">
+            <img src="@/assets/icons/news.svg" alt="">
             <div class="ml-5">
               <RouterLink to="/news">News</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="../../assets/icons/categories.svg" alt="">
+            <img src="@/assets/icons/categories.svg" alt="">
             <div class="ml-5">
               <RouterLink to="/categories">Categories</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="../../assets/icons/login.svg" alt="">
+            <img src="@/assets/icons/login.svg" alt="">
             <div class="ml-5">
               <RouterLink to="/auth/login">Login</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="../../assets/icons/cart.svg" alt="">
+            <img src="@/assets/icons/cart.svg" alt="">
             <div class="ml-5">
               <RouterLink to="/cart">Cart</RouterLink>
             </div>
           </li>
           <li class="flex">
-            <img src="../../assets/icons/faq.svg" alt="">
+            <img src="@/assets/icons/faq.svg" alt="">
             <div class="ml-5">
               About
             </div>
@@ -148,7 +148,7 @@ export default {
                 class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2 w-10/12"
                 placeholder="Search game">
               <CustomBtn class="bg-custom-black w-2/12">
-                <img class="w-full h-full" src="../../assets/icons/search.svg" alt="">
+                <img class="w-full h-full" src="@/assets/icons/search.svg" alt="">
               </CustomBtn>
             </form>
           </li>

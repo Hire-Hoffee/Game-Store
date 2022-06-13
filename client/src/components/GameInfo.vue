@@ -35,7 +35,7 @@ export default {
           <div class="flex justify-between mb-1 lg:mb-3">
             <div>Rating</div>
             <div class="font-normal">
-              <img class="inline mr-3" src="../assets/icons/star.svg" alt="">
+              <img class="inline mr-3" src="@/assets/icons/star.svg" alt="">
               <span>8,3</span>
             </div>
           </div>
@@ -50,9 +50,9 @@ export default {
           <div class="flex justify-between">
             <div>Platform</div>
             <div class="font-normal">
-              <img class="inline mr-3" src="../assets/icons/win.svg" alt="">
-              <img class="inline mr-3" src="../assets/icons/xbox.svg" alt="">
-              <img class="inline" src="../assets/icons/ps.svg" alt="">
+              <img class="inline mr-3" src="@/assets/icons/win.svg" alt="">
+              <img class="inline mr-3" src="@/assets/icons/xbox.svg" alt="">
+              <img class="inline" src="@/assets/icons/ps.svg" alt="">
             </div>
           </div>
         </div>
