@@ -7,7 +7,6 @@ const {
   RecommendedSR,
   GameKey,
   Platform,
-  CertainPlatform,
 } = require("./gameModels");
 
 const {
@@ -47,9 +46,6 @@ module.exports = [
 
   Platform.hasMany(GameKey),
   GameKey.belongsTo(Platform),
-
-  Platform.hasMany(CertainPlatform),
-  CertainPlatform.belongsTo(Platform),
 
   // -------------------------- userModels --------------------------
 
