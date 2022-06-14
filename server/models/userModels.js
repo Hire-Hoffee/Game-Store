@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const schema = "user_schema";
+const schema = "userSchema";
 
 module.exports = {
   Customer: sequelize.define(

@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const schema = "news_schema";
+const schema = "newsSchema";
 
 module.exports = {
   News: sequelize.define(

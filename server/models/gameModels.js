@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const schema = "game_schema";
+const schema = "gameSchema";
 
 module.exports = {
   Game: sequelize.define(
@@ -9,12 +9,12 @@ module.exports = {
     {
       gameTitle: { type: DataTypes.STRING, allowNull: false },
       description: { type: DataTypes.TEXT, allowNull: false },
-      releaseDate: { type: DataTypes.DATE, allowNull: false },
+      releaseDate: { type: DataTypes.DATEONLY, allowNull: false },
       rating: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
       price: { type: DataTypes.INTEGER },
       poster: {
         type: DataTypes.STRING,
-        defaultValue: "/posters/posterNotFound",
+        defaultValue: "/images/supportImages/posterNotFound.png",
       },
       trailer: { type: DataTypes.STRING },
     },
@@ -79,6 +79,13 @@ module.exports = {
     "platform",
     {
       platformName: { type: DataTypes.STRING, allowNull: false },
+    },
+    { timestamps: false, schema }
+  ),
+  CertainPlatform: sequelize.define(
+    "certainPlatform",
+    {
+      certainPlatform: { type: DataTypes.STRING, allowNull: false },
     },
     { timestamps: false, schema }
   ),
