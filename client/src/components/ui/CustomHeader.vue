@@ -109,7 +109,7 @@ export default {
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/allGames.svg" alt="">
             <div class="ml-5">
-              <RouterLink to="/games/all">All games</RouterLink>
+              <RouterLink to="/games">All games</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
