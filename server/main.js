@@ -2,14 +2,18 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const logger = require("morgan");
+const cors = require("cors");
 const sequelize = require("./config/database");
 const routes = require("./routes");
 const { notFound, errorHandler } = require("./middleware/errorHandler");
 require("./models");
 
 const PORT = process.env.PORT || 4221;
+const VUE_API_URL = process.env.VUE_API_URL || undefined;
+
 const app = express();
 
+app.use(cors({ origin: VUE_API_URL }));
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, "static")));
 

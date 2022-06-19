@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const MainControllers = require("../controllers/mainControllers");
+const mainControllers = require("../controllers/mainControllers");
 
-router.get("/", MainControllers.getMainPage);
-router.get("/games", MainControllers.getAllGames);
-router.get("/games/:title", MainControllers.getGameInfo);
-router.get("/categories", MainControllers.getAllCategories);
-router.get("/news", MainControllers.getGamesNews);
+router.get("/", mainControllers.getMainPage);
+router.get("/games", mainControllers.getAllGames);
+router.get("/games/:title", mainControllers.getGameInfo);
+router.get("/categories", mainControllers.getAllCategories);
+router.get("/news", mainControllers.getGamesNews);
 
 module.exports = router;

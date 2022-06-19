@@ -9,7 +9,10 @@ module.exports = {
     {
       title: { type: DataTypes.STRING, allowNull: false },
       content: { type: DataTypes.TEXT, allowNull: false },
-      poster: { type: DataTypes.STRING, defaultValue: "/images/supportImages/imgNotFound.png" },
+      poster: {
+        type: DataTypes.STRING,
+        defaultValue: "/images/supportImages/imgNotFound.png",
+      },
     },
     { freezeTableName: true, schema, createdAt: true, updatedAt: false }
   ),

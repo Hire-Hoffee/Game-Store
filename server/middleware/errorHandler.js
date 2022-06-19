@@ -12,4 +12,4 @@ const notFound = (req, res, next) => {
   return res.status(404).json({ message: "Api route not found" });
 };
 
-module.exports = {notFound, errorHandler};
+module.exports = { notFound, errorHandler };

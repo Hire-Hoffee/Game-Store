@@ -1,7 +1,7 @@
-import axios from "axios";
+import mainServices from "./mainServices";
 
-const restAPI = axios.create({
-  baseURL: "http://localhost:7070/api",
-});
+const API = {
+  mainServices,
+};
 
-export default restAPI;
+export default API;

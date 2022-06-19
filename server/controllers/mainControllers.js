@@ -8,12 +8,13 @@ const {
   RecommendedSR,
 } = require("../models/gameModels");
 const { News, NewsImage } = require("../models/newsModels");
+
 const { Op } = require("sequelize");
 
-class MainControllers {
+const mainControllers = {
   getMainPage(req, res) {
     return res.json({ message: "home" });
-  }
+  },
 
   async getAllGames(req, res, next) {
     try {
@@ -25,7 +26,7 @@ class MainControllers {
     } catch (error) {
       next(error);
     }
-  }
+  },
 
   async getAllCategories(req, res, next) {
     try {
@@ -37,7 +38,7 @@ class MainControllers {
     } catch (error) {
       next(error);
     }
-  }
+  },
 
   async getGameInfo(req, res, next) {
     try {
@@ -57,7 +58,7 @@ class MainControllers {
     } catch (error) {
       next(error);
     }
-  }
+  },
 
   async getGamesNews(req, res, next) {
     try {
@@ -72,7 +73,7 @@ class MainControllers {
     } catch (error) {
       next(error);
     }
-  }
-}
+  },
+};
 
-module.exports = new MainControllers();
+module.exports = mainControllers;
