@@ -8,8 +8,8 @@ module.exports = {
     "news",
     {
       title: { type: DataTypes.STRING, allowNull: false },
-      content: { type: DataTypes.STRING, allowNull: false },
-      poster: { type: DataTypes.STRING },
+      content: { type: DataTypes.TEXT, allowNull: false },
+      poster: { type: DataTypes.STRING, defaultValue: "/images/supportImages/imgNotFound.png" },
     },
     { freezeTableName: true, schema, createdAt: true, updatedAt: false }
   ),

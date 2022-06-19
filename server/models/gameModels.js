@@ -18,7 +18,7 @@ module.exports = {
       },
       trailer: {
         type: DataTypes.STRING,
-        defaultValue: "/images/supportImages/trailerNotFound.png",
+        defaultValue: "/images/supportImages/imgNotFound.png",
       },
     },
     { timestamps: false, schema }

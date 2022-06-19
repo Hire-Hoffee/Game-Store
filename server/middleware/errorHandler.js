@@ -1,23 +1,15 @@
 const errorHandler = (err, req, res, next) => {
-  const status = err.status;
-  const message = err.message;
+  const status = err.status || 500;
+  const message = err.message || "Unexpected error occurred";
 
   console.log(`Error: \n status -- ${status} \n message -- ${message}`);
 
-  if (status == 404) {
-    return res.status(status).json({ message: "Not found" });
-  }
-  if (status == 403) {
-    return res.status(status).json({ message: "Access forbidden" });
-  }
-  if (status == 500) {
-    return res.status(status).json({ message: "Server error" });
-  }
-  if (!status) {
-    return res.status(500).json({ message: "Unexpected server error" });
-  }
-
-  return res.status(status).json({ message: "Error occurred" });
+  return res.status(status).json({ message });
 };
 
-module.exports = errorHandler;
+const notFound = (req, res, next) => {
+  console.log("Error: Api route not found");
+  return res.status(404).json({ message: "Api route not found" });
+};
+
+module.exports = {notFound, errorHandler};
