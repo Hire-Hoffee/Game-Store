@@ -2,13 +2,14 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import reuseComponents from "./components/ui/reuseComponents";
-import API from "./services";
+import store from "./store/store";
+import apiPlugin from "./plugins/apiPlugin";
 import "./assets/css/main.css";
 
 const app = createApp(App);
 
-app.config.globalProperties.$API = API;
-
+app.use(apiPlugin);
+app.use(store);
 app.use(router);
 
 reuseComponents.forEach((component) =>

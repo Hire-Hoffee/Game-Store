@@ -1,12 +1,17 @@
 <script>
 import CustomHeader from "@/components/ui/CustomHeader.vue"
 import CustomFooter from "@/components/ui/CustomFooter.vue"
+import ErrorOccurred from "./components/ui/ErrorOccurred.vue"
+
+import { mapGetters } from "vuex"
 
 export default {
   components: {
     CustomHeader,
-    CustomFooter
-  }
+    CustomFooter,
+    ErrorOccurred
+  },
+  computed: mapGetters(["getErrorInfo"])
 }
 </script>
 
@@ -17,6 +22,8 @@ export default {
     <CustomHeader class="mb-24 sticky top-0" />
 
     <main class="container 2xl:w-5/6 flex-auto p-3">
+      <ErrorOccurred v-if="getErrorInfo" :error-message="getErrorInfo.message" />
+
       <RouterView v-slot="{ Component, route }">
         <Transition name="fade" mode="out-in">
           <component :is="Component" :key="route.path" />
