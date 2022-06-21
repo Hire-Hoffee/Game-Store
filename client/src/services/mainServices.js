@@ -1,15 +1,50 @@
 import instance from "./instance";
 
 const mainServices = {
-  getMainPage() {},
+  async getMainPage() {
+    try {
+      const result = await instance.get("/");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 
-  getAllGames() {},
+  async getAllGames() {
+    try {
+      const result = await instance.get("/games");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 
-  getAllCategories() {},
+  async getAllCategories() {
+    try {
+      const result = await instance.get("/categories");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 
-  getGameInfo() {},
+  async getGameInfo(params) {
+    try {
+      const result = await instance.get(`/games/${params}`);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 
-  getGamesNews() {},
+  async getGamesNews() {
+    try {
+      const result = await instance.get("/news");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default mainServices;
