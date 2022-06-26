@@ -28,6 +28,11 @@ module.exports = {
     "genre",
     {
       genreName: { type: DataTypes.STRING, allowNull: false },
+      genreSVG: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "/images/supportImages/defaultCategory.svg",
+      },
     },
     { timestamps: false, schema }
   ),
@@ -88,6 +93,7 @@ module.exports = {
     "platform",
     {
       platformName: { type: DataTypes.STRING, allowNull: false },
+      platformSVG: { type: DataTypes.STRING },
     },
     { timestamps: false, schema }
   ),

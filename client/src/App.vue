@@ -22,7 +22,7 @@ export default {
     <CustomHeader class="mb-24 sticky top-0" />
 
     <main class="container 2xl:w-5/6 flex-auto p-3">
-      <ErrorOccurred v-if="getErrorInfo" :error-message="getErrorInfo.message" />
+      <ErrorOccurred v-if="getErrorInfo" :error-message="getErrorInfo.response.data.message" />
 
       <RouterView v-slot="{ Component, route }">
         <Transition name="fade" mode="out-in">
