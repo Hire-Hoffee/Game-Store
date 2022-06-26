@@ -12,7 +12,7 @@ export default {
         <img class="rounded-xl w-full h-full" :src="gamePoster" alt="">
       </div>
       <h2 class="text-xl mt-3">{{ gameTitle || "Title" }}</h2>
-      <div class="absolute top-0 right-0 bg-custom-red rounded-bl-xl rounded-tr-xl px-2 text-lg"><strong>{{ gamePrice }} $</strong>
+      <div class="absolute top-0 right-0 bg-custom-red rounded-bl-xl rounded-tr-xl px-2 text-lg" v-if="gamePrice"><strong>{{ gamePrice }} $</strong>
       </div>
     </div>
   </RouterLink>
