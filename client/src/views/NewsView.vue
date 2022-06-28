@@ -4,6 +4,21 @@ import NewsComponent from "@/components/NewsComponent.vue"
 export default {
   components: {
     NewsComponent,
+  },
+  data() {
+    return {
+      allNews: null,
+      latestNews: null
+    }
+  },
+  async mounted() {
+    try {
+      const [latest, all] = (await this.$API.mainServices.getGamesNews()).data
+      this.allNews = all
+      this.latestNews = latest
+    } catch (error) {
+      this.$store.commit("updateError", error)
+    }
   }
 }
 </script>
@@ -16,29 +31,14 @@ export default {
     <div
       class="flex flex-col md:flex-row justify-between md:space-x-8 space-x-0 mb-20 w-full xl:h-112 lg:h-96 md:h-72 h-112 space-y-8 md:space-y-0 sm:text-xl text-base">
 
-      <div class="md:w-1/2 h-1/2 md:h-full">
-        <img class="w-full h-5/6 rounded-xl" src="https://picsum.photos/500/300" alt="">
-        <h1 class="h-1/6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, suscipit.</h1>
+      <div class="md:w-1/2 h-1/2 md:h-full" v-for="item in latestNews">
+        <img class="w-full h-5/6 rounded-xl" :src="item.poster" :alt="item.title">
+        <h1 class="h-1/6">{{ item.title }}</h1>
       </div>
-
-      <div class="md:w-1/2 h-1/2 md:h-full">
-        <img class="w-full h-5/6 rounded-xl" src="https://picsum.photos/500/300" alt="">
-        <h1 class="h-1/6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, suscipit.</h1>
-      </div>
-
     </div>
 
     <div>
-      <NewsComponent />
-      <NewsComponent />
-      <NewsComponent />
-      <NewsComponent />
-      <NewsComponent />
-      <NewsComponent />
+      <NewsComponent v-for="item in allNews" :newsTitle="item.title" :newsPoster="item.poster" :releaseDate="item.createdAt"/>
     </div>
   </div>
 </template>
-
-
-<style>
-</style>

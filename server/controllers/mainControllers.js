@@ -62,13 +62,29 @@ const mainControllers = {
 
   async getGamesNews(req, res, next) {
     try {
-      const result = await News.findAll({
-        order: [["createdAt", "ASC"]],
-        include: NewsImage,
-      });
+      const getAllNews = async () => {
+        return await News.findAll({
+          order: [["createdAt", "DESC"]],
+          include: NewsImage,
+        });
+      };
+      const getLatestNews = async () => {
+        return await News.findAll({
+          order: [["createdAt", "DESC"]],
+          limit: 2,
+          include: NewsImage,
+        });
+      };
+
+      const result = ([latestNews, allNews] = await Promise.all([
+        getLatestNews(),
+        getAllNews(),
+      ]));
+
       if (!result || result.length == 0) {
         return res.status(404).json({ message: "Result not found" });
       }
+
       return res.json(result);
     } catch (error) {
       next(error);
