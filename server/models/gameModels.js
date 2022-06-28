@@ -27,7 +27,7 @@ module.exports = {
   Genre: sequelize.define(
     "genre",
     {
-      genreName: { type: DataTypes.STRING, allowNull: false },
+      genreName: { type: DataTypes.STRING, allowNull: false, unique: true },
       genreSVG: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -52,7 +52,7 @@ module.exports = {
   Developer: sequelize.define(
     "developer",
     {
-      developerName: { type: DataTypes.STRING, allowNull: false },
+      developerName: { type: DataTypes.STRING, allowNull: false, unique: true },
     },
     { timestamps: false, schema }
   ),
@@ -84,7 +84,7 @@ module.exports = {
   GameKey: sequelize.define(
     "gameKey",
     {
-      key: { type: DataTypes.STRING, allowNull: false },
+      key: { type: DataTypes.STRING, allowNull: false, unique: true },
     },
     { timestamps: false, schema }
   ),
@@ -92,7 +92,7 @@ module.exports = {
   Platform: sequelize.define(
     "platform",
     {
-      platformName: { type: DataTypes.STRING, allowNull: false },
+      platformName: { type: DataTypes.STRING, allowNull: false, unique: true },
       platformSVG: { type: DataTypes.STRING },
     },
     { timestamps: false, schema }

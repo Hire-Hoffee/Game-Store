@@ -15,7 +15,7 @@ export default {
 <template>
   <div class="p-5 rounded custom_shadow_out">
 
-    <ParagraphHeader>{{ gameInfo.gameTitle }}</ParagraphHeader>
+    <ParagraphHeader class="uppercase">{{ gameInfo.gameTitle }}</ParagraphHeader>
 
     <div class="flex flex-col-reverse md:flex-row justify-between md:space-x-14 font-bold mb-28">
       <div class="md:w-7/12">
@@ -51,7 +51,8 @@ export default {
           <div class="flex justify-between">
             <div>Platforms</div>
             <div class="font-normal">
-              <img class="inline lg:ml-4 ml-2" v-for="platform in gameInfo.platforms" :src="platform.platformSVG" :alt="platform.platformName">
+              <img class="inline lg:ml-4 ml-2" v-if="gameInfo.platforms.length !== 0" v-for="platform in gameInfo.platforms" :src="platform.platformSVG" :alt="platform.platformName">
+              <div class="text-xl" v-else>__</div>
             </div>
           </div>
         </div>
@@ -61,20 +62,22 @@ export default {
     <div class="mb-28">
       <ParagraphHeader add-class="w-1/3">Description</ParagraphHeader>
       <div class="text-lg mb-2 font-normal">
-        <p>{{ gameInfo.description }}</p>
+        <p v-if="gameInfo.description">{{ gameInfo.description }}</p>
+        <p class="text-xl" v-else>__</p>
       </div>
     </div>
 
     <div class="mb-28">
       <ParagraphHeader add-class="w-1/3">Genres</ParagraphHeader>
-      <div class="text-2xl font-bold flex space-x-4">
-        <div v-for="genre in gameInfo.genres">{{ genre.genreName }}</div>
+      <div class="text-xl font-bold flex space-x-4">
+        <div v-if="gameInfo.genres.length !== 0" v-for="genre in gameInfo.genres">{{ genre.genreName }}</div>
+        <div class="text-xl" v-else>__</div>
       </div>
     </div>
 
     <div class="mb-28">
       <ParagraphHeader add-class="w-1/3">Specifications</ParagraphHeader>
-      <div class="text-2xl flex space-x-10">
+      <div class="text-2xl flex space-x-10" v-if="gameInfo.minimumSR || gameInfo.recommendedSR">
 
         <div class="flex text-base" v-if="gameInfo.minimumSR">
           <div>
@@ -128,6 +131,10 @@ export default {
           </div>
         </div>
 
+      </div>
+
+      <div v-else>
+        <p class="text-xl">To be announced or unknown</p>
       </div>
     </div>
 
