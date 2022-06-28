@@ -7,15 +7,14 @@ export default {
   },
   data() {
     return {
-      allNews: null,
-      latestNews: null
+      latestNews: null,
+      allNews: null
     }
   },
   async mounted() {
     try {
-      const [latest, all] = (await this.$API.mainServices.getGamesNews()).data
-      this.allNews = all
-      this.latestNews = latest
+      [this.latestNews, this.allNews] = (await this.$API.mainServices.getGamesNews()).data
+
     } catch (error) {
       this.$store.commit("updateError", error)
     }

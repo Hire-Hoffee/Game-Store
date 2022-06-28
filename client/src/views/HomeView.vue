@@ -11,6 +11,26 @@ export default {
     GameNews,
     CategoryCard
   },
+  data() {
+    return {
+      comingSoonGames: null,
+      newGames: null,
+      oldGames: null,
+      latestNews: null,
+      popCategories: null
+    }
+  },
+  async mounted() {
+    try {
+      [this.comingSoonGames,
+      this.newGames,
+      this.oldGames,
+      this.latestNews,
+      this.popCategories] = (await this.$API.mainServices.getMainPage()).data
+    } catch (error) {
+      this.$store.commit("updateError", error)
+    }
+  }
 }
 </script>
 
@@ -20,7 +40,7 @@ export default {
   <div class="main_page">
     <div class="mb-28">
       <ParagraphHeader add-class="w-1/6">New games</ParagraphHeader>
-      <MainSlider class="mt-3" />
+      <MainSlider class="mt-3" v-if="comingSoonGames" :game-data="newGames" />
     </div>
 
     <div class="mb-28">
@@ -29,7 +49,7 @@ export default {
         <h1 class="text-xl text-custom-red">View all</h1>
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
-      <CustomSlider class="mt-5" />
+      <CustomSlider class="mt-5" v-if="comingSoonGames" :game-data="comingSoonGames" />
     </div>
 
     <div class="mb-28 bg-custom-gray bg-opacity-50 p-3 rounded">
@@ -38,7 +58,7 @@ export default {
         <h1 class="text-xl text-custom-red">View all</h1>
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
-      <GameNews class="mt-5" />
+      <GameNews class="mt-5" v-if="latestNews" :news-data="latestNews" />
     </div>
 
     <div class="mb-28">
@@ -47,7 +67,7 @@ export default {
         <h1 class="text-xl text-custom-red">View all</h1>
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
-      <CustomSlider class="mt-5" />
+      <CustomSlider class="mt-5" v-if="oldGames" :game-data="oldGames" />
     </div>
 
     <div>
@@ -57,10 +77,8 @@ export default {
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
       <div class="flex justify-between flex-wrap mt-5 p-5">
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
+        <CategoryCard v-if="popCategories" v-for="category in popCategories" :category-name="category.genreName"
+          :category-SVG="category.genreSVG" :key="category.id" />
       </div>
     </div>
   </div>

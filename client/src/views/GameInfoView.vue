@@ -13,8 +13,7 @@ export default {
   async mounted() {
     try {
       const urlGameTitle = this.$route.params.title
-      const result = (await this.$API.mainServices.getGameInfo(urlGameTitle)).data
-      this.game = result
+      this.game = (await this.$API.mainServices.getGameInfo(urlGameTitle)).data
     } catch (error) {
       this.$store.commit("updateError", error)
     }

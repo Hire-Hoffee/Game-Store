@@ -13,6 +13,7 @@ export default {
     SwiperSlide,
     GameCard
   },
+  props: ["gameData"],
   setup() {
     return {
       modules: [Navigation]
@@ -40,20 +41,11 @@ export default {
   <Swiper class="flex items-center custom_swiper" :slidesPerView="slidesPerView" :space-between="10" :loop="true"
     :navigation="true" :modules="modules">
 
-    <SwiperSlide class="flex justify-center">
-      <GameCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <GameCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <GameCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <GameCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <GameCard />
+    <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
+      <GameCard 
+        :game-title="game.gameTitle" 
+        :game-poster="game.poster" 
+        :game-price="game.price" />
     </SwiperSlide>
 
   </Swiper>

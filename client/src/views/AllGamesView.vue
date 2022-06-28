@@ -14,8 +14,7 @@ export default {
   },
   async mounted() {
     try {
-      const result = (await this.$API.mainServices.getAllGames()).data
-      this.allGames = result
+      this.allGames = (await this.$API.mainServices.getAllGames()).data
     } catch (error) {
       this.$store.commit("updateError", error)
     }

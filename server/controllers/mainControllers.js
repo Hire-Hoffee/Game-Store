@@ -12,13 +12,72 @@ const { News, NewsImage } = require("../models/newsModels");
 const { Op } = require("sequelize");
 
 const mainControllers = {
-  getMainPage(req, res) {
-    return res.json({ message: "home" });
+  async getMainPage(req, res, next) {
+    try {
+      const dateNow = new Date();
+      const twoMonthAgo = new Date(
+        new Date().setMonth(new Date().getMonth() - 2)
+      );
+      const oldTime = new Date(new Date().setMonth(new Date().getMonth() - 72));
+
+      const getComingSoonGames = async () => {
+        return await Game.findAll({
+          attributes: {
+            exclude: ["description", "trailer", "developerId", "rating"],
+          },
+          where: { releaseDate: { [Op.gte]: dateNow } },
+        });
+      };
+      const getNewGames = async () => {
+        return await Game.findAll({
+          attributes: {
+            exclude: ["trailer", "developerId", "rating"],
+          },
+          where: { releaseDate: { [Op.between]: [twoMonthAgo, dateNow] } },
+        });
+      };
+      const getOldGames = async () => {
+        return await Game.findAll({
+          attributes: {
+            exclude: ["description", "trailer", "developerId", "rating"],
+          },
+          where: { releaseDate: { [Op.lte]: oldTime } },
+        });
+      };
+      const getLatestNews = async () => {
+        return await News.findAll({
+          attributes: {
+            exclude: ["content"],
+          },
+          order: [["createdAt", "DESC"]],
+          limit: 3,
+        });
+      };
+      const getPopCategories = async () => {
+        return await Genre.findAll({ order: [["genreName", "ASC"]], limit: 4 });
+      };
+
+      const result = ([comingSoonGames, newGames, oldGames, latestNews, popCategories] =
+        await Promise.all([
+          getComingSoonGames(),
+          getNewGames(),
+          getOldGames(),
+          getLatestNews(),
+          getPopCategories(),
+        ]));
+
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   },
 
   async getAllGames(req, res, next) {
     try {
-      const result = await Game.findAll({ order: [["gameTitle", "ASC"]] });
+      const result = await Game.findAll({
+        order: [["gameTitle", "ASC"]],
+        attributes: { exclude: ["description"] },
+      });
       if (!result || result.length == 0) {
         return res.status(404).json({ message: "Result not found" });
       }
@@ -64,15 +123,15 @@ const mainControllers = {
     try {
       const getAllNews = async () => {
         return await News.findAll({
+          attributes: { exclude: ["content"] },
           order: [["createdAt", "DESC"]],
-          include: NewsImage,
         });
       };
       const getLatestNews = async () => {
         return await News.findAll({
+          attributes: { exclude: ["content"] },
           order: [["createdAt", "DESC"]],
           limit: 2,
-          include: NewsImage,
         });
       };
 
