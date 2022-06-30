@@ -11,7 +11,7 @@ export default {
     CustomFooter,
     ErrorOccurred
   },
-  computed: mapGetters(["getErrorInfo"])
+  computed: mapGetters(["getErrorInfo", "getShowError"])
 }
 </script>
 
@@ -22,7 +22,9 @@ export default {
     <CustomHeader class="mb-24 sticky top-0" />
 
     <main class="container 2xl:w-5/6 flex-auto p-3">
-      <ErrorOccurred v-if="getErrorInfo" :error-message="getErrorInfo.response.data.message" />
+      <Transition name="fade" mode="out-in">
+        <ErrorOccurred v-if="getErrorInfo && getShowError" :error-message="getErrorInfo.response.data.message" />
+      </Transition>
 
       <RouterView v-slot="{ Component, route }">
         <Transition name="fade" mode="out-in">
