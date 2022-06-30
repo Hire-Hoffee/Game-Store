@@ -125,6 +125,7 @@ const mainControllers = {
         return await News.findAll({
           attributes: { exclude: ["content"] },
           order: [["createdAt", "DESC"]],
+          offset: 2
         });
       };
       const getLatestNews = async () => {
