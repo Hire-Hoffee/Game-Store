@@ -1,6 +1,7 @@
 <script>
 import AllGamesComponent from "@/components/AllGamesComponent.vue"
 import FilterComponent from "@/components/FilterComponent.vue"
+import { mapGetters } from "vuex"
 
 export default {
   components: {
@@ -9,15 +10,30 @@ export default {
   },
   data() {
     return {
-      allGames: null
+      allGames: null,
+    }
+  },
+  computed: mapGetters(["getCurrentPage"]),
+  methods: {
+    async getGames(pageNum) {
+      try {
+        const { count, rows, limit } = (await this.$API.mainServices.getAllGames(pageNum)).data
+        this.allGames = rows
+        this.$store.commit('updateTotalPages', Math.ceil(count / limit))
+
+        this.$router.push({ query: { page: pageNum } })
+      } catch (error) {
+        this.$store.commit("updateError", error)
+      }
+    }
+  },
+  watch: {
+    async getCurrentPage(newValue) {
+      await this.getGames(newValue)
     }
   },
   async mounted() {
-    try {
-      this.allGames = (await this.$API.mainServices.getAllGames()).data
-    } catch (error) {
-      this.$store.commit("updateError", error)
-    }
+    await this.getGames(this.$route.query.page)
   }
 }
 </script>
@@ -27,7 +43,7 @@ export default {
   <div class="rounded p-3 custom_shadow_out">
     <ParagraphHeader>All games</ParagraphHeader>
     <div class="flex md:justify-between justify-center">
-      <AllGamesComponent class="xl:w-4/5 md:w-4/6 mt-3 mb-3" v-if="allGames" :all-games="allGames"/>
+      <AllGamesComponent class="xl:w-4/5 md:w-4/6 mt-3 mb-3" v-if="allGames" :all-games="allGames" />
       <FilterComponent class="xl:w-1/5 md:w-2/6 mt-3 mb-3 ml-3 hidden md:block" />
     </div>
   </div>

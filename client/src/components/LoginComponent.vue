@@ -18,7 +18,7 @@
       </form>
     </div>
     <div class="md:w-1/2 w-full h-60 sm:h-auto">
-      <img class="w-full h-full" src="https://picsum.photos/450/300" alt="">
+      <img class="w-full h-full" src="https://picsum.photos/450/300" alt="login_image">
     </div>
   </div>
 </template>

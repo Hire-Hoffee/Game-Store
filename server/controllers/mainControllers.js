@@ -54,17 +54,22 @@ const mainControllers = {
         });
       };
       const getPopCategories = async () => {
-        return await Genre.findAll({ order: [["genreName", "ASC"]], limit: 4 });
+        return await Genre.findAll({ order: [["genreName", "ASC"]], limit: 5 });
       };
 
-      const result = ([comingSoonGames, newGames, oldGames, latestNews, popCategories] =
-        await Promise.all([
-          getComingSoonGames(),
-          getNewGames(),
-          getOldGames(),
-          getLatestNews(),
-          getPopCategories(),
-        ]));
+      const result = ([
+        comingSoonGames,
+        newGames,
+        oldGames,
+        latestNews,
+        popCategories,
+      ] = await Promise.all([
+        getComingSoonGames(),
+        getNewGames(),
+        getOldGames(),
+        getLatestNews(),
+        getPopCategories(),
+      ]));
 
       res.json(result);
     } catch (error) {
@@ -74,13 +79,22 @@ const mainControllers = {
 
   async getAllGames(req, res, next) {
     try {
-      const result = await Game.findAll({
+      const page = req.query.page - 1 || 0;
+      const limit = 10;
+
+      const result = await Game.findAndCountAll({
         order: [["gameTitle", "ASC"]],
         attributes: { exclude: ["description"] },
+        limit,
+        offset: page > 0 ? page * limit : 0,
       });
+
+      result.limit = limit;
+
       if (!result || result.length == 0) {
         return res.status(404).json({ message: "Result not found" });
       }
+
       return res.json(result);
     } catch (error) {
       next(error);
@@ -125,7 +139,7 @@ const mainControllers = {
         return await News.findAll({
           attributes: { exclude: ["content"] },
           order: [["createdAt", "DESC"]],
-          offset: 2
+          offset: 2,
         });
       };
       const getLatestNews = async () => {

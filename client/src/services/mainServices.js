@@ -10,9 +10,9 @@ const mainServices = {
     }
   },
 
-  async getAllGames() {
+  async getAllGames(pageNum = 1) {
     try {
-      const result = await instance.get("/games");
+      const result = await instance.get("/games", { params: { page: pageNum } });
       return result;
     } catch (error) {
       throw error;

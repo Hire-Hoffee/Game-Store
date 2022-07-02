@@ -1,7 +1,9 @@
 export default {
-  state: {
-    errorInfo: "",
-    showError: false,
+  state() {
+    return {
+      errorInfo: "",
+      showError: false,
+    }
   },
   getters: {
     getErrorInfo(state) {

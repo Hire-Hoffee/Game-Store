@@ -61,7 +61,7 @@ export default {
     </nav>
     <div>
       <div class="sm:block lg:hidden hover:scale-105 active:scale-95" @click="clickToSearch">
-        <img src="@/assets/icons/search.svg" alt="">
+        <img src="@/assets/icons/search.svg" alt="search">
       </div>
       <div class="sm:hidden lg:block hidden">
         <form class="flex space-x-7">
@@ -92,9 +92,9 @@ export default {
       <div class="w-full">
         <Transition name="bounce">
           <img class="absolute top-4 left-6" v-if="!isMobileMenuOpen" @click="clickToOpenMobileMenu"
-            src="@/assets/icons/hamburgerMenu.svg" alt="">
+            src="@/assets/icons/hamburgerMenu.svg" alt="menu_icon">
           <img class="absolute top-4 left-6" v-else @click="clickToOpenMobileMenu" src="@/assets/icons/exit.svg"
-            alt="">
+            alt="exit">
         </Transition>
       </div>
       <div class="text-custom-red text-xl">
@@ -107,37 +107,37 @@ export default {
       <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-custom-black w-full p-6 mt-1 h-screen text-2xl">
         <ul class="flex flex-col justify-evenly px-6 py-4 tracking-wide custom_inner_shadow rounded-xl h-[90%]">
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="@/assets/icons/allGames.svg" alt="">
+            <img src="@/assets/icons/allGames.svg" alt="all_games">
             <div class="ml-5">
               <RouterLink to="/games">All games</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="@/assets/icons/news.svg" alt="">
+            <img src="@/assets/icons/news.svg" alt="news">
             <div class="ml-5">
               <RouterLink to="/news">News</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="@/assets/icons/categories.svg" alt="">
+            <img src="@/assets/icons/categories.svg" alt="categories">
             <div class="ml-5">
               <RouterLink to="/categories">Categories</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="@/assets/icons/login.svg" alt="">
+            <img src="@/assets/icons/login.svg" alt="login">
             <div class="ml-5">
               <RouterLink to="/auth/login">Login</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
-            <img src="@/assets/icons/cart.svg" alt="">
+            <img src="@/assets/icons/cart.svg" alt="cart">
             <div class="ml-5">
               <RouterLink to="/cart">Cart</RouterLink>
             </div>
           </li>
           <li class="flex">
-            <img src="@/assets/icons/faq.svg" alt="">
+            <img src="@/assets/icons/faq.svg" alt="faq">
             <div class="ml-5">
               About
             </div>
@@ -148,7 +148,7 @@ export default {
                 class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2 w-10/12"
                 placeholder="Search game">
               <CustomBtn class="bg-custom-black w-2/12">
-                <img class="w-full h-full" src="@/assets/icons/search.svg" alt="">
+                <img class="w-full h-full" src="@/assets/icons/search.svg" alt="search">
               </CustomBtn>
             </form>
           </li>

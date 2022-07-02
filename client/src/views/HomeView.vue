@@ -76,7 +76,7 @@ export default {
         <h1 class="text-xl text-custom-red">View all</h1>
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
-      <div class="flex justify-between flex-wrap mt-5 p-5">
+      <div class="flex justify-between c bnmk.uij, flex-wrap mt-5">o-
         <CategoryCard v-if="popCategories" v-for="category in popCategories" :category-name="category.genreName"
           :category-SVG="category.genreSVG" :key="category.id" />
       </div>
