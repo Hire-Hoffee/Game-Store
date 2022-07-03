@@ -41,22 +41,12 @@ export default {
     </div>
     <nav>
       <ul class="flex space-x-6 md:space-x-8 xl:space-x-12 text-xl">
-        <li>
-          <RouterLink to="/games">All games</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/news">News</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/categories">Categories</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/auth/login">Login</RouterLink>
-        </li>
-        <li>
-          <RouterLink to="/cart">Cart</RouterLink>
-        </li>
-        <li>About</li>
+        <li><RouterLink to="/games">All games</RouterLink></li>
+        <li><RouterLink to="/news">News</RouterLink></li>
+        <li><RouterLink to="/categories">Categories</RouterLink></li>
+        <li><RouterLink to="/auth/login">Login</RouterLink></li>
+        <li><RouterLink to="/cart">Cart</RouterLink></li>
+        <li><RouterLink to="/about">About</RouterLink></li>
       </ul>
     </nav>
     <div>
@@ -136,10 +126,10 @@ export default {
               <RouterLink to="/cart">Cart</RouterLink>
             </div>
           </li>
-          <li class="flex">
+          <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/faq.svg" alt="faq">
             <div class="ml-5">
-              About
+              <RouterLink to="/about">About</RouterLink>
             </div>
           </li>
           <li>

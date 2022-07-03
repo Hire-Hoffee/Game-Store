@@ -41,6 +41,11 @@ const routes = [
     name: "gameInfo",
     component: () => import("@/views/GameInfoView.vue"),
   },
+  {
+    path: "/about",
+    name: "aboutSite",
+    component: () => import("@/views/AboutView.vue"),
+  },
 ];
 
 const router = createRouter({
