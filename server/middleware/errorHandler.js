@@ -2,7 +2,7 @@ const errorHandler = (err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || "Unexpected error occurred";
 
-  console.log(`Error: \n status -- ${status} \n message -- ${message}`);
+  console.log(`Error: \n status - ${status} \n message - ${message}`);
 
   return res.status(status).json({ message });
 };

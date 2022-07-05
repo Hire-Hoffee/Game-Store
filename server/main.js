@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const sequelize = require("./config/database");
 const routes = require("./routes");
 const { notFound, errorHandler } = require("./middleware/errorHandler");
@@ -15,9 +16,11 @@ const app = express();
 
 app.use(cors({ origin: VUE_API_URL }));
 app.use(logger("dev"));
+app.use(cookieParser());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "static")));
 
-app.use("/", routes);
+app.use("/api", routes);
 
 app.use(notFound, errorHandler);
 

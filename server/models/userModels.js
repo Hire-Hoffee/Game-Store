@@ -11,6 +11,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
         validate: { isEmail: true },
+        unique: true
       },
       password: { type: DataTypes.STRING, allowNull: false },
       authToken: { type: DataTypes.STRING },
