@@ -15,8 +15,8 @@ const authControllers = {
         password_again: req.body.password_again,
       };
 
-      if (credentials.password !== credentials.password_again) {
-        return res.json({ message: "Passwords do not match" });
+      if (credentials.password !== credentials.password_again || credentials.password.length == 0) {
+        return res.json({ message: "Passwords do not match or empty" });
       }
 
       delete credentials.password_again;

@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         validate: {
           isEmail: { args: true, msg: "Incorrect email format" },
-          notNull: { args: true, msg: "Email cannot be empty" },
+          notNull: { args: true, msg: "Email cannot be null" },
           notEmpty: { args: true, msg: "Email cannot be empty" },
           len: {
             args: [5, 100],
@@ -25,7 +25,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "Password cannot be empty" },
+          notNull: { args: true, msg: "Password cannot be null" },
           notEmpty: { args: true, msg: "Password cannot be empty" },
           len: {
             args: [8, 100],
@@ -45,7 +45,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "Name cannot be empty" },
+          notNull: { args: true, msg: "Name cannot be null" },
           notEmpty: { args: true, msg: "Name cannot be empty" },
           is: { args: /[a-zA-Z\s]/, msg: "Name only allows letters" },
         },
@@ -61,7 +61,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "CVV cannot be empty" },
+          notNull: { args: true, msg: "CVV cannot be null" },
           notEmpty: { args: true, msg: "CVV cannot be empty" },
           len: { args: [3, 3], msg: "Incorrect CVV" },
         },
@@ -78,7 +78,7 @@ module.exports = {
         allowNull: false,
         validate: {
           isInt: true,
-          notNull: { args: true, msg: "Rating cannot be empty" },
+          notNull: { args: true, msg: "Rating cannot be null" },
           notEmpty: { args: true, msg: "Rating cannot be empty" },
           min: { args: 0, msg: "Minimum rating value is 0" },
           max: { args: 10, msg: "Maximum rating value is 10" },
@@ -95,7 +95,7 @@ module.exports = {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "Review cannot be empty" },
+          notNull: { args: true, msg: "Review cannot be null" },
           notEmpty: { args: true, msg: "Review cannot be empty" },
           len: { args: [20, 500], msg: "Review must be between 20 and 500" },
         },
@@ -118,7 +118,7 @@ module.exports = {
         defaultValue: 1,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "Quantity cannot be empty" },
+          notNull: { args: true, msg: "Quantity cannot be null" },
           notEmpty: { args: true, msg: "Quantity cannot be empty" },
           min: { args: 1, msg: "Minimum quantity 1" },
           max: { args: 100, msg: "Maximum quantity 100" },
