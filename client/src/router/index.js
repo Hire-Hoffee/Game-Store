@@ -1,52 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: () => import("@/views/HomeView.vue"),
-  },
-  {
-    path: "/games",
-    name: "allGames",
-    component: () => import("@/views/AllGamesView.vue"),
-  },
-  {
-    path: "/auth/login",
-    name: "login",
-    component: () => import("@/views/UserAuthView.vue"),
-  },
-  {
-    path: "/user",
-    name: "userAccount",
-    component: () => import("@/views/UserAccountView.vue"),
-  },
-  {
-    path: "/cart",
-    name: "shoppingCart",
-    component: () => import("@/views/ShoppingCartView.vue"),
-  },
-  {
-    path: "/news",
-    name: "gamesNews",
-    component: () => import("@/views/NewsView.vue"),
-  },
-  {
-    path: "/categories",
-    name: "allCategories",
-    component: () => import("@/views/CategoriesView.vue"),
-  },
-  {
-    path: "/games/:title",
-    name: "gameInfo",
-    component: () => import("@/views/GameInfoView.vue"),
-  },
-  {
-    path: "/about",
-    name: "aboutSite",
-    component: () => import("@/views/AboutView.vue"),
-  },
-];
+import mainRoutes from "./mainRoutes";
+import authRoutes from "./authRoutes";
+
+const routes = [...mainRoutes, ...authRoutes];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

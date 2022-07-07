@@ -82,9 +82,7 @@ const authControllers = {
         { where: { email: user.email } }
       );
 
-      return res
-        .clearCookie("token")
-        .json({ message: "Logout success" });
+      return res.clearCookie("token").json({ message: "Logout success" });
     } catch (error) {
       next(error);
     }
