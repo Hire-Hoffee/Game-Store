@@ -11,7 +11,7 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "Title cannot be empty" },
+          notNull: { args: true, msg: "Title cannot be null" },
           notEmpty: { args: true, msg: "Title cannot be empty" },
           len: {
             args: [10, 100],
@@ -23,7 +23,7 @@ module.exports = {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-          notNull: { args: true, msg: "Content cannot be empty" },
+          notNull: { args: true, msg: "Content cannot be null" },
           notEmpty: { args: true, msg: "Content cannot be empty" },
           len: {
             args: [50, 1000],
