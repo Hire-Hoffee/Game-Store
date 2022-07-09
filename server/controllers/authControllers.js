@@ -15,7 +15,10 @@ const authControllers = {
         password_again: req.body.password_again,
       };
 
-      if (credentials.password !== credentials.password_again || credentials.password.length == 0) {
+      if (
+        credentials.password !== credentials.password_again ||
+        credentials.password.length == 0
+      ) {
         return res.json({ message: "Passwords do not match or empty" });
       }
 
@@ -45,10 +48,10 @@ const authControllers = {
       });
 
       if (!user) {
-        return res.json({ message: "Incorrect user data" });
+        return res.json({ message: "Incorrect user email" });
       }
       if (!(await bcrypt.compare(credentials.password, user.password))) {
-        return res.json({ message: "Incorrect user data" });
+        return res.json({ message: "Incorrect user password" });
       }
 
       const refreshToken = genRefreshToken({
@@ -74,7 +77,12 @@ const authControllers = {
   },
   async userLogout(req, res, next) {
     try {
-      const token = req.cookies.token.split(" ")[1];
+      const token = req.cookies.token?.split(" ")[1];
+
+      if (!token) {
+        return res.json({ message: "Token not found" });
+      }
+
       const user = verifyToken(token, process.env.SECRET_ACCESS);
 
       await Customer.update(
