@@ -1,9 +1,9 @@
-import instance from "./instance";
+import { mainInstance }  from "./instances";
 
 const mainServices = {
   async getMainPage() {
     try {
-      const result = await instance.get("/");
+      const result = await mainInstance.get("/");
       return result;
     } catch (error) {
       throw error;
@@ -12,7 +12,7 @@ const mainServices = {
 
   async getAllGames(pageNum = 1) {
     try {
-      const result = await instance.get("/games", { params: { page: pageNum } });
+      const result = await mainInstance.get("/games", { params: { page: pageNum } });
       return result;
     } catch (error) {
       throw error;
@@ -21,7 +21,7 @@ const mainServices = {
 
   async getAllCategories() {
     try {
-      const result = await instance.get("/categories");
+      const result = await mainInstance.get("/categories");
       return result;
     } catch (error) {
       throw error;
@@ -30,7 +30,7 @@ const mainServices = {
 
   async getGameInfo(params) {
     try {
-      const result = await instance.get(`/games/${params}`);
+      const result = await mainInstance.get(`/games/${params}`);
       return result;
     } catch (error) {
       throw error;
@@ -39,7 +39,7 @@ const mainServices = {
 
   async getGamesNews() {
     try {
-      const result = await instance.get("/news");
+      const result = await mainInstance.get("/news");
       return result;
     } catch (error) {
       throw error;

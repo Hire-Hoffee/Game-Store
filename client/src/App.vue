@@ -1,7 +1,7 @@
 <script>
-import CustomHeader from "@/components/ui/CustomHeader.vue"
-import CustomFooter from "@/components/ui/CustomFooter.vue"
-import ErrorOccurred from "./components/ui/ErrorOccurred.vue"
+import CustomHeader from "@/components/UI/CustomHeader.vue"
+import CustomFooter from "@/components/UI/CustomFooter.vue"
+import ErrorOccurred from "@/components/UI/ErrorOccurred.vue"
 
 import { mapGetters } from "vuex"
 
@@ -22,7 +22,7 @@ export default {
     <CustomHeader class="mb-24 sticky top-0" />
 
     <main class="container 2xl:w-5/6 flex-auto p-3">
-      <Transition name="fade" mode="out-in">
+      <Transition name="error_fade" mode="out-in">
         <ErrorOccurred v-if="getErrorInfo && getShowError" :error-message="getErrorInfo.response.data.message" />
       </Transition>
 
@@ -39,6 +39,16 @@ export default {
 </template>
 
 <style>
+.error_fade-enter-active,
+.error_fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.error_fade-enter-from,
+.error_fade-leave-to {
+  opacity: 0;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s ease;

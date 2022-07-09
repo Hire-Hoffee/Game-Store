@@ -1,4 +1,4 @@
-import CustomBtn from "@/components/ui/CustomBtn.vue";
-import ParagraphHeader from "@/components/ui/ParagraphHeader.vue";
+import CustomBtn from "@/components/UI/CustomBtn.vue";
+import ParagraphHeader from "@/components/UI/ParagraphHeader.vue";
 
 export default [CustomBtn, ParagraphHeader];

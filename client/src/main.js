@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import reuseComponents from "./components/ui/reuseComponents";
+import reuseComponents from "./components/UI/reuseComponents";
 import store from "./store/store";
 import apiPlugin from "./plugins/apiPlugin";
 import "./assets/css/main.css";

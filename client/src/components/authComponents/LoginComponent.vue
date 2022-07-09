@@ -11,6 +11,13 @@
           <input type="password" class="rounded p-2 text-xl focus:outline-none focus:ring-custom-red focus:ring-2"
             placeholder="Password">
         </div>
+        <div>
+          <p class="text-lg mt-1">New user ?
+            <span class="text-custom-red hover:opacity-90 duration-100 ml-2">
+              <RouterLink to="/auth/registration">Sign Up</RouterLink>
+            </span>
+          </p>
+        </div>
         <div class="mt-10 flex justify-around">
           <CustomBtn>Sign Up</CustomBtn>
           <CustomBtn>Sign In</CustomBtn>
