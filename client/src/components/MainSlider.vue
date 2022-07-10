@@ -37,8 +37,8 @@ export default {
 <template>
   <Swiper v-if="!isMobile" class="w-11/12 xl:h-112 lg:h-96 md:h-80 main_swiper rounded-3xl" :slidesPerView="1"
     :space-between="100" :loop="true" :navigation="true" :modules="modules">
-    <SwiperSlide class="flex justify-center bg-amber-600" v-for="game in gameData" :key="game.id">
-      <div class="flex bg-custom-black w-full">
+    <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
+      <RouterLink class="flex bg-custom-black w-full" :to="'/games/' + game.gameTitle?.toLowerCase().split(' ').join('_')">
         <div class="w-3/5">
           <img class="w-full h-full rounded-l-3xl" :src="game.poster" :alt="game.gameTitle">
         </div>
@@ -56,7 +56,7 @@ export default {
             <CustomBtn>Add to cart</CustomBtn>
           </div>
         </div>
-      </div>
+      </RouterLink>
     </SwiperSlide>
   </Swiper>
 
@@ -64,7 +64,7 @@ export default {
   <Swiper v-else class="mobile_slider rounded-3xl" :slidesPerView="1" :space-between="100" :loop="true"
     :navigation="true" :modules="modules">
     <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
-      <div class="flex flex-col items-center w-full p-3">
+      <RouterLink class="flex flex-col items-center w-full p-3" :to="'/games/' + game.gameTitle?.toLowerCase().split(' ').join('_')">
         <div class="w-full h-80">
           <img class="w-full h-full rounded-3xl" :src="game.poster" :alt="game.gameTitle">
         </div>
@@ -80,8 +80,7 @@ export default {
             <CustomBtn>Add to cart</CustomBtn>
           </div>
         </div>
-
-      </div>
+      </RouterLink>
     </SwiperSlide>
   </Swiper>
 </template>

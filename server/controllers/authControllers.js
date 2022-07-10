@@ -19,13 +19,15 @@ const authControllers = {
         credentials.password !== credentials.password_again ||
         credentials.password.length == 0
       ) {
-        return res.json({ message: "Passwords do not match or empty" });
+        return res
+          .status(400)
+          .json({ message: "Passwords do not match or empty" });
       }
 
       delete credentials.password_again;
 
       if (await Customer.findOne({ where: { email: credentials.email } })) {
-        return res.json({ message: "User already exists" });
+        return res.status(400).json({ message: "User already exists" });
       }
 
       credentials.password = await bcrypt.hash(credentials.password, 7);
@@ -48,10 +50,10 @@ const authControllers = {
       });
 
       if (!user) {
-        return res.json({ message: "Incorrect user email" });
+        return res.status(400).json({ message: "Incorrect user email" });
       }
       if (!(await bcrypt.compare(credentials.password, user.password))) {
-        return res.json({ message: "Incorrect user password" });
+        return res.status(400).json({ message: "Incorrect user password" });
       }
 
       const refreshToken = genRefreshToken({
@@ -80,7 +82,7 @@ const authControllers = {
       const token = req.cookies.token?.split(" ")[1];
 
       if (!token) {
-        return res.json({ message: "Token not found" });
+        return res.status(400).json({ message: "Token not found" });
       }
 
       const user = verifyToken(token, process.env.SECRET_ACCESS);

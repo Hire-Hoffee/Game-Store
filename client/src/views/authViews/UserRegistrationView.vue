@@ -10,7 +10,7 @@ export default {
 
 
 <template>
-  <div class="min-h-[55vh] flex justify-center items-end">
+  <div class="flex justify-center">
     <RegistrationComponent />
   </div>
 </template>
