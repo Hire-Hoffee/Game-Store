@@ -1,15 +1,15 @@
-const errorHandler = (err, req, res, next) => {
-  const status = err.status || 500;
-  const message = err.message || "Unexpected error occurred";
+const chalk = require('chalk');
+const createHttpError = require('http-errors');
 
-  console.log(`Error: \n status - ${status} \n message - ${message}`);
+module.exports = {
+  errorHandler(err, req, res, next) {
+    const status = err.status || 500;
+    const message = err.message || "Unexpected error occurred";
 
-  return res.status(status).json({ message });
+    console.log(`Error:\nstatus - ${chalk.yellow(status)}\nmessage - ${chalk.red(message)}`);
+    res.status(status).json(message);
+  },
+  notFound(req, res, next) {
+    next(createHttpError(404, "API route not found"));
+  },
 };
-
-const notFound = (req, res, next) => {
-  console.log("Error: Api route not found");
-  return res.status(404).json({ message: "Api route not found" });
-};
-
-module.exports = { notFound, errorHandler };
