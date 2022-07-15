@@ -1,5 +1,6 @@
 <script>
 import GameInfo from "@/components/GameInfo.vue"
+import { mapGetters } from "vuex"
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
       game: null
     }
   },
+  computed: mapGetters(["getLoadingStatus"]),
   async mounted() {
     try {
       const urlGameTitle = this.$route.params.title
@@ -23,5 +25,10 @@ export default {
 
 
 <template>
-  <GameInfo v-if="game" :game-info="game" />
+  <div v-if="!getLoadingStatus">
+    <GameInfo v-if="game" :game-info="game" />
+  </div>
+  <div class="flex justify-center m-5" v-else>
+    <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">
+  </div>
 </template>

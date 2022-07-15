@@ -1,5 +1,6 @@
 <script>
 import NewsComponent from "@/components/NewsComponent.vue"
+import { mapGetters } from "vuex"
 
 export default {
   components: {
@@ -11,6 +12,7 @@ export default {
       allNews: null
     }
   },
+  computed: mapGetters(["getLoadingStatus"]),
   async mounted() {
     try {
       [this.latestNews, this.allNews] = (await this.$API.mainServices.getGamesNews()).data
@@ -24,7 +26,7 @@ export default {
 
 
 <template>
-  <div>
+  <div v-if="!getLoadingStatus">
     <ParagraphHeader>Games news</ParagraphHeader>
 
     <div
@@ -39,5 +41,8 @@ export default {
       <NewsComponent v-for="item in allNews" :newsTitle="item.title" :newsPoster="item.poster"
         :releaseDate="item.createdAt" />
     </div>
+  </div>
+  <div class="flex justify-center m-5" v-else>
+    <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">
   </div>
 </template>

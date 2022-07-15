@@ -1,5 +1,5 @@
-import mainServices from "./mainServices";
-import authServices from "./authServices";
+import mainServices from "./apiServices/mainServices";
+import authServices from "./apiServices/authServices";
 
 const API = {
   mainServices,

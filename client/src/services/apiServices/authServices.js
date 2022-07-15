@@ -1,4 +1,4 @@
-import { authInstance } from "./instances";
+import { authInstance } from "../instances";
 
 const authServices = {
   async userRegistration(data) {

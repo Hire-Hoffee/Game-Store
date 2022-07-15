@@ -1,4 +1,4 @@
-import { mainInstance }  from "./instances";
+import { mainInstance }  from "../instances";
 
 const mainServices = {
   async getMainPage() {

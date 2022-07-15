@@ -13,7 +13,7 @@ export default {
       allGames: null,
     }
   },
-  computed: mapGetters(["getCurrentPage"]),
+  computed: mapGetters(["getCurrentPage", "getLoadingStatus"]),
   methods: {
     async getGames(pageNum) {
       try {
@@ -40,11 +40,14 @@ export default {
 
 
 <template>
-  <div class="rounded p-3 custom_shadow_out">
+  <div class="rounded p-3 custom_shadow_out" v-if="!getLoadingStatus">
     <ParagraphHeader>All games</ParagraphHeader>
     <div class="flex md:justify-between justify-center">
       <AllGamesComponent class="xl:w-4/5 md:w-4/6 mt-3 mb-3" v-if="allGames" :all-games="allGames" />
       <FilterComponent class="xl:w-1/5 md:w-2/6 mt-3 mb-3 ml-3 hidden md:block" />
     </div>
+  </div>
+  <div class="flex justify-center m-5" v-else>
+    <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">
   </div>
 </template>

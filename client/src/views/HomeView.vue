@@ -3,6 +3,7 @@ import MainSlider from "@/components/MainSlider.vue"
 import CustomSlider from "@/components/CustomSlider.vue"
 import GameNews from "@/components/GameNews.vue"
 import CategoryCard from "@/components/CategoryCard.vue"
+import { mapGetters } from "vuex"
 
 export default {
   components: {
@@ -20,6 +21,7 @@ export default {
       popCategories: null
     }
   },
+  computed: mapGetters(["getLoadingStatus"]),
   async mounted() {
     try {
       [this.comingSoonGames,
@@ -37,7 +39,7 @@ export default {
 
 <template>
 
-  <div class="main_page">
+  <div class="main_page" v-if="!getLoadingStatus">
     <div class="mb-28">
       <ParagraphHeader add-class="w-1/6">New games</ParagraphHeader>
       <MainSlider class="mt-3" v-if="comingSoonGames" :game-data="newGames" />
@@ -82,5 +84,7 @@ export default {
       </div>
     </div>
   </div>
-
+  <div class="flex justify-center m-5" v-else>
+    <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">
+  </div>
 </template>
