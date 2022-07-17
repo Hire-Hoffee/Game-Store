@@ -4,6 +4,17 @@ import RegistrationComponent from "@/components/authComponents/RegistrationCompo
 export default {
   components: {
     RegistrationComponent
+  },
+  methods: {
+    async userRegistration(credentials) {
+      try {
+        const result = (await this.$API.authServices.userRegistration(credentials)).data
+        console.log(result);
+        this.$router.push({ name: "login" })
+      } catch (error) {
+        this.$store.commit("updateError", error)
+      }
+    }
   }
 }
 </script>
@@ -11,6 +22,6 @@ export default {
 
 <template>
   <div class="flex justify-center">
-    <RegistrationComponent />
+    <RegistrationComponent @postUserData="userRegistration" />
   </div>
 </template>

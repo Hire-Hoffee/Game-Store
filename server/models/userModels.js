@@ -15,8 +15,8 @@ module.exports = {
           notNull: { args: true, msg: "Email cannot be null" },
           notEmpty: { args: true, msg: "Email cannot be empty" },
           len: {
-            args: [5, 100],
-            msg: "Email must be between 5 and 100 characters long",
+            args: [10, 50],
+            msg: "Email must be between 10 and 50 characters long",
           },
         },
         unique: true,
@@ -27,9 +27,10 @@ module.exports = {
         validate: {
           notNull: { args: true, msg: "Password cannot be null" },
           notEmpty: { args: true, msg: "Password cannot be empty" },
+          // do not work properly because of the bcrypt password
           len: {
             args: [8, 100],
-            msg: "Password must be between 8 and 100 characters long",
+            msg: "Password must be between 8 and 50 characters long",
           },
         },
       },

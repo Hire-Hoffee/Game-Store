@@ -1,29 +1,29 @@
 <script>
 export default {
-  data() {
-    return {
-      search: false,
-      isMobile: false,
-      isMobileMenuOpen: false,
-      isTablet: false
-    }
-  },
-  methods: {
-    clickToSearch() {
-      this.search = !this.search
+    data() {
+        return {
+            search: false,
+            isMobile: false,
+            isMobileMenuOpen: false,
+            isTablet: false
+        };
     },
-    handleView() {
-      this.isMobile = window.innerWidth < 768
-      this.isTablet = window.innerWidth < 1280
+    methods: {
+        clickToSearch() {
+            this.search = !this.search;
+        },
+        handleView() {
+            this.isMobile = window.innerWidth < 768;
+            this.isTablet = window.innerWidth < 1280;
+        },
+        clickToOpenMobileMenu() {
+            this.isMobileMenuOpen = !this.isMobileMenuOpen;
+        }
     },
-    clickToOpenMobileMenu() {
-      this.isMobileMenuOpen = !this.isMobileMenuOpen
-    }
-  },
-  created() {
-    this.handleView();
-    window.addEventListener('resize', this.handleView)
-  }
+    created() {
+        this.handleView();
+        window.addEventListener("resize", this.handleView);
+    },
 }
 </script>
 
@@ -54,11 +54,14 @@ export default {
         <img src="@/assets/icons/search.svg" alt="search">
       </div>
       <div class="sm:hidden lg:block hidden">
-        <form class="flex space-x-7">
-          <input type="text"
-            class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2"
-            placeholder="Search game">
-          <CustomBtn class="bg-custom-black">Search</CustomBtn>
+        
+        <form class="flex space-x-7" @submit.prevent>
+          <FormInput 
+            :input-id="'search_game'" 
+            :input-img="'/src/assets/icons/search.svg'" 
+            :input-placeholder="'Search...'"
+          />
+          <CustomBtn class="bg-custom-black" type="submit">Search</CustomBtn>
         </form>
       </div>
     </div>
@@ -66,9 +69,12 @@ export default {
     <Transition name="bounce">
       <div v-if="search" class="absolute right-0 top-16 px-5 mt-5 w-full">
         <form class="flex space-x-7">
-          <input type="text"
-            class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2 w-10/12"
-            placeholder="Search game">
+          <FormInput 
+            class="w-full"
+            :input-id="'search_game_tablet'" 
+            :input-img="'/src/assets/icons/search.svg'" 
+            :input-placeholder="'Search...'"
+          />
           <CustomBtn class="bg-custom-black w-2/12">Search</CustomBtn>
         </form>
       </div>
@@ -133,10 +139,13 @@ export default {
             </div>
           </li>
           <li>
-            <form class="flex space-x-7 h-10">
-              <input type="text"
-                class="px-1 text-lg text-custom-black rounded focus:outline-none focus:ring-custom-red focus:ring-2 w-10/12"
-                placeholder="Search game">
+            <form class="flex space-x-7" @submit.prevent>
+              <FormInput 
+                class="w-full"
+                :input-id="'search_game_phone'" 
+                :input-img="'/src/assets/icons/search.svg'" 
+                :input-placeholder="'Search...'"
+              />
               <CustomBtn class="bg-custom-black w-2/12">
                 <img class="w-full h-full" src="@/assets/icons/search.svg" alt="search">
               </CustomBtn>

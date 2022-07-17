@@ -4,14 +4,14 @@ const authControllers = {
   async userRegistration(req, res, next) {
     try {
       const credentials = {
-        email: req.body.user_email,
-        password: req.body.user_password,
-        password_again: req.body.password_again,
+        email: req.body.userEmail,
+        password: req.body.userPassword,
+        password_again: req.body.passwordAgain,
       };
 
       const result = await authServices.registrationService(credentials);
 
-      return res.json(result);
+      return res.status(201).json(result);
     } catch (error) {
       next(error);
     }
@@ -19,8 +19,8 @@ const authControllers = {
   async userLogin(req, res, next) {
     try {
       const credentials = {
-        email: req.body.user_email,
-        password: req.body.user_password,
+        email: req.body.userEmail,
+        password: req.body.userPassword,
       };
 
       const { accessToken, message } = await authServices.loginService(

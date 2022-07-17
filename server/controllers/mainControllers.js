@@ -4,7 +4,7 @@ const mainControllers = {
   async getMainPage(req, res, next) {
     try {
       const result = await mainServices.mainPageService();
-      res.json(result);
+      return res.json(result);
     } catch (error) {
       next(error);
     }
