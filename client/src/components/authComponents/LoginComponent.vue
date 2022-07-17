@@ -14,7 +14,7 @@
         <div>
           <p class="text-lg mt-1">New user ?
             <span class="text-custom-red hover:opacity-90 duration-100 ml-2">
-              <RouterLink to="/auth/registration">Sign Up</RouterLink>
+              <RouterLink :to="{ name: 'registration' }">Sign Up</RouterLink>
             </span>
           </p>
         </div>

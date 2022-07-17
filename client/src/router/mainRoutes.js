@@ -36,7 +36,7 @@ const mainRoutes = [
   },
   {
     path: "/about",
-    name: "aboutSite",
+    name: "aboutPage",
     component: () => import("@/views/AboutView.vue"),
   },
 ];

@@ -38,7 +38,7 @@ export default {
   <Swiper v-if="!isMobile" class="w-11/12 xl:h-112 lg:h-96 md:h-80 main_swiper rounded-3xl" :slidesPerView="1"
     :space-between="100" :loop="true" :navigation="true" :modules="modules">
     <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
-      <RouterLink class="flex bg-custom-black w-full" :to="'/games/' + game.gameTitle?.toLowerCase().split(' ').join('_')">
+      <RouterLink class="flex bg-custom-black w-full" :to="{ name: 'gameInfo', params: { title: gameTitle?.toLowerCase().split(' ').join('_') } }">
         <div class="w-3/5">
           <img class="w-full h-full rounded-l-3xl" :src="game.poster" :alt="game.gameTitle">
         </div>
@@ -64,7 +64,7 @@ export default {
   <Swiper v-else class="mobile_slider rounded-3xl" :slidesPerView="1" :space-between="100" :loop="true"
     :navigation="true" :modules="modules">
     <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
-      <RouterLink class="flex flex-col items-center w-full p-3" :to="'/games/' + game.gameTitle?.toLowerCase().split(' ').join('_')">
+      <RouterLink class="flex flex-col items-center w-full p-3" :to="{ name: 'gameInfo', params: { title: gameTitle?.toLowerCase().split(' ').join('_') } }">
         <div class="w-full h-80">
           <img class="w-full h-full rounded-3xl" :src="game.poster" :alt="game.gameTitle">
         </div>

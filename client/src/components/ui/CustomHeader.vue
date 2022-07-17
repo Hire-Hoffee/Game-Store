@@ -33,20 +33,20 @@ export default {
   <header v-if="!isMobile"
     class="bg-custom-black w-full h-16 flex justify-between items-center px-12 font-bold z-50 drop_shadow_custom_down">
     <div class="flex items-center space-x-7 text-2xl text-custom-red">
-      <RouterLink v-if="isTablet" to="/"><img src="@/assets/icons/logo.svg" alt="site logo"></RouterLink>
+      <RouterLink v-if="isTablet" :to="{ name: 'home' }"><img src="@/assets/icons/logo.svg" alt="site logo"></RouterLink>
       <img v-else src="@/assets/icons/logo.svg" alt="site logo">
       <h1 class="sm:hidden xl:block hidden">
-        <router-link to="/">GameMuffin</router-link>
+        <router-link :to="{ name: 'home' }">GameMuffin</router-link>
       </h1>
     </div>
     <nav>
       <ul class="flex space-x-6 md:space-x-8 xl:space-x-12 text-xl">
-        <li><RouterLink to="/games">All games</RouterLink></li>
-        <li><RouterLink to="/news">News</RouterLink></li>
-        <li><RouterLink to="/categories">Categories</RouterLink></li>
-        <li><RouterLink to="/auth/login">Login</RouterLink></li>
-        <li><RouterLink to="/cart">Cart</RouterLink></li>
-        <li><RouterLink to="/about">About</RouterLink></li>
+        <li><RouterLink :to="{ name: 'allGames' }">All games</RouterLink></li>
+        <li><RouterLink :to="{ name: 'gamesNews' }">News</RouterLink></li>
+        <li><RouterLink :to="{ name: 'allCategories' }">Categories</RouterLink></li>
+        <li><RouterLink :to="{ name: 'login' }">Login</RouterLink></li>
+        <li><RouterLink :to="{ name: 'shoppingCart' }">Cart</RouterLink></li>
+        <li><RouterLink :to="{ name: 'aboutPage' }">About</RouterLink></li>
       </ul>
     </nav>
     <div>
@@ -88,8 +88,8 @@ export default {
         </Transition>
       </div>
       <div class="text-custom-red text-xl">
-        <RouterLink v-if="isMobileMenuOpen" @click="clickToOpenMobileMenu" to="/">GameMuffin</RouterLink>
-        <RouterLink v-else to="/">GameMuffin</RouterLink>
+        <RouterLink v-if="isMobileMenuOpen" @click="clickToOpenMobileMenu" :to="{ name: 'home' }">GameMuffin</RouterLink>
+        <RouterLink v-else :to="{ name: 'home' }">GameMuffin</RouterLink>
       </div>
 
     </div>
@@ -99,37 +99,37 @@ export default {
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/allGames.svg" alt="all_games">
             <div class="ml-5">
-              <RouterLink to="/games">All games</RouterLink>
+              <RouterLink :to="{ name: 'allGames' }">All games</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/news.svg" alt="news">
             <div class="ml-5">
-              <RouterLink to="/news">News</RouterLink>
+              <RouterLink :to="{ name: 'gamesNews' }">News</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/categories.svg" alt="categories">
             <div class="ml-5">
-              <RouterLink to="/categories">Categories</RouterLink>
+              <RouterLink :to="{ name: 'allCategories' }">Categories</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/login.svg" alt="login">
             <div class="ml-5">
-              <RouterLink to="/auth/login">Login</RouterLink>
+              <RouterLink :to="{ name: 'login' }">Login</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/cart.svg" alt="cart">
             <div class="ml-5">
-              <RouterLink to="/cart">Cart</RouterLink>
+              <RouterLink :to="{ name: 'shoppingCart' }">Cart</RouterLink>
             </div>
           </li>
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/faq.svg" alt="faq">
             <div class="ml-5">
-              <RouterLink to="/about">About</RouterLink>
+              <RouterLink :to="{ name: 'aboutPage' }">About</RouterLink>
             </div>
           </li>
           <li>
