@@ -133,11 +133,22 @@ const mainServices = {
       try {
         const apiTitle = convertTitle.toLowerCase().split(" ").join("-");
 
-        const gameMetacritic = (
+        let gameMetacritic = (
           await axios.get(`https://api.rawg.io/api/games/${apiTitle}`, {
             params: { key: process.env.RAWG_API_KEY },
           })
         ).data;
+
+        if (gameMetacritic.redirect) {
+          gameMetacritic = (
+            await axios.get(
+              `https://api.rawg.io/api/games/${gameMetacritic.slug}`,
+              {
+                params: { key: process.env.RAWG_API_KEY },
+              }
+            )
+          ).data;
+        }
 
         result.dataValues.metacritic = gameMetacritic.metacritic;
       } catch (error) {
