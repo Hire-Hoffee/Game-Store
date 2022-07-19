@@ -10,6 +10,8 @@ const {
 } = require("../models/gameModels");
 const { News, NewsImage } = require("../models/newsModels");
 const { Op } = require("sequelize");
+const axios = require("axios");
+const chalk = require("chalk");
 
 const mainServices = {
   async mainPageService() {
@@ -126,6 +128,20 @@ const mainServices = {
 
       if (!result || result.length == 0) {
         throw createHttpError(404, "Result not found");
+      }
+
+      try {
+        const apiTitle = convertTitle.toLowerCase().split(" ").join("-");
+
+        const gameMetacritic = (
+          await axios.get(`https://api.rawg.io/api/games/${apiTitle}`, {
+            params: { key: process.env.RAWG_API_KEY },
+          })
+        ).data;
+
+        result.dataValues.metacritic = gameMetacritic.metacritic;
+      } catch (error) {
+        console.log("\n" + chalk.red(error) + "\n");
       }
 
       return result;

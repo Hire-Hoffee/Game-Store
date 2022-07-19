@@ -34,10 +34,17 @@ export default {
 
         <div class="lg:text-xl text-lg">
           <div class="flex justify-between mb-1 lg:mb-3">
-            <div>Rating</div>
+            <div>User rating</div>
             <div class="font-normal">
               <img class="inline mr-3" src="@/assets/icons/star.svg" alt="rating_star">
               <span>{{ gameInfo.rating }}</span>
+            </div>
+          </div>
+          <div class="flex justify-between mb-1 lg:mb-3" v-if="gameInfo.metacritic">
+            <div>Metacritic</div>
+            <div class="font-normal">
+              <img class="inline mr-3" src="@/assets/icons/star.svg" alt="rating_star">
+              <span>{{ gameInfo.metacritic }}</span>
             </div>
           </div>
           <div class="flex justify-between mb-1 lg:mb-3">
