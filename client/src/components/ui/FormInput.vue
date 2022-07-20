@@ -1,7 +1,7 @@
 <script>
 export default {
   name: "FormInput",
-  props: ["inputType", "inputModel", "inputId", "inputImg", "inputName", "inputPlaceholder"],
+  props: ["inputModel", "inputId", "inputImg", "inputName", "inputPlaceholder", "inputType", "min", "max", "required"],
   emits: ["update:inputModel"]
 }
 </script>
@@ -15,6 +15,9 @@ export default {
         <img :src="inputImg" class="w-6 h-6" alt="icon">
       </div>
       <input 
+        :required="required"
+        :minlength="min"
+        :maxlength="max"
         :type="inputType" 
         :id="inputId" 
         :placeholder="inputPlaceholder" 

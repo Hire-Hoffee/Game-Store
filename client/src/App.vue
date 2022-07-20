@@ -21,7 +21,7 @@ export default {
 
     <CustomHeader class="mb-24 sticky top-0" />
 
-    <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3">
+    <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3 relative">
       <Transition name="error_fade" mode="out-in">
         <ErrorOccurred v-if="getErrorInfo && getShowError" :error-message="getErrorInfo.response.data.message" />
       </Transition>

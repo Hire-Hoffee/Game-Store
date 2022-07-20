@@ -32,6 +32,9 @@ export default {
       <form @submit.prevent="getUserData">
         <div class="flex flex-col text-black">
           <FormInput 
+            :required="true"
+            :min="10"
+            :max="50"
             class="my-1.5"
             :input-name="'Your Email'"
             :input-type="'email'"
@@ -41,6 +44,9 @@ export default {
             v-model:inputModel="userData.userEmail"
           />
           <FormInput 
+            :required="true"
+            :min="8"
+            :max="50"
             class="my-1.5"
             :input-name="'Your Password'"
             :input-type="'password'"
@@ -50,6 +56,9 @@ export default {
             v-model:inputModel="userData.userPassword"
           />
           <FormInput 
+            :required="true"
+            :min="8"
+            :max="50"
             class="my-1.5"
             :input-name="'Repeat Password'"
             :input-type="'password'"
@@ -72,7 +81,7 @@ export default {
       </form>
     </div>
     <div class="md:w-1/2 w-full h-60 sm:h-auto">
-      <img class="w-full h-full rounded" src="https://picsum.photos/450/800" alt="login_image">
+      <img class="w-full h-full rounded" src="https://picsum.photos/450/700" alt="login_image">
     </div>
   </div>
 </template>
