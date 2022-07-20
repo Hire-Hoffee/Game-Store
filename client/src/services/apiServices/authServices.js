@@ -11,7 +11,9 @@ const authServices = {
   },
   async userLogin(data) {
     try {
-      const result = await authInstance.post("/login", data);
+      const result = await authInstance.post("/login", data, {
+        withCredentials: true,
+      });
       return result;
     } catch (error) {
       throw error;

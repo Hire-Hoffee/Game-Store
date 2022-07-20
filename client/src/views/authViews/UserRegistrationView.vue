@@ -22,6 +22,6 @@ export default {
 
 <template>
   <div class="flex justify-center">
-    <RegistrationComponent @postUserData="userRegistration" />
+    <RegistrationComponent @registrationUserData="userRegistration" />
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script>
 export default {
-  emits: ["postUserData"],
+  emits: ["registrationUserData"],
   data() {
     return {
       userData: {
@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     getUserData() {
-      this.$emit("postUserData", this.userData);
+      this.$emit("registrationUserData", this.userData);
       this.userData = {
         userEmail: null,
         userPassword: null,
