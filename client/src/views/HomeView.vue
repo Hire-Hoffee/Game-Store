@@ -21,7 +21,7 @@ export default {
       popCategories: null
     }
   },
-  computed: mapGetters(["getLoadingStatus"]),
+  computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
   async mounted() {
     try {
       [this.comingSoonGames,

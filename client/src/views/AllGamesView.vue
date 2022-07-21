@@ -13,13 +13,16 @@ export default {
       allGames: null,
     }
   },
-  computed: mapGetters(["getCurrentPage", "getLoadingStatus"]),
+  computed: {
+    ...mapGetters("pagesCountModule", ["getCurrentPage"]),
+    ...mapGetters("isLoadingModule", ["getLoadingStatus"]),
+  },
   methods: {
     async getGames(pageNum) {
       try {
         const { count, rows, limit } = (await this.$API.mainServices.getAllGames(pageNum)).data
         this.allGames = rows
-        this.$store.commit('updateTotalPages', Math.ceil(count / limit))
+        this.$store.commit("pagesCountModule/updateTotalPages", Math.ceil(count / limit))
 
         this.$router.push({ query: { page: pageNum } })
       } catch (error) {

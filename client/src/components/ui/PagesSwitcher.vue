@@ -3,8 +3,8 @@ import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
 
 export default {
-  computed: mapGetters(["getTotalPages"]),
-  methods: mapMutations(["updateCurrentPage"])
+  computed: mapGetters("pagesCountModule", ["getTotalPages"]),
+  methods: mapMutations("pagesCountModule", ["updateCurrentPage"])
 }
 </script>
 

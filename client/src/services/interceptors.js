@@ -1,12 +1,12 @@
 import store from "../store/store";
 
 const reqIntercept = (config) => {
-  store.commit("updateLoadingStatus", true);
+  store.commit("isLoadingModule/updateLoadingStatus", true);
   return config;
 };
 
 const resIntercept = (response) => {
-  store.commit("updateLoadingStatus", false);
+  store.commit("isLoadingModule/updateLoadingStatus", false);
   return response;
 };
 

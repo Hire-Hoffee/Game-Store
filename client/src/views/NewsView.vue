@@ -12,7 +12,7 @@ export default {
       allNews: null
     }
   },
-  computed: mapGetters(["getLoadingStatus"]),
+  computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
   async mounted() {
     try {
       [this.latestNews, this.allNews] = (await this.$API.mainServices.getGamesNews()).data

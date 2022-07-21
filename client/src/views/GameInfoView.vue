@@ -11,7 +11,7 @@ export default {
       game: null
     }
   },
-  computed: mapGetters(["getLoadingStatus"]),
+  computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
   async mounted() {
     try {
       const urlGameTitle = this.$route.params.title

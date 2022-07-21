@@ -11,7 +11,7 @@ export default {
       categories: null
     }
   },
-  computed: mapGetters(["getLoadingStatus"]),
+  computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
   async mounted() {
     try {
       this.categories = (await this.$API.mainServices.getAllCategories()).data

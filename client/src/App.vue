@@ -11,7 +11,7 @@ export default {
     CustomFooter,
     ErrorOccurred
   },
-  computed: mapGetters(["getErrorInfo", "getShowError"])
+  computed: mapGetters("errorModule", ["getErrorInfo", "getShowError"])
 }
 </script>
 
