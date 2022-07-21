@@ -1,18 +1,24 @@
 <script>
 import LoginComponent from "@/components/authComponents/LoginComponent.vue"
+import { mapGetters } from "vuex"
 
 export default {
   components: {
     LoginComponent
   },
+  computed: mapGetters('authModule', ['getUserToken']),
   methods: {
     async userLogin(credentials) {
       try {
-        const result = (await this.$API.authServices.userLogin(credentials)).data
-        console.log(result);
+        const { message, token } = (await this.$API.authServices.userLogin(credentials)).data
+
+        localStorage.setItem("userToken", token)
+        this.$store.commit("authModule/updateUserToken", token)
+        this.$store.commit("alertInfoModule/updateAlert", message)
+        
         this.$router.push({ name: "home" })
       } catch (error) {
-        this.$store.commit("updateError", error)
+        this.$store.commit("alertInfoModule/updateError", error)
       }
     }
   }
@@ -22,6 +28,6 @@ export default {
 
 <template>
   <div class="flex justify-center">
-    <LoginComponent @logInUserData="userLogin"/>
+    <LoginComponent @logInUserData="userLogin" />
   </div>
 </template>

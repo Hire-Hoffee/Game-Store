@@ -27,20 +27,14 @@ const authControllers = {
         credentials
       );
 
-      return res
-        .cookie("token", "Bearer " + accessToken, {
-          maxAge: 1000 * 60 * 60 * 72,
-          httpOnly: true,
-          encode: String,
-        })
-        .json({ message: message });
+      return res.json({ message: message, token: accessToken });
     } catch (error) {
       next(error);
     }
   },
   async userLogout(req, res, next) {
     try {
-      const result = await authServices.logoutService(req.cookies.token);
+      const result = await authServices.logoutService(req.headers["authorization"]);
       return res.clearCookie("token").json(result);
     } catch (error) {
       next(error);

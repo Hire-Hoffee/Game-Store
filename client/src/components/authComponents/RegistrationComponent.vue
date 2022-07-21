@@ -32,10 +32,10 @@ export default {
       <form @submit.prevent="getUserData">
         <div class="flex flex-col text-black">
           <FormInput 
+            class="my-1.5"
             :required="true"
             :min="10"
             :max="50"
-            class="my-1.5"
             :input-name="'Your Email'"
             :input-type="'email'"
             :input-id="'email_address'" 
@@ -44,10 +44,10 @@ export default {
             v-model:inputModel="userData.userEmail"
           />
           <FormInput 
+            class="my-1.5"
             :required="true"
             :min="8"
             :max="50"
-            class="my-1.5"
             :input-name="'Your Password'"
             :input-type="'password'"
             :input-id="'user_password'" 

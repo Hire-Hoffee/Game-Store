@@ -14,6 +14,7 @@ const authInstance = axios.create({
   baseURL: import.meta.env.VITE_EXPRESS_API_URL + "/api/auth",
   headers: {
     "Content-Type": "application/json",
+    "Authorization": "Bearer " + localStorage.getItem("userToken") || null,
   },
 });
 

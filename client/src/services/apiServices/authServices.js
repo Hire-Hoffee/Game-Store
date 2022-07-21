@@ -11,17 +11,15 @@ const authServices = {
   },
   async userLogin(data) {
     try {
-      const result = await authInstance.post("/login", data, {
-        withCredentials: true,
-      });
+      const result = await authInstance.post("/login", data);
       return result;
     } catch (error) {
       throw error;
     }
   },
-  async userLogout(data) {
+  async userLogout() {
     try {
-      const result = await authInstance.post("/logout", data);
+      const result = await authInstance.post("/logout");
       return result;
     } catch (error) {
       throw error;

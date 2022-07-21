@@ -14,7 +14,7 @@ const VUE_API_URL = process.env.VUE_API_URL || undefined;
 
 const app = express();
 
-app.use(cors({ origin: VUE_API_URL, credentials: true }));
+app.use(cors({ origin: VUE_API_URL }));
 app.use(logger("dev"));
 app.use(cookieParser());
 app.use(express.json());

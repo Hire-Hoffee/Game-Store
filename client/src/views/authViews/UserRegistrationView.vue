@@ -8,11 +8,12 @@ export default {
   methods: {
     async userRegistration(credentials) {
       try {
-        const result = (await this.$API.authServices.userRegistration(credentials)).data
-        console.log(result);
+        const { message } = (await this.$API.authServices.userRegistration(credentials)).data
+        
+        this.$store.commit("alertInfoModule/updateAlert", message)
         this.$router.push({ name: "login" })
       } catch (error) {
-        this.$store.commit("updateError", error)
+        this.$store.commit("alertInfoModule/updateError", error)
       }
     }
   }

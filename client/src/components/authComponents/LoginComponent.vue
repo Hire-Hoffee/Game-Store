@@ -31,6 +31,9 @@ export default {
         <div class="flex flex-col text-black">
             <FormInput 
             class="my-1.5"
+            :required="true"
+            :min="10"
+            :max="50"
             :input-name="'Your Email'"
             :input-type="'email'"
             :input-id="'user_email'" 
@@ -40,6 +43,9 @@ export default {
           />
           <FormInput 
             class="my-1.5"
+            :required="true"
+            :min="8"
+            :max="50"
             :input-name="'Your Password'"
             :input-type="'password'"
             :input-id="'user_password'" 

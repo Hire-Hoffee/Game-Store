@@ -4,6 +4,17 @@ import LogoutComponent from "@/components/authComponents/LogoutComponent.vue"
 export default {
   components: {
     LogoutComponent
+  },
+  methods: {
+    async userLogout() {
+      try {
+        await this.$API.authServices.userLogout()
+        localStorage.removeItem("userToken")
+        location.replace("/")
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
+    }
   }
 }
 </script>
@@ -11,6 +22,6 @@ export default {
 
 <template>
   <div class="flex justify-center">
-    <LogoutComponent />
+    <LogoutComponent @logOutUserData="userLogout" />
   </div>
 </template>
