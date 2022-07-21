@@ -18,7 +18,7 @@ export default {
       [this.latestNews, this.allNews] = (await this.$API.mainServices.getGamesNews()).data
 
     } catch (error) {
-      this.$store.commit("updateError", error)
+      this.$store.commit("alertInfoModule/updateError", error)
     }
   }
 }

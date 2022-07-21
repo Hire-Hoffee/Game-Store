@@ -30,7 +30,7 @@ export default {
       this.latestNews,
       this.popCategories] = (await this.$API.mainServices.getMainPage()).data
     } catch (error) {
-      this.$store.commit("updateError", error)
+      this.$store.commit("alertInfoModule/updateError", error)
     }
   }
 }

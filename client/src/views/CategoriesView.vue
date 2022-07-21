@@ -16,7 +16,7 @@ export default {
     try {
       this.categories = (await this.$API.mainServices.getAllCategories()).data
     } catch (error) {
-      this.$store.commit("updateError", error)
+      this.$store.commit("alertInfoModule/updateError", error)
     }
   }
 }

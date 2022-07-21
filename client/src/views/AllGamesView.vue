@@ -26,7 +26,7 @@ export default {
 
         this.$router.push({ query: { page: pageNum } })
       } catch (error) {
-        this.$store.commit("updateError", error)
+        this.$store.commit("alertInfoModule/updateError", error)
       }
     }
   },

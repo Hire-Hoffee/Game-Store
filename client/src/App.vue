@@ -1,7 +1,7 @@
 <script>
 import CustomHeader from "@/components/UI/CustomHeader.vue"
 import CustomFooter from "@/components/UI/CustomFooter.vue"
-import ErrorOccurred from "@/components/UI/ErrorOccurred.vue"
+import AlertInformation from "@/components/UI/AlertInformation.vue"
 
 import { mapGetters } from "vuex"
 
@@ -9,9 +9,9 @@ export default {
   components: {
     CustomHeader,
     CustomFooter,
-    ErrorOccurred
+    AlertInformation
   },
-  computed: mapGetters("errorModule", ["getErrorInfo", "getShowError"])
+  computed: mapGetters("alertInfoModule", ["getErrorInfo", "getAlertInfo"])
 }
 </script>
 
@@ -23,7 +23,10 @@ export default {
 
     <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3 relative">
       <Transition name="error_fade" mode="out-in">
-        <ErrorOccurred v-if="getErrorInfo && getShowError" :error-message="getErrorInfo.response.data.message" />
+        <AlertInformation 
+          v-if="getErrorInfo || getAlertInfo"
+          :alert-message="getErrorInfo?.response.data.message || getAlertInfo" 
+        />
       </Transition>
 
       <RouterView v-slot="{ Component, route }">

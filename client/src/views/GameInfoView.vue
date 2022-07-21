@@ -17,7 +17,7 @@ export default {
       const urlGameTitle = this.$route.params.title
       this.game = (await this.$API.mainServices.getGameInfo(urlGameTitle)).data
     } catch (error) {
-      this.$store.commit("updateError", error)
+      this.$store.commit("alertInfoModule/updateError", error)
     }
   }
 }
