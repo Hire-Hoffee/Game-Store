@@ -97,7 +97,7 @@ export default {
 
 .main_swiper>.swiper-button-prev {
   left: 0;
-  background-image: url('../assets/icons/prev.svg');
+  background-image: url('@/assets/icons/prev.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -108,7 +108,7 @@ export default {
 
 .main_swiper>.swiper-button-next {
   right: 0;
-  background-image: url('../assets/icons/next.svg');
+  background-image: url('@/assets/icons/next.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }

@@ -1,5 +1,5 @@
 <script>
-import GameCard from "@/components/GameCard.vue"
+import GameCard from "../components/cards/GameCard.vue"
 import PagesSwitcher from "@/components/UI/PagesSwitcher.vue"
 
 export default {

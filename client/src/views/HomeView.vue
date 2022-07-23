@@ -1,8 +1,8 @@
 <script>
-import MainSlider from "@/components/MainSlider.vue"
-import CustomSlider from "@/components/CustomSlider.vue"
+import MainSlider from "@/components/sliders/MainSlider.vue"
+import CustomSlider from "@/components/sliders/CustomSlider.vue"
 import GameNews from "@/components/GameNews.vue"
-import CategoryCard from "@/components/CategoryCard.vue"
+import CategoryCard from "@/components/cards/CategoryCard.vue"
 import { mapGetters } from "vuex"
 
 export default {

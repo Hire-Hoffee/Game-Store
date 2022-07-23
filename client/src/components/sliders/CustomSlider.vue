@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/vue"
 import { Navigation } from "swiper"
 
-import ReviewCard from '@/components/ReviewCard.vue'
+import GameCard from '@/components/cards/GameCard.vue'
 
 import "swiper/css"
 import "swiper/css/navigation"
@@ -11,8 +11,9 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
-    ReviewCard
+    GameCard
   },
+  props: ["gameData"],
   setup() {
     return {
       modules: [Navigation]
@@ -20,12 +21,12 @@ export default {
   },
   data() {
     return {
-      slidesPerView: 3,
+      slidesPerView: 5,
     }
   },
   methods: {
     handleView() {
-      this.slidesPerView = window.innerWidth <= 768 ? 1 : window.innerWidth >= 768 && window.innerWidth <= 1024 ? 2 : 3
+      this.slidesPerView = window.innerWidth <= 640 ? 2 : window.innerWidth >= 640 && window.innerWidth <= 1024 ? 4 : 5
     }
   },
   created() {
@@ -40,20 +41,11 @@ export default {
   <Swiper class="flex items-center custom_swiper" :slidesPerView="slidesPerView" :space-between="10" :loop="true"
     :navigation="true" :modules="modules">
 
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
+    <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
+      <GameCard 
+        :game-title="game.gameTitle" 
+        :game-poster="game.poster" 
+        :game-price="game.price" />
     </SwiperSlide>
 
   </Swiper>
@@ -68,7 +60,7 @@ export default {
 .custom_swiper>.swiper-button-prev {
   left: 0;
   width: 2rem;
-  background-image: url('../assets/icons/circlePrev.svg');
+  background-image: url('@/assets/icons/circlePrev.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -80,7 +72,7 @@ export default {
 .custom_swiper>.swiper-button-next {
   right: 0;
   width: 2rem;
-  background-image: url('../assets/icons/circleNext.svg');
+  background-image: url('@/assets/icons/circleNext.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
