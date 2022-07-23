@@ -1,4 +1,6 @@
 <script>
+import { mapGetters } from "vuex"
+
 export default {
     data() {
         return {
@@ -8,6 +10,7 @@ export default {
             isTablet: false
         };
     },
+    computed: mapGetters("authModule", ["getUserRole"]),
     methods: {
         clickToSearch() {
             this.search = !this.search;
@@ -44,8 +47,9 @@ export default {
         <li><RouterLink :to="{ name: 'allGames' }">All games</RouterLink></li>
         <li><RouterLink :to="{ name: 'gamesNews' }">News</RouterLink></li>
         <li><RouterLink :to="{ name: 'allCategories' }">Categories</RouterLink></li>
-        <li><RouterLink :to="{ name: 'login' }">Login</RouterLink></li>
-        <li><RouterLink :to="{ name: 'shoppingCart' }">Cart</RouterLink></li>
+        <li v-if="getUserRole == 'USER'"><RouterLink :to="{ name: 'userAccount' }">Account</RouterLink></li>
+        <li v-else><RouterLink :to="{ name: 'login' }">Login</RouterLink></li>
+        <li v-if="getUserRole == 'USER'"><RouterLink :to="{ name: 'shoppingCart' }">Cart</RouterLink></li>
         <li><RouterLink :to="{ name: 'aboutPage' }">About</RouterLink></li>
       </ul>
     </nav>
@@ -120,13 +124,19 @@ export default {
               <RouterLink :to="{ name: 'allCategories' }">Categories</RouterLink>
             </div>
           </li>
-          <li class="flex" @click="clickToOpenMobileMenu">
+          <li v-if="getUserRole == 'USER'" class="flex" @click="clickToOpenMobileMenu">
+            <img src="@/assets/icons/login.svg" alt="login">
+            <div class="ml-5">
+              <RouterLink :to="{ name: 'userAccount' }">Account</RouterLink>
+            </div>
+          </li>
+          <li v-else class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/login.svg" alt="login">
             <div class="ml-5">
               <RouterLink :to="{ name: 'login' }">Login</RouterLink>
             </div>
           </li>
-          <li class="flex" @click="clickToOpenMobileMenu">
+          <li v-if="getUserRole == 'USER'" class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/cart.svg" alt="cart">
             <div class="ml-5">
               <RouterLink :to="{ name: 'shoppingCart' }">Cart</RouterLink>

@@ -56,8 +56,9 @@ const authServices = {
       );
 
       return {
-        accessToken,
+        token: accessToken,
         message: "Login success",
+        role: user.role,
       };
     } catch (error) {
       throw error;

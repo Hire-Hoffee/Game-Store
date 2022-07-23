@@ -34,6 +34,11 @@ module.exports = {
           },
         },
       },
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "USER",
+      },
       authToken: { type: DataTypes.STRING },
     },
     { timestamps: false, schema }

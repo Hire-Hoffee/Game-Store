@@ -23,18 +23,18 @@ const authControllers = {
         password: req.body.userPassword,
       };
 
-      const { accessToken, message } = await authServices.loginService(
-        credentials
-      );
+      const result = await authServices.loginService(credentials);
 
-      return res.json({ message: message, token: accessToken });
+      return res.json(result);
     } catch (error) {
       next(error);
     }
   },
   async userLogout(req, res, next) {
     try {
-      const result = await authServices.logoutService(req.headers["authorization"]);
+      const result = await authServices.logoutService(
+        req.headers["authorization"]
+      );
       return res.clearCookie("token").json(result);
     } catch (error) {
       next(error);

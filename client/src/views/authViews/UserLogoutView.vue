@@ -10,6 +10,7 @@ export default {
       try {
         await this.$API.authServices.userLogout()
         localStorage.removeItem("userToken")
+        localStorage.removeItem("userRole")
         location.replace("/")
       } catch (error) {
         this.$store.commit("alertInfoModule/updateError", error)

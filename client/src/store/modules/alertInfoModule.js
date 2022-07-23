@@ -19,7 +19,7 @@ export default {
       state.alertColor = "bg-red-600";
       setTimeout(() => {
         state.errorInfo = null;
-      }, 10000);
+      }, 7000);
     },
     updateAlert(state, newValue) {
       state.alertInfo = newValue;
@@ -27,7 +27,7 @@ export default {
       state.alertColor = "bg-green-600";
       setTimeout(() => {
         state.alertInfo = null;
-      }, 10000);
+      }, 5000);
     },
     refreshInfo(state, newValue) {
       state.errorInfo = newValue;

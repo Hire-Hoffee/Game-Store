@@ -10,12 +10,14 @@ export default {
   methods: {
     async userLogin(credentials) {
       try {
-        const { message, token } = (await this.$API.authServices.userLogin(credentials)).data
+        const { message, token, role } = (await this.$API.authServices.userLogin(credentials)).data
 
+        localStorage.setItem("userRole", role)
         localStorage.setItem("userToken", token)
+        this.$store.commit("authModule/updateUserRole", role)
         this.$store.commit("authModule/updateUserToken", token)
         this.$store.commit("alertInfoModule/updateAlert", message)
-        
+
         this.$router.push({ name: "home" })
       } catch (error) {
         this.$store.commit("alertInfoModule/updateError", error)
