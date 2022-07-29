@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, BOOLEAN } = require("sequelize");
 const sequelize = require("../config/database");
 
 const schema = "userSchema";
@@ -39,6 +39,12 @@ module.exports = {
         allowNull: false,
         defaultValue: "USER",
       },
+      isVerified: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: "false",
+      },
+      verificationString: { type: DataTypes.STRING },
       authToken: { type: DataTypes.STRING },
     },
     { timestamps: false, schema }

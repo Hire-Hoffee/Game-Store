@@ -16,6 +16,16 @@ const authControllers = {
       next(error);
     }
   },
+
+  async emailVerifying(req, res, next) {
+    try {
+      const { verifyEmail } = await authServices.emailVerifyingService(req.query.token);
+      return res.redirect(`${process.env.VUE_API_URL}/auth/login?verifyEmail=${verifyEmail}`);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async userLogin(req, res, next) {
     try {
       const credentials = {
@@ -30,6 +40,7 @@ const authControllers = {
       next(error);
     }
   },
+
   async userLogout(req, res, next) {
     try {
       const result = await authServices.logoutService(

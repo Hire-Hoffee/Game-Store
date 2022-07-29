@@ -4,7 +4,7 @@ const genRefreshToken = (payload, expiresIn = "168h") => {
   return jwt.sign(payload, process.env.SECRET_REFRESH, { expiresIn });
 };
 
-const genAccessToken = (payload, expiresIn = "1h") => {
+const genAccessToken = (payload, expiresIn = "3h") => {
   return jwt.sign(payload, process.env.SECRET_ACCESS, { expiresIn });
 };
 

@@ -23,6 +23,11 @@ export default {
         this.$store.commit("alertInfoModule/updateError", error)
       }
     }
+  },
+  mounted() {
+    if (this.$route.query.verifyEmail == "true") {
+      this.$store.commit("alertInfoModule/updateAlert", "Email has been verified")
+    }
   }
 }
 </script>
