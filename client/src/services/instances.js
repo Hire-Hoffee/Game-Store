@@ -17,5 +17,7 @@ const authInstance = axios.create({
     "Authorization": "Bearer " + localStorage.getItem("userToken") || null,
   },
 });
+authInstance.interceptors.request.use(reqIntercept);
+authInstance.interceptors.response.use(resIntercept);
 
 export { mainInstance, authInstance };

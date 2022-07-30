@@ -1,6 +1,18 @@
+<script>
+import CustomBtn from '@/components/UI/CustomBtn.vue';
+export default {
+    components: { CustomBtn }
+}
+</script>
+
 
 <template>
-  <div class="p-7 custom_shadow_out w-5/6">
+  <div class="p-7 custom_shadow_out w-5/6 relative">
+    <div class="absolute right-3 top-3">
+      <CustomBtn title="Sign Out" class="bg-custom-red">
+        <RouterLink :to="{ name: 'logout' }"><img src="@/assets/icons/mini_exit.svg" class="w-2.5 h-2.5" alt="mini_exit"></RouterLink>
+      </CustomBtn>
+    </div>
     <h1 class="text-3xl text-center font-bold">Your Account</h1>
     <div class="flex lg:flex-row flex-col items-center lg:justify-between md:space-x-10 lg:h-96 mt-16">
 

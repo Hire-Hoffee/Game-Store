@@ -6,7 +6,10 @@ export default {
   components: {
     LoginComponent
   },
-  computed: mapGetters('authModule', ['getUserToken']),
+  computed: {
+    ...mapGetters('authModule', ['getUserToken']),
+    ...mapGetters("isLoadingModule", ["getLoadingStatus"]),
+  },
   methods: {
     async userLogin(credentials) {
       try {
@@ -34,7 +37,10 @@ export default {
 
 
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-center" v-if="!getLoadingStatus">
     <LoginComponent @logInUserData="userLogin" />
+  </div>
+  <div class="flex justify-center m-5" v-else>
+    <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">
   </div>
 </template>
