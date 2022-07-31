@@ -3,6 +3,7 @@ import alertInfoModule from "./modules/alertInfoModule";
 import pagesCountModule from "./modules/pagesCountModule";
 import isLoadingModule from "./modules/isLoadingModule";
 import authModule from "./modules/authModule";
+import themeModule from "./modules/themeModule";
 
 const store = createStore({
   modules: {
@@ -10,6 +11,7 @@ const store = createStore({
     pagesCountModule,
     isLoadingModule,
     authModule,
+    themeModule
   },
 });
 

@@ -1,32 +1,50 @@
 <script>
+import CustomBtn from "./CustomBtn.vue";
 import { mapGetters } from "vuex"
 
 export default {
-    data() {
-        return {
-            search: false,
-            isMobile: false,
-            isMobileMenuOpen: false,
-            isTablet: false
-        };
+  components: { CustomBtn },
+  data() {
+    return {
+      search: false,
+      isMobile: false,
+      isMobileMenuOpen: false,
+      isTablet: false
+    };
+  },
+  computed: {
+    ...mapGetters("authModule", ["getUserRole"]),
+    ...mapGetters("themeModule", ["getColorMode"])
+  },
+  methods: {
+    clickToSearch() {
+      this.search = !this.search;
     },
-    computed: mapGetters("authModule", ["getUserRole"]),
-    methods: {
-        clickToSearch() {
-            this.search = !this.search;
-        },
-        handleView() {
-            this.isMobile = window.innerWidth < 768;
-            this.isTablet = window.innerWidth < 1280;
-        },
-        clickToOpenMobileMenu() {
-            this.isMobileMenuOpen = !this.isMobileMenuOpen;
-        }
+    handleView() {
+      this.isMobile = window.innerWidth < 768;
+      this.isTablet = window.innerWidth < 1280;
     },
-    created() {
-        this.handleView();
-        window.addEventListener("resize", this.handleView);
+    clickToOpenMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
     },
+    switchTheme() {
+      if (localStorage.getItem("colorMode") == "light") {
+        localStorage.setItem("colorMode", "dark")
+        this.$store.commit("themeModule/updateColorMode", "dark")
+        return
+      }
+
+      if (localStorage.getItem("colorMode") == "dark") {
+        localStorage.setItem("colorMode", "light")
+        this.$store.commit("themeModule/updateColorMode", "light")
+        return
+      }
+    }
+  },
+  created() {
+    this.handleView();
+    window.addEventListener("resize", this.handleView);
+  },
 }
 </script>
 
@@ -53,12 +71,17 @@ export default {
         <li><RouterLink :to="{ name: 'aboutPage' }">About</RouterLink></li>
       </ul>
     </nav>
-    <div>
+    <div class="flex">
+      <div class="mr-3 flex items-center" @click="switchTheme">
+        <CustomBtn class="hover:bg-custom-black">
+          <img v-if="getColorMode == 'dark'" src="@/assets/icons/sun.svg" class="w-5 h-5" alt="sun">
+          <img v-if="getColorMode == 'light'" src="@/assets/icons/moon.svg" class="w-5 h-5" alt="moon">
+        </CustomBtn>
+      </div>
       <div class="sm:block lg:hidden hover:scale-105 active:scale-95" @click="clickToSearch">
         <img src="@/assets/icons/search.svg" alt="search">
       </div>
       <div class="sm:hidden lg:block hidden">
-        
         <form class="flex space-x-7" @submit.prevent>
           <FormInput 
             :input-id="'search_game'" 
@@ -104,8 +127,16 @@ export default {
 
     </div>
     <Transition name="bounce">
-      <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-custom-black w-full p-6 mt-1 h-screen text-2xl">
-        <ul class="flex flex-col justify-evenly px-6 py-4 tracking-wide custom_inner_shadow rounded-xl h-[90%]">
+      <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-custom-black w-full p-6 mt-1 h-screen text-2xl">        
+        <ul class="flex flex-col justify-evenly px-6 py-4 tracking-wide custom_inner_shadow rounded-xl h-[90%] relative">
+
+          <div class="mr-3 flex items-center absolute top-4 right-1" @click="switchTheme">
+            <CustomBtn class="hover:bg-custom-black">
+              <img v-if="getColorMode == 'dark'" src="@/assets/icons/sun.svg" class="w-5 h-5" alt="sun">
+              <img v-if="getColorMode == 'light'" src="@/assets/icons/moon.svg" class="w-5 h-5" alt="moon">
+            </CustomBtn>
+          </div>
+
           <li class="flex" @click="clickToOpenMobileMenu">
             <img src="@/assets/icons/allGames.svg" alt="all_games">
             <div class="ml-5">

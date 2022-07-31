@@ -11,33 +11,43 @@ export default {
     CustomFooter,
     AlertInformation
   },
-  computed: mapGetters("alertInfoModule", ["getErrorInfo", "getAlertInfo"])
+  computed: {
+    ...mapGetters("alertInfoModule", ["getErrorInfo", "getAlertInfo"]),
+    ...mapGetters("themeModule", ["getColorMode"])
+  },
+  mounted() {
+    if (!localStorage.getItem("colorMode")) {
+      localStorage.setItem("colorMode", "light")
+    }
+  }
 }
 </script>
 
 <template>
 
-  <div class="min-h-full flex flex-col items-center">
-
-    <CustomHeader class="mb-24 sticky top-0" />
-
-    <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3 relative">
-      <Transition name="error_fade" mode="out-in">
-        <AlertInformation 
-          v-if="getErrorInfo || getAlertInfo"
-          :alert-message="getErrorInfo?.response.data.message || getAlertInfo" 
-        />
-      </Transition>
-
-      <RouterView v-slot="{ Component, route }">
-        <Transition name="fade" mode="out-in">
-          <component :is="Component" :key="route.path" />
+  <span :class="getColorMode">
+    <div class="min-h-full flex flex-col items-center bg-custom-black text-white">
+  
+      <CustomHeader class="mb-24 sticky top-0" />
+  
+      <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3 relative">
+        <Transition name="error_fade" mode="out-in">
+          <AlertInformation 
+            v-if="getErrorInfo || getAlertInfo"
+            :alert-message="getErrorInfo?.response.data.message || getAlertInfo" 
+          />
         </Transition>
-      </RouterView>
-    </main>
-
-    <CustomFooter class="mt-24" />
-  </div>
+  
+        <RouterView v-slot="{ Component, route }">
+          <Transition name="fade" mode="out-in">
+            <component :is="Component" :key="route.path" />
+          </Transition>
+        </RouterView>
+      </main>
+  
+      <CustomFooter class="mt-24" />
+    </div>
+  </span>
 
 </template>
 
