@@ -38,7 +38,7 @@ export default {
   <Swiper v-if="!isMobile" class="w-11/12 xl:h-112 lg:h-96 md:h-80 main_swiper rounded-3xl" :slidesPerView="1"
     :space-between="100" :loop="true" :navigation="true" :modules="modules">
     <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
-      <RouterLink class="flex bg-custom-black w-full" :to="{ name: 'gameInfo', params: { title: game.gameTitle?.toLowerCase().split(' ').join('_') } }">
+      <RouterLink class="flex bg-slate-50 dark:bg-custom-black w-full" :to="{ name: 'gameInfo', params: { title: game.gameTitle?.toLowerCase().split(' ').join('_') } }">
         <div class="w-3/5">
           <img class="w-full h-full rounded-l-3xl" :src="game.poster" :alt="game.gameTitle">
         </div>
@@ -51,7 +51,7 @@ export default {
           </div>
           <div class="flex justify-around">
             <div class="bg-custom-red rounded py-1 w-2/6 flex items-center justify-center">
-              <p class="text-center lg:text-2xl text-lg">{{ game.price }} $</p>
+              <p class="text-center lg:text-2xl text-lg text-white">{{ game.price }} $</p>
             </div>
             <CustomBtn>Add to cart</CustomBtn>
           </div>
@@ -75,7 +75,7 @@ export default {
           </div>
           <div class="flex justify-around">
             <div class="bg-custom-red rounded py-1 w-2/6 flex items-center justify-center">
-              <p class="text-center lg:text-2xl text-lg">{{ game.price }} $</p>
+              <p class="text-center text-white lg:text-2xl text-lg">{{ game.price }} $</p>
             </div>
             <CustomBtn>Add to cart</CustomBtn>
           </div>
@@ -88,7 +88,7 @@ export default {
 
 <style>
 .main_swiper {
-  box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.25);
+  @apply shadow-md dark:shadow-custom-outer;
 }
 
 .main_swiper>.swiper-button-prev::after {
@@ -115,7 +115,7 @@ export default {
 
 
 .mobile_slider {
-  box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.25);
+  @apply shadow-md dark:shadow-custom-outer;
 }
 
 .mobile_slider>.swiper-button-prev,

@@ -67,7 +67,7 @@
         </label>
       </div>
       <div class="flex justify-center mt-5">
-        <CustomBtn class="bg-custom-red px-7">Search</CustomBtn>
+        <CustomBtn class="bg-custom-red px-7 text-white">Search</CustomBtn>
       </div>
     </form>
   </div>

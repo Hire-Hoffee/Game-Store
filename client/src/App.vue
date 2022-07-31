@@ -26,7 +26,7 @@ export default {
 <template>
 
   <span :class="getColorMode">
-    <div class="min-h-full flex flex-col items-center bg-custom-black text-white">
+    <div class="min-h-full flex flex-col items-center bg-slate-50 text-custom-black dark:bg-custom-black dark:text-white">
   
       <CustomHeader class="mb-24 sticky top-0" />
   

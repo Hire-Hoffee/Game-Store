@@ -23,7 +23,7 @@ export default {
         :placeholder="inputPlaceholder" 
         :value="inputModel" 
         @input="$emit('update:inputModel', $event.target.value)"
-        class="bg-white border focus:outline-none text-black rounded-lg focus:ring-custom-red focus:ring-1 focus:border-custom-red block w-full pl-10 p-1.5"
+        class="bg-gray-100 dark:bg-white border focus:outline-none text-black rounded-lg focus:ring-custom-red focus:ring-1 focus:border-custom-red block w-full pl-10 p-1.5"
       >
     </div>
   </div>

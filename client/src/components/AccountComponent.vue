@@ -9,9 +9,11 @@ export default {
 <template>
   <div class="p-7 custom_shadow_out w-5/6 relative">
     <div class="absolute right-3 top-3">
-      <CustomBtn title="Sign Out" class="bg-custom-red">
-        <RouterLink :to="{ name: 'logout' }"><img src="@/assets/icons/mini_exit.svg" class="w-2.5 h-2.5" alt="mini_exit"></RouterLink>
-      </CustomBtn>
+      <RouterLink :to="{ name: 'logout' }">
+        <CustomBtn title="Sign Out" class="bg-custom-red">
+          <img src="@/assets/icons/mini_exit.svg" class="w-2.5 h-2.5" alt="mini_exit">
+        </CustomBtn>
+      </RouterLink>
     </div>
     <h1 class="text-3xl text-center font-bold">Your Account</h1>
     <div class="flex lg:flex-row flex-col items-center lg:justify-between md:space-x-10 lg:h-96 mt-16">
@@ -52,7 +54,7 @@ export default {
               </div>
               <div class="flex space-x-3">
                 <p class="p-2 rounded inner_shadow_custom text-xl w-2/3 uppercase">***</p>
-                <CustomBtn class="bg-custom-red w-1/3">Show</CustomBtn>
+                <CustomBtn class="bg-custom-red text-white w-1/3">Show</CustomBtn>
               </div>
             </div>
           </div>

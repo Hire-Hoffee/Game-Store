@@ -52,7 +52,7 @@ export default {
 <template>
 
   <header v-if="!isMobile"
-    class="bg-custom-black w-full h-16 flex justify-between items-center px-12 font-bold z-50 drop_shadow_custom_down">
+    class="bg-slate-50 dark:bg-custom-black w-full h-16 flex justify-between items-center px-12 font-bold z-50 drop_shadow_custom_down">
     <div class="flex items-center space-x-7 text-2xl text-custom-red">
       <RouterLink v-if="isTablet" :to="{ name: 'home' }"><img src="@/assets/icons/logo.svg" alt="site logo"></RouterLink>
       <img v-else src="@/assets/icons/logo.svg" alt="site logo">
@@ -73,9 +73,9 @@ export default {
     </nav>
     <div class="flex">
       <div class="mr-3 flex items-center" @click="switchTheme">
-        <CustomBtn class="hover:bg-custom-black">
-          <img v-if="getColorMode == 'dark'" src="@/assets/icons/sun.svg" class="w-5 h-5" alt="sun">
-          <img v-if="getColorMode == 'light'" src="@/assets/icons/moon.svg" class="w-5 h-5" alt="moon">
+        <CustomBtn class="hover:bg-slate-50 dark:hover:bg-custom-black border-none bg-slate-100 dark:bg-[#171518]">
+          <img v-if="getColorMode == 'dark'" src="@/assets/icons/sun.svg" class="w-6 h-6" alt="sun">
+          <img v-if="getColorMode == 'light'" src="@/assets/icons/moon.svg" class="w-6 h-6" alt="moon">
         </CustomBtn>
       </div>
       <div class="sm:block lg:hidden hover:scale-105 active:scale-95" @click="clickToSearch">
@@ -83,12 +83,12 @@ export default {
       </div>
       <div class="sm:hidden lg:block hidden">
         <form class="flex space-x-7" @submit.prevent>
-          <FormInput 
+          <FormInput
             :input-id="'search_game'" 
             :input-img="'/src/assets/icons/search.svg'" 
             :input-placeholder="'Search...'"
           />
-          <CustomBtn class="bg-custom-black" type="submit">Search</CustomBtn>
+          <CustomBtn class="bg-slate-50 dark:bg-custom-black" type="submit">Search</CustomBtn>
         </form>
       </div>
     </div>
@@ -102,7 +102,7 @@ export default {
             :input-img="'/src/assets/icons/search.svg'" 
             :input-placeholder="'Search...'"
           />
-          <CustomBtn class="bg-custom-black w-2/12">Search</CustomBtn>
+          <CustomBtn class="bg-slate-50 dark:bg-custom-black w-2/12">Search</CustomBtn>
         </form>
       </div>
     </Transition>
@@ -110,7 +110,7 @@ export default {
 
 
 
-  <header v-else class="flex items-center bg-custom-black w-full h-16 px-6 font-bold z-50 drop_shadow_custom_down">
+  <header v-else class="flex items-center bg-slate-50 dark:bg-custom-black w-full h-16 px-6 font-bold z-50 drop_shadow_custom_down">
     <div class="flex justify-between w-full">
       <div class="w-full">
         <Transition name="bounce">
@@ -127,11 +127,11 @@ export default {
 
     </div>
     <Transition name="bounce">
-      <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-custom-black w-full p-6 mt-1 h-screen text-2xl">        
+      <nav v-if="isMobileMenuOpen" class="absolute top-16 left-0 bg-slate-50 dark:bg-custom-black w-full p-6 mt-1 h-screen text-2xl">        
         <ul class="flex flex-col justify-evenly px-6 py-4 tracking-wide custom_inner_shadow rounded-xl h-[90%] relative">
 
           <div class="mr-3 flex items-center absolute top-4 right-1" @click="switchTheme">
-            <CustomBtn class="hover:bg-custom-black">
+            <CustomBtn class="hover:bg-slate-50 dark:hover:bg-custom-black">
               <img v-if="getColorMode == 'dark'" src="@/assets/icons/sun.svg" class="w-5 h-5" alt="sun">
               <img v-if="getColorMode == 'light'" src="@/assets/icons/moon.svg" class="w-5 h-5" alt="moon">
             </CustomBtn>
@@ -187,7 +187,7 @@ export default {
                 :input-img="'/src/assets/icons/search.svg'" 
                 :input-placeholder="'Search...'"
               />
-              <CustomBtn class="bg-custom-black w-2/12">
+              <CustomBtn class="bg-slate-50 dark:bg-custom-black w-2/12">
                 <img class="w-full h-full" src="@/assets/icons/search.svg" alt="search">
               </CustomBtn>
             </form>
@@ -202,7 +202,7 @@ export default {
 
 <style scoped>
 .drop_shadow_custom_down {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @apply shadow-md dark:shadow-[0px_4px_4px_rgba(0,0,0,0.25)];
 }
 
 .custom_inner_shadow {

@@ -29,7 +29,7 @@ export default {
 
         <div class="flex justify-between text-center lg:text-2xl text-lg">
           <div class="p-2 w-1/3 rounded inner_shadow_custom"><strong>{{ gameInfo.price }} $</strong></div>
-          <CustomBtn class="uppercase bg-custom-red">Buy now</CustomBtn>
+          <CustomBtn class="text-white uppercase bg-custom-red">Buy now</CustomBtn>
         </div>
 
         <div class="lg:text-xl text-lg">
@@ -160,7 +160,7 @@ export default {
               placeholder="Type here..."></textarea>
           </div>
           <div class="flex justify-end mt-5">
-            <CustomBtn class="w-fit bg-custom-red uppercase sm:px-12 px-16">Post</CustomBtn>
+            <CustomBtn class="w-fit text-white bg-custom-red uppercase sm:px-12 px-16">Post</CustomBtn>
           </div>
         </form>
       </div>

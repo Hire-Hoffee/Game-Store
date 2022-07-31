@@ -12,9 +12,9 @@ export default {
       <h1 class="text-3xl text-center mb-5 font-bold">Sure you want to quit ?</h1>
       <div class="flex justify-evenly">
         <form @submit.prevent="$emit('logOutUserData')">
-          <CustomBtn class="text-xl px-8" type="submit">Yes</CustomBtn>
+          <CustomBtn class="text-xl px-6" type="submit">Yes</CustomBtn>
         </form>
-        <RouterLink :to="{ name: 'home' }"><CustomBtn class="text-xl px-8" type="submit">No</CustomBtn></RouterLink>
+        <RouterLink :to="{ name: 'home' }"><CustomBtn class="text-xl px-6" type="submit">No</CustomBtn></RouterLink>
       </div>
     </div>
     <div class="md:w-1/2 w-full h-60 sm:h-auto">

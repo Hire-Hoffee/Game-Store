@@ -54,7 +54,7 @@ export default {
       <CustomSlider class="mt-5" v-if="comingSoonGames" :game-data="comingSoonGames" />
     </div>
 
-    <div class="mb-28 bg-custom-gray bg-opacity-50 p-3 rounded">
+    <div class="mb-28 bg-slate-400 dark:bg-custom-gray bg-opacity-50 p-3 rounded">
       <div class="flex justify-between mb-3">
         <h1 class="text-2xl font-bold">Game news</h1>
         <h1 class="text-xl text-custom-red">View all</h1>

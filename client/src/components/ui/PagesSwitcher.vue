@@ -10,7 +10,7 @@ export default {
 
 
 <template>
-  <div class="md:w-112 w-full flex justify-between items-center inner_shadow_custom p-3 rounded-xl">
+  <div class="md:w-112 w-full flex justify-between items-center inner_shadow_custom p-3 rounded-xl text-white">
     <div>
       <img src="@/assets/icons/arrowLeft.svg" alt="arrow_left">
     </div>
