@@ -13,6 +13,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  props: ["gameData"],
   data() {
     return {
       thumbsSwiper: null,
@@ -41,28 +42,16 @@ export default {
 
 
 <template>
-
   <div class="w-full h-64 sm:h-80 lg:h-112 flex flex-col space-y-4 rounded overflow-hidden">
     <Swiper :spaceBetween="10" :thumbs="{ swiper: thumbsSwiper }" :modules="modules" class="mySwiper2 w-full h-5/6">
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/71/500/300"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/12/500/300"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/11/500/300"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/31/500/300"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/41/500/300"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/42/500/300"></SwiperSlide>
+      <SwiperSlide v-for="item in gameData" :key="item.id"><img class="w-full h-full rounded-lg object-cover" :src="item.image"></SwiperSlide>
     </Swiper>
 
     <Swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="slidesPerView" :freeMode="true"
       :watchSlidesProgress="true" :navigation="true" :modules="modules" class="mySwiper w-full h-1/6 custom_swiper">
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/71/200/100"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/12/200/100"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/11/200/100"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/31/200/100"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/41/200/100"></SwiperSlide>
-      <SwiperSlide><img class="w-full h-full rounded-lg" src="https://picsum.photos/id/42/200/100"></SwiperSlide>
+      <SwiperSlide v-for="item in gameData" :key="item.id"><img class="w-full h-full rounded-lg object-cover" :src="item.image"></SwiperSlide>
     </Swiper>
   </div>
-
 </template>
 
 

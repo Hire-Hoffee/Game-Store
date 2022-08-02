@@ -93,7 +93,7 @@ module.exports = {
   Image: sequelize.define(
     "image",
     {
-      imageURL: {
+      image: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "/images/supportImages/imgNotFound.png",

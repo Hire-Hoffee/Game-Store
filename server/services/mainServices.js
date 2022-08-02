@@ -131,28 +131,51 @@ const mainServices = {
       }
 
       try {
-        const apiTitle = convertTitle.toLowerCase().split(" ").join("-");
+        const apiGameTitle = convertTitle.toLowerCase().split(" ").join("-");
 
-        let gameMetacritic = (
-          await axios.get(`https://api.rawg.io/api/games/${apiTitle}`, {
-            params: { key: process.env.RAWG_API_KEY },
-          })
-        ).data;
+        const getGameMetacritic = async () => {
+          let gameMetacritic = (
+            await axios.get(`https://api.rawg.io/api/games/${apiGameTitle}`, {
+              params: { key: process.env.RAWG_API_KEY },
+            })
+          ).data;
 
-        if (gameMetacritic.redirect) {
-          gameMetacritic = (
+          if (gameMetacritic.redirect) {
+            gameMetacritic = (
+              await axios.get(
+                `https://api.rawg.io/api/games/${gameMetacritic.slug}`,
+                {
+                  params: { key: process.env.RAWG_API_KEY },
+                }
+              )
+            ).data;
+          }
+
+          return gameMetacritic;
+        };
+
+        const getGameImages = async () => {
+          let gameImages = (
             await axios.get(
-              `https://api.rawg.io/api/games/${gameMetacritic.slug}`,
+              `https://api.rawg.io/api/games/${apiGameTitle}/screenshots`,
               {
                 params: { key: process.env.RAWG_API_KEY },
               }
             )
           ).data;
-        }
 
-        result.dataValues.metacritic = gameMetacritic.metacritic;
+          return gameImages;
+        };
+
+        const apiResult = await Promise.all([
+          getGameMetacritic(),
+          getGameImages(),
+        ]);
+
+        result.dataValues.metacritic = apiResult[0].metacritic;
+        result.set("images", apiResult[1].results);
       } catch (error) {
-        console.log("\n" + chalk.red(error) + "\n");
+        console.log("\n" + `RAWG API ERROR - ${chalk.red(error)}` + "\n");
       }
 
       return result;

@@ -19,12 +19,12 @@ export default {
 
     <div class="flex flex-col-reverse md:flex-row justify-between md:space-x-14 font-bold mb-28">
       <div class="md:w-7/12">
-        <GameImagesSlider />
+        <GameImagesSlider v-if="gameInfo" :game-data="gameInfo.images"/>
       </div>
 
       <div class="md:w-5/12 flex flex-col space-y-4 justify-between mb-16 md:mb-0">
         <div class="rounded overflow-hidden">
-          <img class="w-full lg:h-52 h-40" :src="gameInfo.poster" :alt="gameInfo.gameTitle">
+          <img class="w-full lg:h-52 h-40 object-cover" :src="gameInfo.poster" :alt="gameInfo.gameTitle">
         </div>
 
         <div class="flex justify-between text-center lg:text-2xl text-lg">
