@@ -6,7 +6,7 @@ export default {
 
 
 <template>
-  <RouterLink :to="{ name: 'gameInfo', params: { title: gameTitle?.toLowerCase().split(' ').join('_') } }">
+  <RouterLink :to="{ name: 'gameInfo', params: { title: gameTitle?.toLowerCase().split(' ').join('_'), gameTitle } }">
     <div class="xl:w-56 lg:w-48 w-40 h-full flex flex-col relative">
       <div class="xl:h-56 lg:h-48 h-40">
         <img class="rounded-xl w-full h-full object-cover" :src="gamePoster" :alt="gameTitle">

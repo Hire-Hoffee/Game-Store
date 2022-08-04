@@ -15,4 +15,16 @@ const router = createRouter({
   },
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.params.gameTitle) {
+    document.title = `${import.meta.env.VITE_VUE_APP_TITLE} - ${
+      to.params.gameTitle
+    }`;
+  } else if (to.meta.title) {
+    document.title = `${import.meta.env.VITE_VUE_APP_TITLE} - ${to.meta.title}`;
+  }
+
+  next();
+});
+
 export default router;
