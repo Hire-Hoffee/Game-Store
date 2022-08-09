@@ -40,7 +40,7 @@ export default {
     <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
       <RouterLink class="flex bg-slate-50 dark:bg-custom-black w-full" :to="{ name: 'gameInfo', params: { title: game.gameTitle?.toLowerCase().split(' ').join('_') } }">
         <div class="w-3/5">
-          <img class="w-full h-full rounded-l-3xl" :src="game.poster" :alt="game.gameTitle">
+          <img class="w-full h-full rounded-l-3xl object-cover" :src="game.poster" :alt="game.gameTitle">
         </div>
         <div class="w-2/5 flex flex-col justify-between p-8">
           <div>
@@ -66,7 +66,7 @@ export default {
     <SwiperSlide class="flex justify-center" v-for="game in gameData" :key="game.id">
       <RouterLink class="flex flex-col items-center w-full p-3" :to="{ name: 'gameInfo', params: { title: game.gameTitle?.toLowerCase().split(' ').join('_') } }">
         <div class="w-full h-80">
-          <img class="w-full h-full rounded-3xl" :src="game.poster" :alt="game.gameTitle">
+          <img class="w-full h-full rounded-3xl object-cover" :src="game.poster" :alt="game.gameTitle">
         </div>
 
         <div class="w-full">

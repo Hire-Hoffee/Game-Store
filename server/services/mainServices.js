@@ -131,25 +131,22 @@ const mainServices = {
       }
 
       try {
-        const apiGameTitle = convertTitle.toLowerCase().split(" ").join("-");
+        const apiGameTitle = title
+          .toLowerCase()
+          .replace(/_/g, "-")
+          .replace(/[^\w-]/g, "");
+        const { slug } = (
+          await axios.get(`https://api.rawg.io/api/games/${apiGameTitle}`, {
+            params: { key: process.env.RAWG_API_KEY },
+          })
+        ).data;
 
         const getGameMetacritic = async () => {
           let gameMetacritic = (
-            await axios.get(`https://api.rawg.io/api/games/${apiGameTitle}`, {
+            await axios.get(`https://api.rawg.io/api/games/${slug}`, {
               params: { key: process.env.RAWG_API_KEY },
             })
           ).data;
-
-          if (gameMetacritic.redirect) {
-            gameMetacritic = (
-              await axios.get(
-                `https://api.rawg.io/api/games/${gameMetacritic.slug}`,
-                {
-                  params: { key: process.env.RAWG_API_KEY },
-                }
-              )
-            ).data;
-          }
 
           return gameMetacritic;
         };
@@ -157,7 +154,7 @@ const mainServices = {
         const getGameImages = async () => {
           let gameImages = (
             await axios.get(
-              `https://api.rawg.io/api/games/${apiGameTitle}/screenshots`,
+              `https://api.rawg.io/api/games/${slug}/screenshots`,
               {
                 params: { key: process.env.RAWG_API_KEY },
               }
