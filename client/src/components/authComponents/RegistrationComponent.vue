@@ -81,7 +81,7 @@ export default {
       </form>
     </div>
     <div class="md:w-1/2 w-full h-60 sm:h-auto">
-      <img class="w-full h-full rounded" src="https://picsum.photos/450/700" alt="login_image">
+      <img class="w-full h-full rounded object-cover object-right" src="@/assets/icons/sign_up.svg" alt="registration_image">
     </div>
   </div>
 </template>
