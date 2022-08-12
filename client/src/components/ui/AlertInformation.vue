@@ -5,7 +5,10 @@ import { mapGetters } from "vuex"
 export default {
   props: ["alertMessage", "alertColor"],
   computed: mapGetters("alertInfoModule", ["getAlertColor", "getBorderWidth"]),
-  methods: mapMutations("alertInfoModule", ["refreshInfo"])
+  methods: mapMutations("alertInfoModule", ["refreshInfo"]),
+  mounted() {
+    this.$store.commit("isLoadingModule/updateLoadingStatus", false)
+  }
 }
 </script>
 

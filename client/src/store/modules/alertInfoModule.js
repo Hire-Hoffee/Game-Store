@@ -37,7 +37,6 @@ export default {
 
       const timerId = setInterval(() => {
         state.borderWidth -= 0.2;
-        console.log(state.borderWidth);
       }, 10);
       setTimeout(() => { 
         state.alertInfo = null;

@@ -46,7 +46,7 @@ const authControllers = {
       const result = await authServices.logoutService(
         req.headers["authorization"]
       );
-      return res.clearCookie("token").json(result);
+      return res.json(result);
     } catch (error) {
       next(error);
     }
