@@ -16,13 +16,13 @@ const authServices = {
         credentials.password !== credentials.password_again ||
         credentials.password.length == 0
       ) {
-        throw createHttpError(400, "Passwords do not match or empty");
+        throw createHttpError(401, "Passwords do not match or empty");
       }
 
       delete credentials.password_again;
 
       if (await Customer.findOne({ where: { email: credentials.email } })) {
-        throw createHttpError(400, "User already exists");
+        throw createHttpError(401, "User already exists");
       }
 
       credentials.verificationString = crypto.randomBytes(64).toString("hex");
@@ -61,10 +61,10 @@ const authServices = {
       const user = await Customer.findOne({ where: { email: userData.email } });
 
       if (!user || user.isVerified) {
-        throw createHttpError(400, "User do not exist or already verified");
+        throw createHttpError(401, "User do not exist or already verified");
       }
       if (user.verificationString !== userData.verificationString) {
-        throw createHttpError(400, "User can not be verified");
+        throw createHttpError(401, "User can not be verified");
       }
 
       await Customer.update(
@@ -85,13 +85,13 @@ const authServices = {
       });
 
       if (!user) {
-        throw createHttpError(400, "Incorrect user email");
+        throw createHttpError(401, "Incorrect user email");
       }
       if (!user.isVerified) {
-        throw createHttpError(400, "Please verify your email");
+        throw createHttpError(401, "Please verify your email");
       }
       if (!(await bcrypt.compare(credentials.password, user.password))) {
-        throw createHttpError(400, "Incorrect user password");
+        throw createHttpError(401, "Incorrect user password");
       }
 
       const refreshToken = genRefreshToken({

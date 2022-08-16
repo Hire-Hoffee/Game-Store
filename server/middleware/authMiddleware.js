@@ -22,16 +22,13 @@ async function authValidation(req, res, next) {
         verifyToken(userData.authToken, process.env.SECRET_REFRESH);
         const newToken = genAccessToken({ email: payload.email });
         res.set("Update-Token", newToken);
+        console.log("sending new token");
         return next();
       } catch (error) {
-        return next(
-          createHttpError(401, "Unexpected auth error. Please log in again")
-        );
+        return next(error);
       }
     }
-    return next(
-      createHttpError(401, "Unexpected auth error. Please log in again")
-    );
+    return next(error);
   }
 }
 

@@ -40,7 +40,11 @@ export default {
   
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade" mode="out-in">
-            <component :is="Component" :key="route.path" />
+
+            <KeepAlive>
+              <component :is="Component" :key="route.path" />
+            </KeepAlive>
+            
           </Transition>
         </RouterView>
       </main>
