@@ -1,3 +1,5 @@
+import { isUserAuth } from "../navigationGuards";
+
 const authRoutes = [
   {
     path: "/auth/registration",
@@ -22,6 +24,7 @@ const authRoutes = [
     meta: {
       title: "Sign out",
     },
+    beforeEnter: isUserAuth,
   },
 ];
 

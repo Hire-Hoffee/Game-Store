@@ -1,19 +1,23 @@
+import { isUserAuth } from "../navigationGuards";
+
 const userRoutes = [
   {
-    path: "/user",
+    path: "/user/account",
     name: "userAccount",
     component: () => import("@/views/userViews/UserAccountView.vue"),
     meta: {
       title: "Account",
     },
+    beforeEnter: isUserAuth,
   },
   {
-    path: "/cart",
+    path: "/user/cart",
     name: "shoppingCart",
     component: () => import("@/views/userViews/ShoppingCartView.vue"),
     meta: {
       title: "Cart",
     },
+    beforeEnter: isUserAuth,
   },
 ];
 
