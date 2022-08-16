@@ -1,12 +1,12 @@
 import store from "../store/store";
 
-const reqIntercept = (config) => {
+const requestInterceptor = (config) => {
   store.commit("isLoadingModule/updateLoadingStatus", true);
   config.headers["Authorization"] = "Bearer " + localStorage.getItem("userToken") || null;
   return config;
 };
 
-const resIntercept = (response) => {
+const responseInterceptor = (response) => {
   store.commit("isLoadingModule/updateLoadingStatus", false);
   if (response.headers["update-token"]) {
     localStorage.setItem("userToken", response.headers["update-token"]);
@@ -14,4 +14,4 @@ const resIntercept = (response) => {
   return response;
 };
 
-export { reqIntercept, resIntercept };
+export { requestInterceptor, responseInterceptor };

@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import mainRoutes from "./mainRoutes";
 import authRoutes from "./authRoutes";
+import userRoutes from "./userRoutes";
 
-const routes = [...mainRoutes, ...authRoutes];
+const routes = [...mainRoutes, ...authRoutes, ...userRoutes];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -15,22 +15,7 @@ const mainRoutes = [
       title: "All Games",
     },
   },
-  {
-    path: "/user",
-    name: "userAccount",
-    component: () => import("@/views/UserAccountView.vue"),
-    meta: {
-      title: "Account",
-    },
-  },
-  {
-    path: "/cart",
-    name: "shoppingCart",
-    component: () => import("@/views/ShoppingCartView.vue"),
-    meta: {
-      title: "Cart",
-    },
-  },
+
   {
     path: "/news",
     name: "gamesNews",
