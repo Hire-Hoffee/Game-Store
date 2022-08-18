@@ -11,10 +11,12 @@ export default {
     <div class=" w-full p-10 flex flex-col justify-center space-y-16">
       <h1 class="text-3xl text-center mb-5 font-bold">Sure you want to quit ?</h1>
       <div class="flex justify-evenly">
-        <form @submit.prevent="$emit('logOutUserData')">
-          <CustomBtn class="px-8" type="submit">Yes</CustomBtn>
+        <form @submit.prevent="$emit('logOutUserData')" class="w-1/2 text-center">
+          <CustomBtn type="submit" class="bg-custom-red text-white">Yes</CustomBtn>
         </form>
-        <RouterLink :to="{ name: 'home' }"><CustomBtn class="px-8" type="submit">No</CustomBtn></RouterLink>
+        <div class="w-1/2 text-center">
+          <CustomBtn class="bg-custom-red text-white" @click="$router.push({ name: 'home'})">No</CustomBtn>
+        </div>
       </div>
     </div>
   </div>
