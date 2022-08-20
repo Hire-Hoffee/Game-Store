@@ -16,7 +16,6 @@ export default {
   async mounted() {
     try {
       this.cartGames = (await this.$API.userServices.getCartGames()).data
-      console.log(this.cartGames);
     } catch (error) {
       this.$store.commit("alertInfoModule/updateError", error)
     }
@@ -27,7 +26,6 @@ export default {
 
 <template>
   <div v-if="!getLoadingStatus">
-  <button @click="$forceUpdate()" class="bg-orange-300 p-4">click</button>
     <CartComponent v-if="cartGames" :games-info="cartGames"/>
   </div>
   <div class="flex justify-center m-5" v-else>
