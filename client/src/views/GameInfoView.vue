@@ -12,6 +12,18 @@ export default {
     }
   },
   computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
+  methods: {
+    async addToCart(gameId) {
+      try {
+        const { message } = (await this.$API.userServices.addToCart(gameId)).data
+
+        this.$store.commit("alertInfoModule/updateAlert", message)
+        this.$router.push({ name: "shoppingCart" })
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
+    }
+  },
   async mounted() {
     try {
       const urlGameTitle = this.$route.params.title
@@ -26,7 +38,7 @@ export default {
 
 <template>
   <div v-if="!getLoadingStatus">
-    <GameInfo v-if="game" :game-info="game" />
+    <GameInfo v-if="game" :game-info="game" @buyGame="addToCart" />
   </div>
   <div class="flex justify-center m-5" v-else>
     <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">

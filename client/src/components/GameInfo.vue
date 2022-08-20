@@ -3,6 +3,7 @@ import GameImagesSlider from "@/components/sliders/GameImagesSlider.vue"
 import ReviewsSlider from "@/components/sliders/ReviewsSlider.vue"
 
 export default {
+  emits: ["buyGame"],
   components: {
     GameImagesSlider,
     ReviewsSlider
@@ -29,7 +30,7 @@ export default {
 
         <div class="flex justify-between text-center lg:text-2xl text-lg">
           <div class="p-2 w-1/3 rounded inner_shadow_custom"><strong>{{ gameInfo.price }} $</strong></div>
-          <CustomBtn class="text-white uppercase bg-custom-red">Buy now</CustomBtn>
+          <CustomBtn @click="$emit('buyGame', gameInfo.id)" class="text-white uppercase bg-custom-red">Buy now</CustomBtn>
         </div>
 
         <div class="lg:text-xl text-lg">

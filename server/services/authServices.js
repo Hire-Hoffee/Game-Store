@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const createHttpError = require("http-errors");
-const { Customer } = require("../models/userModels");
+const { Customer, Cart } = require("../models/userModels");
 const sendEmail = require("../config/nodemailer");
 const {
   genRefreshToken,
@@ -43,11 +43,21 @@ const authServices = {
         template: "emailConfirmation",
         context: {
           confirmationLink: `http://localhost:7070/api/auth/verify?token=${verificationToken}`,
-          userEmail: credentials.email
+          userEmail: credentials.email,
         },
       });
 
-      await Customer.create(credentials);
+      await Customer.create(
+        {
+          email: credentials.email,
+          password: credentials.password,
+          verificationString: credentials.verificationString,
+          cart: {},
+        },
+        {
+          include: Cart,
+        }
+      );
 
       return { message: "User has been registered" };
     } catch (error) {

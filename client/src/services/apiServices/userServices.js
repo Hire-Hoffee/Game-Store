@@ -9,6 +9,22 @@ const userServices = {
       throw error;
     }
   },
+  async addToCart(gameId) {
+    try {
+      const result = userInstance.post(`/add_to_cart/${gameId}`);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  async getCartGames() {
+    try {
+      const result = userInstance.get("/cart");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default userServices;

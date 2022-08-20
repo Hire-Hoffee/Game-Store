@@ -28,9 +28,9 @@ const mainServices = {
     }
   },
 
-  async getGameInfo(params) {
+  async getGameInfo(gameTitle) {
     try {
-      const result = await mainInstance.get(`/games/${params}`);
+      const result = await mainInstance.get(`/games/${gameTitle}`);
       return result;
     } catch (error) {
       throw error;

@@ -19,8 +19,12 @@ const authControllers = {
 
   async emailVerifying(req, res, next) {
     try {
-      const { verifyEmail } = await authServices.emailVerifyingService(req.query.token);
-      return res.redirect(`${process.env.VUE_API_URL}/auth/login?verifyEmail=${verifyEmail}`);
+      const { verifyEmail } = await authServices.emailVerifyingService(
+        req.query.token
+      );
+      return res.redirect(
+        `${process.env.VUE_API_URL}/auth/login?verifyEmail=${verifyEmail}`
+      );
     } catch (error) {
       next(error);
     }
