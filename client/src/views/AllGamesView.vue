@@ -4,6 +4,7 @@ import FilterComponent from "@/components/FilterComponent.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "AllGamesView",
   components: {
     AllGamesComponent,
     FilterComponent

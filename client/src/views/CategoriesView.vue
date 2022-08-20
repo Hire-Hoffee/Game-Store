@@ -3,6 +3,7 @@ import CategoryCard from "@/components/cards/CategoryCard.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "CategoriesView",
   components: {
     CategoryCard,
   },

@@ -3,6 +3,7 @@ import GameInfo from "@/components/GameInfo.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "GameInfoView",
   components: {
     GameInfo
   },

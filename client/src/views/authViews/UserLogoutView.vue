@@ -3,6 +3,7 @@ import LogoutComponent from "@/components/authComponents/LogoutComponent.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "UserLogoutView",
   components: {
     LogoutComponent
   },

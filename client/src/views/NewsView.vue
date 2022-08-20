@@ -3,6 +3,7 @@ import NewsComponent from "@/components/NewsComponent.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "NewsView",
   components: {
     NewsComponent,
   },

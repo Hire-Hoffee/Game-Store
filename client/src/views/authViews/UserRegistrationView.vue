@@ -3,6 +3,7 @@ import RegistrationComponent from "@/components/authComponents/RegistrationCompo
 import { mapGetters } from "vuex"
 
 export default {
+  name: "UserRegistrationView",
   components: {
     RegistrationComponent
   },

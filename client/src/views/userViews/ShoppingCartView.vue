@@ -3,7 +3,7 @@ import CartComponent from "@/components/userComponents/CartComponent.vue";
 import { mapGetters } from "vuex"
 
 export default {
-  name: "shoppingCart",
+  name: "ShoppingCartView",
   components: {
     CartComponent,
   },

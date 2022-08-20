@@ -3,6 +3,7 @@ import LoginComponent from "@/components/authComponents/LoginComponent.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "UserLoginView",
   components: {
     LoginComponent
   },

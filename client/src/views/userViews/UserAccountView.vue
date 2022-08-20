@@ -3,6 +3,7 @@ import AccountComponent from "@/components/userComponents/AccountComponent.vue"
 import { mapGetters } from "vuex"
 
 export default {
+  name: "UserAccountView",
   components: {
     AccountComponent
   },
