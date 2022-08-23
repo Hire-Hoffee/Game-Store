@@ -25,6 +25,12 @@ async function authValidation(req, res, next) {
         console.log("sending new token");
         return next();
       } catch (error) {
+        if (error.message == "jwt expired") {
+          res.set("Token-Expired", true);
+          return next(
+            createHttpError(401, "JWT expired. Sign in again please")
+          );
+        }
         return next(error);
       }
     }

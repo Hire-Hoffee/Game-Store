@@ -2,7 +2,8 @@ import store from "../store/store";
 
 const requestInterceptor = (config) => {
   store.commit("isLoadingModule/updateLoadingStatus", true);
-  config.headers["Authorization"] = "Bearer " + localStorage.getItem("userToken") || null;
+  config.headers["Authorization"] =
+    "Bearer " + localStorage.getItem("userToken") || null;
   return config;
 };
 
@@ -14,4 +15,11 @@ const responseInterceptor = (response) => {
   return response;
 };
 
-export { requestInterceptor, responseInterceptor };
+const errorInterceptor = (error) => {
+  if (error.response.headers["token-expired"]) {
+    store.dispatch("authModule/clearAuthData");
+  }
+  return Promise.reject(error);
+};
+
+export { requestInterceptor, responseInterceptor, errorInterceptor };

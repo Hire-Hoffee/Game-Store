@@ -14,7 +14,12 @@ const VUE_API_URL = process.env.VUE_API_URL || undefined;
 
 const app = express();
 
-app.use(cors({ origin: VUE_API_URL, exposedHeaders: ["Update-Token"] }));
+app.use(
+  cors({
+    origin: VUE_API_URL,
+    exposedHeaders: ["Update-Token", "Token-Expired"],
+  })
+);
 app.use(logger("dev"));
 app.use(cookieParser());
 app.use(express.json());

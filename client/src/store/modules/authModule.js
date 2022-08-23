@@ -1,3 +1,5 @@
+import router from "@/router";
+
 export default {
   namespaced: true,
   state() {
@@ -18,5 +20,13 @@ export default {
       state.userRole = newValue;
     },
   },
-  actions: {},
+  actions: {
+    clearAuthData({ commit }) {
+      commit("updateUserToken", null);
+      commit("updateUserRole", null);
+      localStorage.removeItem("userToken");
+      localStorage.removeItem("userRole");
+      router.push({ name: "login" });
+    },
+  },
 };
