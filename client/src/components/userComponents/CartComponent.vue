@@ -34,12 +34,15 @@ export default {
     </div>
 
     <div class="mt-10">
-      <CartItem class="mb-5" v-for="game in gamesInfo.games" 
+      <CartItem class="mb-5" v-if="gamesInfo.games.length != 0" v-for="game in gamesInfo.games" 
         :game-title="game.gameTitle" 
         :game-poster="game.poster" 
         :game-price="game.price"
         :key="game.id"
       />
+      <div v-else>
+        <p class="text-2xl text-center my-16">Your cart is empty</p>
+      </div>
     </div>
 
     <div class="flex items-center justify-end space-x-10">
