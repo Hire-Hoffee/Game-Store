@@ -9,10 +9,41 @@ export default {
   },
    data() {
     return {
-      cartGames: null
+      cartGames: null,
+      reqDelay: null
     }
   },
   computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
+  methods: {
+    async changeAmount(data) {
+      try {
+        if (!data.amount) {
+          return
+        }
+        const changedAmount = {
+          cartId: this.cartGames.id,
+          gameId: data.gameId,
+          amount: data.amount
+        }
+        const result = (await this.$API.userServices.changeAmount(changedAmount)).data
+        this.reqDelay = null
+        this.cartGames = result
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
+    },
+    setupFunc(data) {
+      if (typeof this.reqDelay === "number") {
+        this.cancelRequest()
+      }
+      this.reqDelay = setTimeout(() => {
+        this.changeAmount(data);
+      }, 300);
+    },
+    cancelRequest() {
+      clearTimeout(this.reqDelay)
+    }
+  },
   async mounted() {
     try {
       this.cartGames = (await this.$API.userServices.getCartGames()).data
@@ -25,10 +56,7 @@ export default {
 
 
 <template>
-  <div v-if="!getLoadingStatus">
-    <CartComponent v-if="cartGames" :games-info="cartGames"/>
-  </div>
-  <div class="flex justify-center m-5" v-else>
-    <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">
+  <div>
+    <CartComponent v-if="cartGames" :games-info="cartGames" @changeAmountParent="setupFunc"/>
   </div>
 </template>

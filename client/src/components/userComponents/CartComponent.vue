@@ -5,7 +5,15 @@ export default {
   components: {
     CartItem,
   },
-  props: ["gamesInfo"]
+  emits: ["changeAmountParent"],
+  props: ["gamesInfo"],
+  computed: {
+    totalSum() {
+      return this.gamesInfo.games.reduce((acc, curr) => {
+        return acc + (curr.orderInfo.quantity * curr.price)
+      }, 0)
+    }
+  }
 }
 </script>
 
@@ -38,7 +46,11 @@ export default {
         :game-title="game.gameTitle" 
         :game-poster="game.poster" 
         :game-price="game.price"
+        :game-amount="game.orderInfo.quantity"
+        :total-price="game.price * game.orderInfo.quantity"
+        :game-id="game.id"
         :key="game.id"
+        @changeAmountChild="data => $emit('changeAmountParent', data)"
       />
       <div v-else>
         <p class="text-2xl text-center my-16">Your cart is empty</p>
@@ -50,7 +62,7 @@ export default {
         <CustomBtn class="bg-custom-red text-xl">Order and payment</CustomBtn>
       </div>
       <div class="p-5 font-bold text-2xl text-custom-red rounded inner_shadow_custom">
-        <strong>300$</strong>
+        <strong>{{ totalSum }} $</strong>
       </div>
     </div>
   </div>

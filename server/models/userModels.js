@@ -133,7 +133,7 @@ module.exports = {
           notNull: { args: true, msg: "Quantity cannot be null" },
           notEmpty: { args: true, msg: "Quantity cannot be empty" },
           min: { args: 1, msg: "Minimum quantity 1" },
-          max: { args: 100, msg: "Maximum quantity 100" },
+          max: { args: 10, msg: "Maximum quantity 100" },
         },
       },
     },

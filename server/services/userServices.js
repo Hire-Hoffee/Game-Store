@@ -1,6 +1,7 @@
 const { Customer, Payment, Cart, OrderInfo } = require("../models/userModels");
 const { Game } = require("../models/gameModels");
 const { verifyToken } = require("../config/webTokens");
+const { Op } = require("sequelize");
 
 const userServices = {
   async userAccountService(userToken) {
@@ -99,6 +100,21 @@ const userServices = {
       });
 
       return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  async changeAmountService(data, token) {
+    try {
+      await OrderInfo.update(
+        { quantity: data.amount },
+        {
+          where: {
+            [Op.and]: [{ cartId: data.cartId }, { gameId: data.gameId }],
+          },
+        }
+      );
+      return this.cartGamesService(token);
     } catch (error) {
       throw error;
     }

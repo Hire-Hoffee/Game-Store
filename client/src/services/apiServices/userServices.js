@@ -25,6 +25,14 @@ const userServices = {
       throw error;
     }
   },
+  async changeAmount(data) {
+    try {
+      const result = userInstance.post("/change_amount", data);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default userServices;

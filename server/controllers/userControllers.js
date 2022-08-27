@@ -25,7 +25,20 @@ const userControllers = {
   },
   async getCartGames(req, res, next) {
     try {
-      const result = await userServices.cartGamesService(req.headers["authorization"]);
+      const result = await userServices.cartGamesService(
+        req.headers["authorization"]
+      );
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
+  async changeAmount(req, res, next) {
+    try {
+      const result = await userServices.changeAmountService(
+        req.body,
+        req.headers["authorization"]
+      );
       return res.json(result);
     } catch (error) {
       next(error);
