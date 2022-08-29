@@ -28,11 +28,17 @@ export default {
   async mounted() {
     try {
       this.categories = (await this.$API.mainServices.getAllCategories()).data
+      if (this.$route.query.genre) {
+        this.searchGamesOnGenres(this.$route.query.genre)
+      }
     } catch (error) {
       this.$store.commit("alertInfoModule/updateError", error)
     }
   },
   beforeRouteUpdate(to, from) {
+    if (to.query.genre) {
+      this.searchGamesOnGenres(to.query.genre)
+    }
     this.foundGames = null
   },
 }
@@ -49,7 +55,6 @@ export default {
         :category-name="category.genreName" 
         :category-SVG="category.genreSVG" 
         :key="category.id" 
-        @click="searchGamesOnGenres(category.genreName)"
       />
     </div>
 
