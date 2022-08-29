@@ -232,6 +232,33 @@ const mainServices = {
       throw error;
     }
   },
+  async searchGamesOnGenresService(genre) {
+    try {
+      const result = await Game.findAll({
+        attributes: {
+          exclude: [
+            "description",
+            "trailer",
+            "developerId",
+            "rating",
+            "releaseDate",
+          ],
+        },
+        include: {
+          model: Genre,
+          attributes: {
+            exclude: ["genreSVG", "gameGenres"],
+          },
+          where: {
+            genreName: { [Op.iLike]: `%${genre}%` },
+          },
+        },
+      });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 module.exports = mainServices;

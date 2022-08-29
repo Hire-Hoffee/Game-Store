@@ -57,6 +57,14 @@ const mainServices = {
       throw error;
     }
   },
+  async searchGamesOnGenres(genre) {
+    try {
+      const result = await mainInstance.get(`/search_by_genre?genre=${genre}`);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default mainServices;

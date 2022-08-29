@@ -54,6 +54,16 @@ const mainControllers = {
       next(error);
     }
   },
+  async searchGamesOnGenres(req, res, next) {
+    try {
+      const result = await mainServices.searchGamesOnGenresService(
+        req.query.genre
+      );
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = mainControllers;
