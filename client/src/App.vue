@@ -36,7 +36,7 @@ export default {
       <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3 relative">
 
         <Transition name="error_fade" mode="out-in">
-          <div v-if="getFoundGames" class="absolute w-full md:h-screen h-[70vh] -top-20 md:-top-10 inset-0 z-50 p-2 bg-custom-gray bg-opacity-80 rounded-lg overflow-auto shadow-xl">
+          <div v-if="getFoundGames" class="absolute w-full md:h-screen h-[70vh] -top-20 md:-top-10 inset-0 z-50 p-2 bg-slate-200 dark:bg-custom-gray bg-opacity-80 rounded-lg overflow-auto shadow-xl">
             <TransitionGroup name="list" tag="ul">
               <li class="list-none" v-for="game in getFoundGames" :key="game.id">
                 <FoundGame :game-poster="game.poster" :game-title="game.gameTitle" />
