@@ -59,7 +59,7 @@ export default {
 
     <div class="flex items-center justify-end space-x-10">
       <div>
-        <CustomBtn class="bg-custom-red text-xl">Order and payment</CustomBtn>
+        <CustomBtn class="bg-custom-red text-xl text-white">Order and payment</CustomBtn>
       </div>
       <div class="p-5 font-bold text-2xl text-custom-red rounded inner_shadow_custom">
         <strong>{{ totalSum }} $</strong>

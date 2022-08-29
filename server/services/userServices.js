@@ -1,3 +1,4 @@
+const createHttpError = require("http-errors");
 const { Customer, Payment, Cart, OrderInfo } = require("../models/userModels");
 const { Game } = require("../models/gameModels");
 const { verifyToken } = require("../config/webTokens");
@@ -43,6 +44,7 @@ const userServices = {
       throw error;
     }
   },
+
   async addToCartService(data) {
     try {
       const jwt = data.userToken.split(" ")[1];
@@ -59,6 +61,13 @@ const userServices = {
         include: [Cart],
       });
 
+      const result = await OrderInfo.findOne({
+        where: { [Op.and]: [{ cartId: cart.id }, { gameId: data.gameId }] },
+      });
+      if (result) {
+        throw createHttpError(500, "This game already in the cart");
+      }
+
       await OrderInfo.create({
         cartId: cart.id,
         gameId: data.gameId,
@@ -69,6 +78,7 @@ const userServices = {
       throw error;
     }
   },
+
   async cartGamesService(userToken) {
     try {
       const jwt = userToken.split(" ")[1];
@@ -104,6 +114,7 @@ const userServices = {
       throw error;
     }
   },
+
   async changeAmountService(data, token) {
     try {
       await OrderInfo.update(

@@ -11,6 +11,7 @@ const userControllers = {
       next(error);
     }
   },
+  
   async addToCart(req, res, next) {
     try {
       const data = {
@@ -23,6 +24,7 @@ const userControllers = {
       next(error);
     }
   },
+
   async getCartGames(req, res, next) {
     try {
       const result = await userServices.cartGamesService(
@@ -33,6 +35,7 @@ const userControllers = {
       next(error);
     }
   },
+
   async changeAmount(req, res, next) {
     try {
       const result = await userServices.changeAmountService(
