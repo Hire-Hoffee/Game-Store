@@ -45,6 +45,15 @@ const mainControllers = {
       next(error);
     }
   },
+
+  async searchGames(req, res, next) {
+    try {
+      const result = await mainServices.searchGamesService(req.query.gameTitle);
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = mainControllers;

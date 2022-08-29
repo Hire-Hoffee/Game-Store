@@ -8,9 +8,12 @@ export default {
 
 <template>
   <div
-    class="flex sm:flex-row flex-col w-full sm:h-24 sm:justify-between items-center rounded-xl inner_shadow_custom overflow-hidden text-2xl p-5 sm:p-0">
+    class="flex sm:flex-row flex-col w-full sm:h-24 sm:justify-between items-center rounded-xl inner_shadow_custom overflow-hidden text-2xl p-5 sm:p-0 relative">
+    <button class="absolute top-2 right-2">
+      <img src="@/assets/icons/exit.svg" class="sm:w-3 sm:h-3 w-5 h-5" alt="delete">
+    </button>
     <div class="sm:w-2/12 w-full h-48 sm:h-full mb-5 sm:mb-0">
-      <img class="w-full h-full rounded-xl sm:rounded-none" :src="gamePoster" :alt="gameTitle">
+      <img class="w-full h-full rounded-xl sm:rounded-none object-cover" :src="gamePoster" :alt="gameTitle">
     </div>
     <div class="sm:w-4/12 mb-5 sm:mb-0">
       <h1 class="text-center">{{ gameTitle }}</h1>

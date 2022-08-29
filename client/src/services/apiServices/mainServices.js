@@ -1,4 +1,4 @@
-import { mainInstance }  from "../instances";
+import { mainInstance } from "../instances";
 
 const mainServices = {
   async getMainPage() {
@@ -12,7 +12,9 @@ const mainServices = {
 
   async getAllGames(pageNum = 1) {
     try {
-      const result = await mainInstance.get("/games", { params: { page: pageNum } });
+      const result = await mainInstance.get("/games", {
+        params: { page: pageNum },
+      });
       return result;
     } catch (error) {
       throw error;
@@ -40,6 +42,16 @@ const mainServices = {
   async getGamesNews() {
     try {
       const result = await mainInstance.get("/news");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  async searchGames(gameTitle) {
+    try {
+      const result = await mainInstance.get(`/search?gameTitle=${gameTitle}`, {
+        headers: { "Cancel-Loading": true },
+      });
       return result;
     } catch (error) {
       throw error;

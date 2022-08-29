@@ -9,14 +9,53 @@ export default {
       search: false,
       isMobile: false,
       isMobileMenuOpen: false,
-      isTablet: false
+      isTablet: false,
+      gameTitle: "",
+      reqDelay: null
     };
   },
   computed: {
     ...mapGetters("authModule", ["getUserRole"]),
-    ...mapGetters("themeModule", ["getColorMode"])
+    ...mapGetters("themeModule", ["getColorMode"]),
+    ...mapGetters("searchGamesModule", ["getFoundGames"])
+  },
+  watch: {
+    getFoundGames() {
+      if (this.getFoundGames == null) {
+        this.isMobileMenuOpen = false
+      }
+    }
   },
   methods: {
+    async searchGames() {
+      try {
+        if (!this.gameTitle) {
+          this.$store.commit("searchGamesModule/updateFoundGames", null)
+          return
+        }
+        const result = (await this.$API.mainServices.searchGames(this.gameTitle)).data
+        this.$store.commit("searchGamesModule/updateFoundGames", result)
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
+    },
+    setupFunc() {
+      if (typeof this.reqDelay === "number") {
+        this.cancelRequest()
+      }
+      this.reqDelay = setTimeout(() => {
+        this.searchGames();
+      }, 200);
+    },
+    cancelRequest() {
+      clearTimeout(this.reqDelay)
+    },
+    clearSearchData() {
+      this.$store.commit("searchGamesModule/updateFoundGames", null)
+    },
+
+
+
     clickToSearch() {
       this.search = !this.search;
     },
@@ -52,7 +91,7 @@ export default {
 <template>
 
   <header v-if="!isMobile"
-    class="bg-slate-50 dark:bg-custom-black w-full h-16 flex justify-between items-center px-12 font-bold z-50 drop_shadow_custom_down">
+    class="bg-slate-50 dark:bg-custom-black w-full h-16 flex justify-between items-center px-12 font-bold z-40 drop_shadow_custom_down">
     <div class="flex items-center space-x-7 text-2xl text-custom-red">
       <RouterLink v-if="isTablet" :to="{ name: 'home' }"><img src="@/assets/icons/logo.svg" alt="site logo"></RouterLink>
       <img v-else src="@/assets/icons/logo.svg" alt="site logo">
@@ -84,11 +123,12 @@ export default {
       <div class="sm:hidden lg:block hidden">
         <form class="flex space-x-7" @submit.prevent>
           <FormInput
+            @input="setupFunc"
             :input-id="'search_game'" 
             :input-img="'/src/assets/icons/search.svg'" 
             :input-placeholder="'Search...'"
+            v-model:inputModel="gameTitle"
           />
-          <CustomBtn class="bg-slate-50 dark:bg-custom-black" type="submit">Search</CustomBtn>
         </form>
       </div>
     </div>
@@ -97,12 +137,13 @@ export default {
       <div v-if="search" class="absolute right-0 top-16 px-5 mt-5 w-full">
         <form class="flex space-x-7">
           <FormInput 
+            @input="setupFunc"
             class="w-full"
             :input-id="'search_game_tablet'" 
             :input-img="'/src/assets/icons/search.svg'" 
             :input-placeholder="'Search...'"
+            v-model:inputModel="gameTitle"
           />
-          <CustomBtn class="bg-slate-50 dark:bg-custom-black w-2/12">Search</CustomBtn>
         </form>
       </div>
     </Transition>
@@ -110,18 +151,18 @@ export default {
 
 
 
-  <header v-else class="flex items-center bg-slate-50 dark:bg-custom-black w-full h-16 px-6 font-bold z-50 drop_shadow_custom_down">
+  <header v-else class="flex items-center bg-slate-50 dark:bg-custom-black w-full h-16 px-6 font-bold z-40 drop_shadow_custom_down">
     <div class="flex justify-between w-full">
       <div class="w-full">
         <Transition name="bounce">
-          <img class="absolute top-4 left-6" v-if="!isMobileMenuOpen" @click="clickToOpenMobileMenu"
+          <img class="absolute top-4 left-6" v-if="!isMobileMenuOpen" @click="clickToOpenMobileMenu(); clearSearchData();"
             src="@/assets/icons/hamburgerMenu.svg" alt="menu_icon">
-          <img class="absolute top-4 left-6" v-else @click="clickToOpenMobileMenu" src="@/assets/icons/exit.svg"
+          <img class="absolute top-4 left-6" v-else @click="clickToOpenMobileMenu(); clearSearchData();" src="@/assets/icons/exit.svg"
             alt="exit">
         </Transition>
       </div>
       <div class="text-custom-red text-xl">
-        <RouterLink v-if="isMobileMenuOpen" @click="clickToOpenMobileMenu" :to="{ name: 'home' }">GameMuffin</RouterLink>
+        <RouterLink v-if="isMobileMenuOpen" @click="clickToOpenMobileMenu()" :to="{ name: 'home' }">GameMuffin</RouterLink>
         <RouterLink v-else :to="{ name: 'home' }">GameMuffin</RouterLink>
       </div>
 
@@ -182,14 +223,13 @@ export default {
           <li>
             <form class="flex space-x-7" @submit.prevent>
               <FormInput 
+                @input="setupFunc"
                 class="w-full"
                 :input-id="'search_game_phone'" 
                 :input-img="'/src/assets/icons/search.svg'" 
                 :input-placeholder="'Search...'"
+                v-model:inputModel="gameTitle"
               />
-              <CustomBtn class="bg-slate-50 dark:bg-custom-black w-2/12">
-                <img class="w-full h-full" src="@/assets/icons/search.svg" alt="search">
-              </CustomBtn>
             </form>
           </li>
         </ul>

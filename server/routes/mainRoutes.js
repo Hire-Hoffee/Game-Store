@@ -6,5 +6,6 @@ router.get("/games", mainControllers.getAllGames);
 router.get("/games/:title", mainControllers.getGameInfo);
 router.get("/categories", mainControllers.getAllCategories);
 router.get("/news", mainControllers.getGamesNews);
+router.get("/search", mainControllers.searchGames);
 
 module.exports = router;

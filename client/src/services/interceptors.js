@@ -1,7 +1,9 @@
 import store from "../store/store";
 
 const requestInterceptor = (config) => {
-  store.commit("isLoadingModule/updateLoadingStatus", true);
+  if (!config.headers["Cancel-Loading"]) {
+    store.commit("isLoadingModule/updateLoadingStatus", true);
+  }
   config.headers["Authorization"] =
     "Bearer " + localStorage.getItem("userToken") || null;
   return config;

@@ -2,6 +2,7 @@
 import CustomHeader from "@/components/UI/CustomHeader.vue"
 import CustomFooter from "@/components/UI/CustomFooter.vue"
 import AlertInformation from "@/components/UI/AlertInformation.vue"
+import FoundGame from "@/components/cards/FoundGame.vue"
 
 import { mapGetters } from "vuex"
 
@@ -9,11 +10,13 @@ export default {
   components: {
     CustomHeader,
     CustomFooter,
-    AlertInformation
-  },
+    AlertInformation,
+    FoundGame
+},
   computed: {
     ...mapGetters("alertInfoModule", ["getErrorInfo", "getAlertInfo"]),
-    ...mapGetters("themeModule", ["getColorMode"])
+    ...mapGetters("themeModule", ["getColorMode"]),
+    ...mapGetters("searchGamesModule", ["getFoundGames"])
   },
   mounted() {
     if (!localStorage.getItem("colorMode")) {
@@ -28,9 +31,20 @@ export default {
   <span :class="getColorMode">
     <div class="min-h-full flex flex-col items-center bg-slate-50 text-custom-black dark:bg-custom-black dark:text-white">
   
-      <CustomHeader class="mb-24 sticky top-0" />
+      <CustomHeader class="mb-24 sticky top-0 md:z-50" />
   
       <main class="container 2xl:w-5/6 flex-auto flex flex-col justify-center p-3 relative">
+
+        <Transition name="error_fade" mode="out-in">
+          <div v-if="getFoundGames" class="absolute w-full md:h-screen h-[70vh] -top-20 md:-top-10 inset-0 z-50 p-2 bg-custom-gray bg-opacity-80 rounded-lg overflow-auto shadow-xl">
+            <TransitionGroup name="list" tag="ul">
+              <li class="list-none" v-for="game in getFoundGames" :key="game.id">
+                <FoundGame :game-poster="game.poster" :game-title="game.gameTitle" />
+              </li>
+            </TransitionGroup>
+          </div>
+        </Transition> 
+
         <Transition name="error_fade" mode="out-in">
           <AlertInformation 
             v-if="getErrorInfo || getAlertInfo"
@@ -74,5 +88,15 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

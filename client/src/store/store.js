@@ -4,6 +4,7 @@ import pagesCountModule from "./modules/pagesCountModule";
 import isLoadingModule from "./modules/isLoadingModule";
 import authModule from "./modules/authModule";
 import themeModule from "./modules/themeModule";
+import searchGamesModule from "./modules/searchGamesModule";
 
 const store = createStore({
   modules: {
@@ -11,7 +12,8 @@ const store = createStore({
     pagesCountModule,
     isLoadingModule,
     authModule,
-    themeModule
+    themeModule,
+    searchGamesModule,
   },
 });
 

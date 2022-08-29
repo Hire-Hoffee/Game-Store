@@ -122,7 +122,7 @@ const mainServices = {
       const convertTitle = title.toLowerCase().split("_").join(" ");
 
       const result = await Game.findOne({
-        where: { gameTitle: { [Op.iLike]: convertTitle } },
+        where: { gameTitle: { [Op.iLike]: `%${convertTitle}%` } },
         include: [Genre, Developer, Image, Platform, MinimumSR, RecommendedSR],
       });
 
@@ -207,6 +207,26 @@ const mainServices = {
         throw createHttpError(404, "Result not found");
       }
 
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  async searchGamesService(gameTitle) {
+    try {
+      const result = await Game.findAll({
+        attributes: {
+          exclude: [
+            "description",
+            "trailer",
+            "developerId",
+            "rating",
+            "releaseDate",
+            "price",
+          ],
+        },
+        where: { gameTitle: { [Op.iLike]: `%${gameTitle}%` } },
+      });
       return result;
     } catch (error) {
       throw error;
