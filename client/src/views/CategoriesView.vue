@@ -38,7 +38,11 @@ export default {
   beforeRouteUpdate(to, from) {
     if (to.query.genre) {
       this.searchGamesOnGenres(to.query.genre)
+      return
     }
+    this.foundGames = null
+  },
+  beforeRouteLeave(to, from) {
     this.foundGames = null
   },
 }

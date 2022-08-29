@@ -55,7 +55,7 @@ export default {
         <RouterView v-slot="{ Component, route }">
           <Transition name="fade" mode="out-in">
 
-            <KeepAlive :exclude="['ShoppingCartView']">
+            <KeepAlive :exclude="['ShoppingCartView', 'CategoriesView']">
               <component :is="Component" :key="route.path" />
             </KeepAlive>
             
