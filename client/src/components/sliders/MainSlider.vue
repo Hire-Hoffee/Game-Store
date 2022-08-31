@@ -50,10 +50,9 @@ export default {
             <p>{{ game.description.slice(0, 200) }}...</p>
           </div>
           <div class="flex justify-around">
-            <div class="bg-custom-red rounded py-1 w-2/6 flex items-center justify-center">
+            <div class="bg-custom-red rounded py-1 w-1/2 flex items-center justify-center">
               <p class="text-center lg:text-2xl text-lg text-white">{{ game.price }} $</p>
             </div>
-            <CustomBtn>Add to cart</CustomBtn>
           </div>
         </div>
       </RouterLink>
@@ -74,10 +73,9 @@ export default {
             <h1 class="text-center lg:text-2xl">{{ game.gameTitle }}</h1>
           </div>
           <div class="flex justify-around">
-            <div class="bg-custom-red rounded py-1 w-2/6 flex items-center justify-center">
+            <div class="bg-custom-red rounded py-1 w-1/2 flex items-center justify-center">
               <p class="text-center text-white lg:text-2xl text-lg">{{ game.price }} $</p>
             </div>
-            <CustomBtn>Add to cart</CustomBtn>
           </div>
         </div>
       </RouterLink>

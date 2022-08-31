@@ -1,6 +1,7 @@
 <script>
 import GameImagesSlider from "@/components/sliders/GameImagesSlider.vue"
 import ReviewsSlider from "@/components/sliders/ReviewsSlider.vue"
+import { mapGetters } from "vuex"
 
 export default {
   emits: ["buyGame"],
@@ -8,7 +9,8 @@ export default {
     GameImagesSlider,
     ReviewsSlider
   },
-  props: ["gameInfo"]
+  props: ["gameInfo"],
+  computed: mapGetters("authModule", ["getUserRole"]),
 }
 </script>
 
@@ -29,8 +31,14 @@ export default {
         </div>
 
         <div class="flex justify-between text-center lg:text-2xl text-lg">
-          <div class="p-2 w-1/3 rounded inner_shadow_custom"><strong>{{ gameInfo.price }} $</strong></div>
-          <CustomBtn @click="$emit('buyGame', gameInfo.id)" class="text-white uppercase bg-custom-red">Buy now</CustomBtn>
+          <div class="p-2 w-1/3 rounded inner_shadow_custom"><strong>{{ gameInfo.price ? `${gameInfo.price} $` : "-" }}</strong></div>
+          <CustomBtn 
+            v-if="gameInfo.price"
+            @click="getUserRole ? $emit('buyGame', gameInfo.id) : false" 
+            class="text-white uppercase bg-custom-red">
+            {{ getUserRole ? "Buy now" : "Login to buy" }}
+          </CustomBtn>
+          <CustomBtn v-else>Coming soon</CustomBtn>
         </div>
 
         <div class="lg:text-xl text-lg">
