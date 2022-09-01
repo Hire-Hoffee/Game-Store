@@ -17,6 +17,14 @@ const userServices = {
       throw error;
     }
   },
+  async deleteFromCart(gameId) {
+    try {
+      const result = userInstance.post(`/delete_from_cart/${gameId}`);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
   async getCartGames() {
     try {
       const result = userInstance.get("/cart");

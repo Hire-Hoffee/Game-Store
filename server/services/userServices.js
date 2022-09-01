@@ -48,7 +48,6 @@ const userServices = {
   async addToCartService(data) {
     try {
       const jwt = data.userToken.split(" ")[1];
-
       if (!jwt) {
         throw createHttpError(404, "User information not found");
       }
@@ -74,6 +73,34 @@ const userServices = {
       });
 
       return { message: "Game has been added to cart" };
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async deleteFromCartService(data) {
+    try {
+      const jwt = data.userToken.split(" ")[1];
+      if (!jwt) {
+        throw createHttpError(404, "User information not found");
+      }
+
+      const { email } = verifyToken(jwt, process.env.SECRET_ACCESS, {
+        ignoreExpiration: true,
+      });
+      const { cart } = await Customer.findOne({
+        where: { email: email },
+        include: [Cart],
+      });
+
+      await OrderInfo.destroy({
+        where: {
+          cartId: cart.id,
+          gameId: data.gameId,
+        },
+      });
+
+      return await this.cartGamesService(data.userToken);
     } catch (error) {
       throw error;
     }
@@ -125,7 +152,7 @@ const userServices = {
           },
         }
       );
-      return this.cartGamesService(token);
+      return await this.cartGamesService(token);
     } catch (error) {
       throw error;
     }

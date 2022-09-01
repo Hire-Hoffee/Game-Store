@@ -42,7 +42,13 @@ export default {
     },
     cancelRequest() {
       clearTimeout(this.reqDelay)
-    }
+    },
+
+    async deleteGameFromCart(gameId) {
+      const result = (await this.$API.userServices.deleteFromCart(gameId)).data
+      this.cartGames = result
+    },
+
   },
   async mounted() {
     try {
@@ -57,6 +63,10 @@ export default {
 
 <template>
   <div>
-    <CartComponent v-if="cartGames" :games-info="cartGames" @changeAmountParent="setupFunc"/>
+    <CartComponent v-if="cartGames" 
+      :games-info="cartGames" 
+      @changeAmountParent="setupFunc" 
+      @deleteItemParent="deleteGameFromCart"
+    />
   </div>
 </template>

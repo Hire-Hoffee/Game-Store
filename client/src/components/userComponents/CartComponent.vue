@@ -5,7 +5,7 @@ export default {
   components: {
     CartItem,
   },
-  emits: ["changeAmountParent"],
+  emits: ["changeAmountParent", "deleteItemParent"],
   props: ["gamesInfo"],
   computed: {
     totalSum() {
@@ -42,28 +42,44 @@ export default {
     </div>
 
     <div class="mt-10">
-      <CartItem class="mb-5" v-if="gamesInfo.games.length != 0" v-for="game in gamesInfo.games" 
-        :game-title="game.gameTitle" 
-        :game-poster="game.poster" 
-        :game-price="game.price"
-        :game-amount="game.orderInfo.quantity"
-        :total-price="game.price * game.orderInfo.quantity"
-        :game-id="game.id"
-        :key="game.id"
-        @changeAmountChild="data => $emit('changeAmountParent', data)"
-      />
-      <div v-else>
-        <p class="text-2xl text-center my-16">Your cart is empty</p>
-      </div>
+      <TransitionGroup name="list" tag="ul">
+        <CartItem class="mb-5" v-if="gamesInfo.games.length != 0" v-for="game in gamesInfo.games" 
+          :game-title="game.gameTitle" 
+          :game-poster="game.poster" 
+          :game-price="game.price"
+          :game-amount="game.orderInfo.quantity"
+          :total-price="game.price * game.orderInfo.quantity"
+          :game-id="game.id"
+          :key="game.id"
+          @changeAmountChild="data => $emit('changeAmountParent', data)"
+          @deleteItemChild="data => $emit('deleteItemParent', data)"
+        />
+        <div v-else>
+          <p class="text-2xl text-center my-16">Your cart is empty</p>
+        </div>
+      </TransitionGroup>
     </div>
 
-    <div class="flex items-center justify-end space-x-10">
-      <div>
+    <div class="flex items-center sm:justify-end justify-between">
+      <div class="sm:pr-10">
         <CustomBtn class="bg-custom-red text-xl text-white">Order and payment</CustomBtn>
       </div>
-      <div class="p-5 font-bold text-2xl text-custom-red rounded inner_shadow_custom">
+      <div class="sm:px-5 px-3 py-2 font-bold text-2xl text-custom-red rounded inner_shadow_custom">
         <strong>{{ totalSum }} $</strong>
       </div>
     </div>
   </div>
 </template>
+
+
+<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
