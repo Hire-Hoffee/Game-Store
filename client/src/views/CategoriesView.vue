@@ -42,9 +42,6 @@ export default {
     }
     this.foundGames = null
   },
-  beforeRouteLeave(to, from) {
-    this.foundGames = null
-  },
 }
 </script>
 

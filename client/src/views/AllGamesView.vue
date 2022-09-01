@@ -62,10 +62,7 @@ export default {
   },
   beforeRouteUpdate(to, from) {
     this.filteredGames = null
-  },
-  beforeRouteLeave(to, from) {
-    this.filteredGames = null
-  },
+  }
 }
 </script>
 
