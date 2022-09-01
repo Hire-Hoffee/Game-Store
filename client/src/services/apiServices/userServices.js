@@ -41,6 +41,14 @@ const userServices = {
       throw error;
     }
   },
+  async postReview(gameId, reviewContent) {
+    try {
+      const result = userInstance.post(`/post_review/${gameId}`, reviewContent);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default userServices;

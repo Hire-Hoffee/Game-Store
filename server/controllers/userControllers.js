@@ -60,6 +60,20 @@ const userControllers = {
       next(error);
     }
   },
+
+  async postReview(req, res, next) {
+    try {
+      const reviewData = {
+        userToken: req.headers["authorization"],
+        gameId: req.params.gameId,
+        content: req.body.reviewContent,
+      };
+      const result = await userServices.postReviewService(reviewData);
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 module.exports = userControllers;

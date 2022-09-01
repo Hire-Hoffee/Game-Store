@@ -23,6 +23,14 @@ export default {
       } catch (error) {
         this.$store.commit("alertInfoModule/updateError", error)
       }
+    },
+    async postReview(data) {
+      try {
+        const { message } = (await this.$API.userServices.postReview(data.gameId, { reviewContent: data.reviewContent })).data
+        this.$store.commit("alertInfoModule/updateAlert", message)
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
     }
   },
   async mounted() {
@@ -39,7 +47,12 @@ export default {
 
 <template>
   <div v-if="!getLoadingStatus">
-    <GameInfo v-if="game" :game-info="game" @buyGame="addToCart" />
+    <GameInfo 
+      v-if="game" 
+      :game-info="game" 
+      @buyGame="addToCart" 
+      @postReviewEmit="postReview" 
+    />
   </div>
   <div class="flex justify-center m-5" v-else>
     <img src="@/assets/icons/spinner.svg" class="animate-spin" alt="spinner">

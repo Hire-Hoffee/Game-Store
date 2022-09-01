@@ -4,10 +4,15 @@ import ReviewsSlider from "@/components/sliders/ReviewsSlider.vue"
 import { mapGetters } from "vuex"
 
 export default {
-  emits: ["buyGame"],
+  emits: ["buyGame", "postReviewEmit"],
   components: {
     GameImagesSlider,
     ReviewsSlider
+  },
+  data() {
+    return {
+      reviewContent: ""
+    }
   },
   props: ["gameInfo"],
   computed: mapGetters("authModule", ["getUserRole"]),
@@ -162,14 +167,15 @@ export default {
     <div>
       <ParagraphHeader add-class="w-1/3">Post review</ParagraphHeader>
       <div class="w-11/12 m-auto">
-        <form>
+        <form @submit.prevent="$emit('postReviewEmit', { reviewContent, gameId: gameInfo.id })">
           <div class="flex justify-center">
             <textarea
+              v-model="reviewContent"
               class="w-full sm:h-56 h-36 text-lg text-custom-black p-2 rounded focus:outline-none focus:ring-custom-red focus:ring-2 inner_shadow_custom"
               placeholder="Type here..."></textarea>
           </div>
           <div class="flex justify-end mt-5">
-            <CustomBtn class="w-fit text-white bg-custom-red uppercase sm:px-12 px-16">Post</CustomBtn>
+            <CustomBtn type="submit" class="w-fit text-white bg-custom-red uppercase sm:px-12 px-16">Post</CustomBtn>
           </div>
         </form>
       </div>
