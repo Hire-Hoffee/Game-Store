@@ -54,11 +54,27 @@ const mainControllers = {
       next(error);
     }
   },
+
   async searchGamesOnGenres(req, res, next) {
     try {
       const result = await mainServices.searchGamesOnGenresService(
         req.query.genre
       );
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async searchByFilter(req, res, next) {
+    try {
+      const searchParams = {
+        price: req.query.price,
+        genre: req.query.genre,
+        platform: req.query.platform,
+      };
+
+      const result = await mainServices.searchByFilterService(searchParams);
       return res.json(result);
     } catch (error) {
       next(error);

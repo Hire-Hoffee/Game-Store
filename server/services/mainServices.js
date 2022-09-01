@@ -86,7 +86,15 @@ const mainServices = {
 
       const result = await Game.findAndCountAll({
         order: [["gameTitle", "ASC"]],
-        attributes: { exclude: ["description"] },
+        attributes: {
+          exclude: [
+            "description",
+            "trailer",
+            "developerId",
+            "rating",
+            "releaseDate",
+          ],
+        },
         limit,
         offset: page > 0 ? page * limit : 0,
       });
@@ -212,6 +220,7 @@ const mainServices = {
       throw error;
     }
   },
+
   async searchGamesService(gameTitle) {
     try {
       const result = await Game.findAll({
@@ -227,11 +236,13 @@ const mainServices = {
         },
         where: { gameTitle: { [Op.iLike]: `%${gameTitle}%` } },
       });
+
       return result;
     } catch (error) {
       throw error;
     }
   },
+
   async searchGamesOnGenresService(genre) {
     try {
       const result = await Game.findAll({
@@ -254,6 +265,45 @@ const mainServices = {
           },
         },
       });
+
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async searchByFilterService(data) {
+    try {
+      const result = await Game.findAll({
+        where: {
+          price: {
+            [Op.between]: data.price ? data.price.split("-") : ["0", "999"],
+          },
+        },
+        attributes: {
+          exclude: [
+            "description",
+            "trailer",
+            "developerId",
+            "rating",
+            "releaseDate",
+          ],
+        },
+        include: [
+          {
+            model: Genre,
+            attributes: {
+              exclude: ["genreSVG", "gameGenres"],
+            },
+            where: { genreName: { [Op.iLike]: `%${data.genre}%` } },
+          },
+          {
+            model: Platform,
+            where: { platformName: { [Op.iLike]: `%${data.platform}%` } },
+          },
+        ],
+      });
+
       return result;
     } catch (error) {
       throw error;

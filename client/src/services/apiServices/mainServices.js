@@ -65,6 +65,16 @@ const mainServices = {
       throw error;
     }
   },
+  async searchByFilter(data) {
+    try {
+      const result = await mainInstance.get(
+        `/search_by_filter?price=${data.price}&genre=${data.genre}&platform=${data.platform}`
+      );
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default mainServices;

@@ -7,7 +7,7 @@ export default {
     GameCard,
     PagesSwitcher
   },
-  props: ["allGames"]
+  props: ["allGames", "switchPages"]
 }
 </script>
 
@@ -23,7 +23,7 @@ export default {
         :key="game.id"
       />
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center" v-if="switchPages">
       <PagesSwitcher class="mt-10 mb-5" />
     </div>
   </div>
