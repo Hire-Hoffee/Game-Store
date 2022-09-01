@@ -32,7 +32,7 @@ export default {
     <div
       class="flex flex-col md:flex-row justify-between md:space-x-8 space-x-0 mb-20 w-full xl:h-112 lg:h-96 md:h-72 h-112 space-y-8 md:space-y-0 sm:text-xl text-base">
       <div class="md:w-1/2 h-1/2 md:h-full" v-for="item in latestNews">
-        <img class="w-full h-5/6 rounded-xl" :src="item.poster" :alt="item.title">
+        <img class="w-full h-5/6 rounded-xl object-cover" :src="item.poster" :alt="item.title">
         <h1 class="h-1/6">{{ item.title }}</h1>
       </div>
     </div>

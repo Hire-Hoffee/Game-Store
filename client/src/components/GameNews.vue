@@ -10,7 +10,7 @@ export default {
 
     <div class="flex lg:w-7/12 rounded-lg overflow-hidden custom_shadow_out mb-5 lg:mb-0">
       <div class="w-7/12">
-        <img class="w-full h-full" :src="newsData[0].poster" :alt="newsData[0].title">
+        <img class="w-full h-full object-cover" :src="newsData[0].poster" :alt="newsData[0].title">
       </div>
       <div class="flex flex-col items-end justify-between sm:p-5 p-2 relative w-5/12">
         <h2>{{ newsData[0].title }}</h2>
@@ -25,7 +25,7 @@ export default {
 
       <div class="flex rounded-lg overflow-hidden custom_shadow_out h-full mb-5">
         <div class="w-6/12">
-          <img class="w-full h-full" :src="newsData[1].poster" :alt="newsData[1].title">
+          <img class="w-full h-full object-cover" :src="newsData[1].poster" :alt="newsData[1].title">
         </div>
         <div class="flex flex-col items-end justify-between sm:p-5 p-2 relative w-6/12">
           <h2>{{ newsData[1].title }}</h2>
@@ -38,7 +38,7 @@ export default {
 
       <div class="flex rounded-lg overflow-hidden custom_shadow_out h-full mb-5">
         <div class="w-6/12">
-          <img class="w-full h-full" :src="newsData[2].poster" :alt="newsData[2].title">
+          <img class="w-full h-full object-cover" :src="newsData[2].poster" :alt="newsData[2].title">
         </div>
         <div class="flex flex-col items-end justify-between sm:p-5 p-2 relative w-6/12">
           <h2>{{ newsData[2].title }}</h2>
