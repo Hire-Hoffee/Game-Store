@@ -13,6 +13,7 @@ export default {
     SwiperSlide,
     ReviewCard
   },
+  props: ["reviewsData"],
   setup() {
     return {
       modules: [Navigation]
@@ -20,12 +21,14 @@ export default {
   },
   data() {
     return {
-      slidesPerView: 3,
+      slidesPerView: this.reviewsData.length < 3 ? this.reviewsData.length : 3,
     }
   },
   methods: {
     handleView() {
-      this.slidesPerView = window.innerWidth <= 768 ? 1 : window.innerWidth >= 768 && window.innerWidth <= 1024 ? 2 : 3
+      this.slidesPerView = window.innerWidth <= 768 ? 
+      1 : window.innerWidth >= 768 && window.innerWidth <= 1024 && this.slidesPerView == 2 ? 
+      2 : this.slidesPerView
     }
   },
   created() {
@@ -39,23 +42,9 @@ export default {
 <template>
   <Swiper class="flex items-center custom_swiper" :slidesPerView="slidesPerView" :space-between="10" :loop="true"
     :navigation="true" :modules="modules">
-
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
+    <SwiperSlide class="flex justify-center" v-for="review in reviewsData">
+      <ReviewCard :user-email="review.customer.email" :user-review="review.content"/>
     </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-    <SwiperSlide class="flex justify-center">
-      <ReviewCard />
-    </SwiperSlide>
-
   </Swiper>
 </template>
 

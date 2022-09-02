@@ -54,6 +54,10 @@ module.exports = [
 
   Customer.belongsToMany(Game, { through: Review }),
   Game.belongsToMany(Customer, { through: Review }),
+  Customer.hasMany(Review),
+  Review.belongsTo(Customer),
+  Game.hasMany(Review),
+  Review.belongsTo(Game),
 
   Customer.belongsToMany(Game, { through: GameRating }),
   Game.belongsToMany(Customer, { through: GameRating }),

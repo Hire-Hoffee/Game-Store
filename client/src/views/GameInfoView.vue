@@ -14,10 +14,17 @@ export default {
   },
   computed: mapGetters("isLoadingModule", ["getLoadingStatus"]),
   methods: {
+    async getGameInfo() {
+      try {
+        const urlGameTitle = this.$route.params.title
+        this.game = (await this.$API.mainServices.getGameInfo(urlGameTitle)).data
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
+    },
     async addToCart(gameId) {
       try {
         const { message } = (await this.$API.userServices.addToCart(gameId)).data
-
         this.$store.commit("alertInfoModule/updateAlert", message)
         this.$router.push({ name: "shoppingCart" })
       } catch (error) {
@@ -27,6 +34,7 @@ export default {
     async postReview(data) {
       try {
         const { message } = (await this.$API.userServices.postReview(data.gameId, { reviewContent: data.reviewContent })).data
+        await this.getGameInfo()
         this.$store.commit("alertInfoModule/updateAlert", message)
       } catch (error) {
         this.$store.commit("alertInfoModule/updateError", error)
@@ -34,12 +42,7 @@ export default {
     }
   },
   async mounted() {
-    try {
-      const urlGameTitle = this.$route.params.title
-      this.game = (await this.$API.mainServices.getGameInfo(urlGameTitle)).data
-    } catch (error) {
-      this.$store.commit("alertInfoModule/updateError", error)
-    }
+    await this.getGameInfo()
   }
 }
 </script>

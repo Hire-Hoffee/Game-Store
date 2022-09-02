@@ -9,6 +9,7 @@ const {
   RecommendedSR,
 } = require("../models/gameModels");
 const { News, NewsImage } = require("../models/newsModels");
+const { Review, Customer } = require("../models/userModels");
 const { Op } = require("sequelize");
 const axios = require("axios");
 const chalk = require("chalk");
@@ -131,9 +132,32 @@ const mainServices = {
 
       const result = await Game.findOne({
         where: { gameTitle: { [Op.iLike]: `%${convertTitle}%` } },
-        include: [Genre, Developer, Image, Platform, MinimumSR, RecommendedSR],
+        include: [
+          Genre,
+          Developer,
+          Image,
+          Platform,
+          MinimumSR,
+          RecommendedSR,
+          {
+            model: Review,
+            include: [
+              {
+                model: Customer,
+                attributes: {
+                  exclude: [
+                    "id",
+                    "isVerified",
+                    "verificationString",
+                    "authToken",
+                    "password",
+                  ],
+                },
+              },
+            ],
+          },
+        ],
       });
-
       if (!result || result.length == 0) {
         throw createHttpError(404, "Result not found");
       }

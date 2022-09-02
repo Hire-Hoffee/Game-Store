@@ -161,7 +161,8 @@ export default {
 
     <div class="mb-28">
       <ParagraphHeader add-class="w-1/3">Reviews</ParagraphHeader>
-      <ReviewsSlider />
+      <ReviewsSlider v-if="gameInfo.reviews.length != 0" :reviews-data="gameInfo.reviews" />
+      <div v-else><h1 class="text-2xl">Reviews not found</h1></div>
     </div>
 
     <div>

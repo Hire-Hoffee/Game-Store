@@ -109,7 +109,7 @@ module.exports = {
         validate: {
           notNull: { args: true, msg: "Review cannot be null" },
           notEmpty: { args: true, msg: "Review cannot be empty" },
-          len: { args: [20, 500], msg: "Review must be between 20 and 500" },
+          len: { args: [10, 500], msg: "Review must be between 20 and 500" },
         },
       },
     },
