@@ -1,6 +1,6 @@
 <script>
   export default {
-    props: ["userEmail", "userReview", "userRating"],
+    props: ["userEmail", "userReview", "userRating", "userRole"],
   }
 </script>
 
@@ -9,7 +9,8 @@
   <div class="w-80 min-h-[24rem] p-3 rounded custom_shadow_out m-2">
     <div class="mb-5 text-xl">
       <h1 class="mb-2">{{ userEmail }}</h1>
-      <span class="mb-2 text-custom-red">{{ userRating ? `${userRating}/10` : "Not rated" }}</span>
+      <span class="mb-2 text-custom-red">{{ userRating ? `${userRating} / 10` : "Not rated" }}</span>
+      <span class="mb-2 text-custom-red ml-3">( {{ userRole }} )</span>
       <hr class="h-px bg-custom-red border-none">
     </div>
     <div>

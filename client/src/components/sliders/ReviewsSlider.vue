@@ -43,7 +43,12 @@ export default {
   <Swiper class="flex items-center custom_swiper" :slidesPerView="slidesPerView" :space-between="10" :loop="true"
     :navigation="true" :modules="modules">
     <SwiperSlide class="flex justify-center" v-for="review in reviewsData">
-      <ReviewCard :user-email="review.customer.email" :user-review="review.content"/>
+      <ReviewCard 
+        :user-email="review.customer.email" 
+        :user-role="review.customer.role"
+        :user-review="review.content" 
+        :user-rating="review.gameRating.rating"
+      />
     </SwiperSlide>
   </Swiper>
 </template>

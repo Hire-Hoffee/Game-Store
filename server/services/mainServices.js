@@ -8,8 +8,8 @@ const {
   MinimumSR,
   RecommendedSR,
 } = require("../models/gameModels");
-const { News, NewsImage } = require("../models/newsModels");
-const { Review, Customer } = require("../models/userModels");
+const { News } = require("../models/newsModels");
+const { Review, Customer, GameRating } = require("../models/userModels");
 const { Op } = require("sequelize");
 const axios = require("axios");
 const chalk = require("chalk");
@@ -142,6 +142,12 @@ const mainServices = {
           {
             model: Review,
             include: [
+              {
+                model: GameRating,
+                attributes: {
+                  exclude: ["reviewCustomerId", "gameId", "customerId"],
+                },
+              },
               {
                 model: Customer,
                 attributes: {

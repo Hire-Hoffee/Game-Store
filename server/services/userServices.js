@@ -5,6 +5,7 @@ const {
   Cart,
   OrderInfo,
   Review,
+  GameRating,
 } = require("../models/userModels");
 const { Game } = require("../models/gameModels");
 const { verifyToken } = require("../config/webTokens");
@@ -185,11 +186,23 @@ const userServices = {
         );
       }
 
-      await Review.create({
-        customerId: id,
-        gameId: data.gameId,
-        content: data.content,
-      });
+      const createGameReview = async () => {
+        return await Review.create({
+          customerId: id,
+          gameId: data.gameId,
+          content: data.content,
+        });
+      };
+      const createGameRating = async () => {
+        return await GameRating.create({
+          customerId: id,
+          reviewCustomerId: id,
+          gameId: data.gameId,
+          rating: data.rating,
+        });
+      };
+
+      await Promise.all([createGameReview(), createGameRating()]);
 
       return { message: "Review has been created" };
     } catch (error) {

@@ -11,7 +11,8 @@ export default {
   },
   data() {
     return {
-      reviewContent: ""
+      reviewContent: "",
+      userGameRating: 5
     }
   },
   props: ["gameInfo"],
@@ -168,7 +169,17 @@ export default {
     <div>
       <ParagraphHeader add-class="w-1/3">Post review</ParagraphHeader>
       <div class="w-11/12 m-auto">
-        <form @submit.prevent="$emit('postReviewEmit', { reviewContent, gameId: gameInfo.id })">
+
+        <div class="flex md:w-1/2 w-full p-3 my-10 rounded-lg shadow-custom-inner">
+          <h1 class="text-2xl w-1/5">Rating</h1>
+          <div class="flex w-4/5 justify-around">
+            <button @click="userGameRating > 1 ? userGameRating -= 1 : false"><img src="@/assets/icons/minus.svg" alt="minus"></button>
+            <h1 class="text-2xl">{{ userGameRating }}</h1>
+            <button @click="userGameRating < 10 ? userGameRating += 1 : false"><img src="@/assets/icons/plus.svg" alt="plus"></button>
+          </div>
+        </div>
+
+        <form @submit.prevent="$emit('postReviewEmit', { reviewContent, gameRating: userGameRating, gameId: gameInfo.id })">
           <div class="flex justify-center">
             <textarea
               v-model="reviewContent"

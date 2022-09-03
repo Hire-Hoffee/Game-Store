@@ -33,7 +33,11 @@ export default {
     },
     async postReview(data) {
       try {
-        const { message } = (await this.$API.userServices.postReview(data.gameId, { reviewContent: data.reviewContent })).data
+        const reviewData = { 
+          reviewContent: data.reviewContent,
+          gameRating: data.gameRating 
+        }
+        const { message } = (await this.$API.userServices.postReview(data.gameId, reviewData)).data
         await this.getGameInfo()
         this.$store.commit("alertInfoModule/updateAlert", message)
       } catch (error) {

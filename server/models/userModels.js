@@ -92,7 +92,7 @@ module.exports = {
           isInt: true,
           notNull: { args: true, msg: "Rating cannot be null" },
           notEmpty: { args: true, msg: "Rating cannot be empty" },
-          min: { args: 0, msg: "Minimum rating value is 0" },
+          min: { args: 1, msg: "Minimum rating value is 1" },
           max: { args: 10, msg: "Maximum rating value is 10" },
         },
       },

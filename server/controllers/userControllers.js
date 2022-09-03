@@ -67,6 +67,7 @@ const userControllers = {
         userToken: req.headers["authorization"],
         gameId: req.params.gameId,
         content: req.body.reviewContent,
+        rating: req.body.gameRating
       };
       const result = await userServices.postReviewService(reviewData);
       return res.json(result);
