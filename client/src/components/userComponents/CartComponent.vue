@@ -9,8 +9,8 @@ export default {
   props: ["gamesInfo"],
   computed: {
     totalSum() {
-      return this.gamesInfo.games.reduce((acc, curr) => {
-        return acc + (curr.orderInfo.quantity * curr.price)
+      return this.gamesInfo.orderInfos.reduce((acc, curr) => {
+        return acc + (curr.quantity * curr.game.price)
       }, 0)
     }
   }
@@ -33,6 +33,9 @@ export default {
           <div class="w-full mb-3 sm:mb-0">
             <h1 class="text-center">Price</h1>
           </div>
+          <div class="w-full mb-3 sm:mb-0">
+            <h1 class="text-center">Platform</h1>
+          </div>
           <div class="w-full">
             <h1 class="text-center">Total</h1>
           </div>
@@ -43,14 +46,16 @@ export default {
 
     <div class="mt-10">
       <TransitionGroup name="list" tag="ul">
-        <CartItem class="mb-5" v-if="gamesInfo.games.length != 0" v-for="game in gamesInfo.games" 
-          :game-title="game.gameTitle" 
-          :game-poster="game.poster" 
-          :game-price="game.price"
-          :game-amount="game.orderInfo.quantity"
-          :total-price="game.price * game.orderInfo.quantity"
-          :game-id="game.id"
-          :key="game.id"
+        <CartItem class="mb-5" v-if="gamesInfo.orderInfos.length != 0" v-for="cartItem in gamesInfo.orderInfos" 
+          :game-title="cartItem.game.gameTitle" 
+          :game-poster="cartItem.game.poster" 
+          :game-price="cartItem.game.price"
+          :game-amount="cartItem.quantity"
+          :game-platform="cartItem.platform.platformName"
+          :total-price="cartItem.game.price * cartItem.quantity"
+          :game-id="cartItem.gameId"
+          :platform-id="cartItem.platformId"
+          :key="cartItem.gameId"
           @changeAmountChild="data => $emit('changeAmountParent', data)"
           @deleteItemChild="data => $emit('deleteItemParent', data)"
         />

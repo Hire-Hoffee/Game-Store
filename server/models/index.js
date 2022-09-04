@@ -21,6 +21,7 @@ const {
 const { News, NewsImage } = require("./newsModels");
 
 module.exports = [
+
   // -------------------------- gameModels --------------------------
 
   Game.belongsToMany(Genre, { through: "gameGenres", timestamps: false }),
@@ -74,9 +75,17 @@ module.exports = [
 
   Cart.belongsToMany(Game, { through: OrderInfo }),
   Game.belongsToMany(Cart, { through: OrderInfo }),
+  Cart.hasMany(OrderInfo),
+  OrderInfo.belongsTo(Cart),
+  Game.hasMany(OrderInfo),
+  OrderInfo.belongsTo(Game),
+
+  Platform.hasOne(OrderInfo),
+  OrderInfo.belongsTo(Platform),
 
   // -------------------------- newsModels --------------------------
 
   News.hasMany(NewsImage),
   NewsImage.belongsTo(News),
+  
 ];

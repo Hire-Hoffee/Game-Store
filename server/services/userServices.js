@@ -7,7 +7,7 @@ const {
   Review,
   GameRating,
 } = require("../models/userModels");
-const { Game } = require("../models/gameModels");
+const { Game, Platform, GameKey } = require("../models/gameModels");
 const { verifyToken } = require("../config/webTokens");
 const { Op } = require("sequelize");
 
@@ -77,6 +77,7 @@ const userServices = {
       await OrderInfo.create({
         cartId: cart.id,
         gameId: data.gameId,
+        platformId: data.platformId,
       });
 
       return { message: "Game has been added to cart" };
@@ -128,16 +129,22 @@ const userServices = {
         where: { customerId: id },
         include: [
           {
-            model: Game,
-            attributes: {
-              exclude: [
-                "description",
-                "releaseDate",
-                "rating",
-                "trailer",
-                "developerId",
-              ],
-            },
+            model: OrderInfo,
+            include: [
+              { model: Platform, attributes: { exclude: ["platformSVG"] } },
+              {
+                model: Game,
+                attributes: {
+                  exclude: [
+                    "description",
+                    "releaseDate",
+                    "rating",
+                    "trailer",
+                    "developerId",
+                  ],
+                },
+              },
+            ],
           },
         ],
       });
@@ -150,6 +157,19 @@ const userServices = {
 
   async changeAmountService(data, token) {
     try {
+      const keys = await GameKey.count({
+        where: {
+          [Op.and]: [{ platformId: data.platformId }, { gameId: data.gameId }],
+        },
+      });
+
+      if (keys < data.amount) {
+        throw createHttpError(
+          500,
+          `The maximum number of games available on this platform is ${keys}`
+        );
+      }
+
       await OrderInfo.update(
         { quantity: data.amount },
         {

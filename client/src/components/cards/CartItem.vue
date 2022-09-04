@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["gameTitle", "gamePoster", "gamePrice", "gameAmount", "totalPrice", "gameId"],
+  props: ["gameTitle", "gamePoster", "gamePrice", "gameAmount", "totalPrice", "gameId", "platformId", "gamePlatform"],
   emits: ["changeAmountChild", "deleteItemChild"]
 }
 </script>
@@ -20,14 +20,19 @@ export default {
     </div>
     <div class="flex flex-col sm:flex-row items-center sm:justify-between sm:w-6/12 sm:pr-14">
       <div class="flex items-center justify-between sm:w-96 w-36 mb-3 sm:mb-0">
-        <button @click="$emit('changeAmountChild', { amount: gameAmount > 1 ? gameAmount -= 1 : false, gameId })"><img src="@/assets/icons/minus.svg" alt="minus"></button>
+        <button @click="$emit('changeAmountChild', { amount: gameAmount > 1 ? gameAmount -= 1 : false, gameId, platformId })"><img src="@/assets/icons/minus.svg" alt="minus"></button>
         <h1>{{ gameAmount }}</h1>
-        <button @click="$emit('changeAmountChild', { amount: gameAmount < 10 ? gameAmount += 1 : false, gameId })"><img src="@/assets/icons/plus.svg" alt="plus"></button>
+        <button @click="$emit('changeAmountChild', { amount: gameAmount < 10 ? gameAmount += 1 : false, gameId, platformId })"><img src="@/assets/icons/plus.svg" alt="plus"></button>
       </div>
       <div class="w-full mb-3 sm:mb-0">
         <h1 class="text-center sm:font-bold sm:text-2xl sm:hidden">Price</h1>
         <hr class="w-1/2 m-auto mb-2 h-0.5 bg-custom-red border-none sm:hidden">
         <h1 class="text-center">{{ gamePrice }} $</h1>
+      </div>
+      <div class="w-full mb-3 sm:mb-0">
+        <h1 class="text-center sm:font-bold sm:text-2xl sm:hidden">Platform</h1>
+        <hr class="w-1/2 m-auto mb-2 h-0.5 bg-custom-red border-none sm:hidden">
+        <h1 class="text-center">{{ gamePlatform }}</h1>
       </div>
       <div class="w-full">
         <h1 class="text-center sm:font-bold sm:text-2xl sm:hidden">Total</h1>

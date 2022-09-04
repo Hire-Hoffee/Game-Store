@@ -23,6 +23,7 @@ export default {
         const changedAmount = {
           cartId: this.cartGames.id,
           gameId: data.gameId,
+          platformId: data.platformId,
           amount: data.amount
         }
         const result = (await this.$API.userServices.changeAmount(changedAmount)).data

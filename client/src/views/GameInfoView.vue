@@ -22,9 +22,9 @@ export default {
         this.$store.commit("alertInfoModule/updateError", error)
       }
     },
-    async addToCart(gameId) {
+    async addToCart(data) {
       try {
-        const { message } = (await this.$API.userServices.addToCart(gameId)).data
+        const { message } = (await this.$API.userServices.addToCart(data.gameId, { platform: data.chosenPlatform })).data
         this.$store.commit("alertInfoModule/updateAlert", message)
         this.$router.push({ name: "shoppingCart" })
       } catch (error) {

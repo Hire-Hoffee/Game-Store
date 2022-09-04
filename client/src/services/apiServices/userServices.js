@@ -9,9 +9,9 @@ const userServices = {
       throw error;
     }
   },
-  async addToCart(gameId) {
+  async addToCart(gameId, platform) {
     try {
-      const result = userInstance.post(`/add_to_cart/${gameId}`);
+      const result = userInstance.post(`/add_to_cart/${gameId}`, platform);
       return result;
     } catch (error) {
       throw error;

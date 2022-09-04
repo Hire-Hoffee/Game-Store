@@ -12,7 +12,8 @@ export default {
   data() {
     return {
       reviewContent: "",
-      userGameRating: 5
+      userGameRating: 5,
+      chosenPlatform: this.gameInfo.platforms[0].id
     }
   },
   props: ["gameInfo"],
@@ -40,7 +41,7 @@ export default {
           <div class="p-2 w-1/3 rounded inner_shadow_custom"><strong>{{ gameInfo.price ? `${gameInfo.price} $` : "-" }}</strong></div>
           <CustomBtn 
             v-if="gameInfo.price"
-            @click="getUserRole ? $emit('buyGame', gameInfo.id) : false" 
+            @click="getUserRole ? $emit('buyGame', { gameId: gameInfo.id, chosenPlatform }) : false" 
             class="text-white uppercase bg-custom-red">
             {{ getUserRole ? "Buy now" : "Login to buy" }}
           </CustomBtn>
@@ -73,7 +74,14 @@ export default {
           <div class="flex justify-between">
             <div>Platforms</div>
             <div class="font-normal">
-              <img class="inline lg:ml-4 ml-2" v-if="gameInfo.platforms.length !== 0" v-for="platform in gameInfo.platforms" :src="platform.platformSVG" :alt="platform.platformName">
+              <img class="inline lg:ml-4 ml-2 rounded p-0.5" 
+                v-if="gameInfo.platforms.length !== 0" 
+                v-for="platform in gameInfo.platforms" 
+                :src="platform.platformSVG" 
+                :alt="platform.platformName"
+                @click="chosenPlatform = platform.id"
+                :class="platform.id == chosenPlatform ? `dark:bg-slate-50 bg-custom-black` : false"
+              >
               <div class="text-xl" v-else>__</div>
             </div>
           </div>

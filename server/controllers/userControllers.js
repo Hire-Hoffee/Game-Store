@@ -16,6 +16,7 @@ const userControllers = {
     try {
       const data = {
         gameId: req.params.gameId,
+        platformId: req.body.platform,
         userToken: req.headers["authorization"],
       };
       const result = await userServices.addToCartService(data);
