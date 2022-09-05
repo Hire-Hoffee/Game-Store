@@ -4,7 +4,7 @@ import ReviewsSlider from "@/components/sliders/ReviewsSlider.vue"
 import { mapGetters } from "vuex"
 
 export default {
-  emits: ["buyGame", "postReviewEmit"],
+  emits: ["addToCartEmit", "postReviewEmit"],
   components: {
     GameImagesSlider,
     ReviewsSlider
@@ -41,7 +41,7 @@ export default {
           <div class="p-2 w-1/3 rounded inner_shadow_custom"><strong>{{ gameInfo.price ? `${gameInfo.price} $` : "-" }}</strong></div>
           <CustomBtn 
             v-if="gameInfo.price"
-            @click="getUserRole ? $emit('buyGame', { gameId: gameInfo.id, chosenPlatform }) : false" 
+            @click="getUserRole ? $emit('addToCartEmit', { gameId: gameInfo.id, chosenPlatform }) : false" 
             class="text-white uppercase bg-custom-red">
             {{ getUserRole ? "Buy now" : "Login to buy" }}
           </CustomBtn>

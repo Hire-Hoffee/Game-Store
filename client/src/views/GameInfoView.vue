@@ -57,7 +57,7 @@ export default {
     <GameInfo 
       v-if="game" 
       :game-info="game" 
-      @buyGame="addToCart" 
+      @addToCartEmit="addToCart" 
       @postReviewEmit="postReview" 
     />
   </div>
