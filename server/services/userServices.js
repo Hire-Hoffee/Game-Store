@@ -59,6 +59,15 @@ const userServices = {
         throw createHttpError(404, "User information not found");
       }
 
+      const keys = await GameKey.findAll({
+        where: {
+          [Op.and]: [{ platformId: data.platformId }, { gameId: data.gameId }],
+        },
+      });
+      if (keys.length == 0) {
+        throw createHttpError(404, "No keys available for this platform");
+      }
+
       const { email } = verifyToken(jwt, process.env.SECRET_ACCESS, {
         ignoreExpiration: true,
       });
