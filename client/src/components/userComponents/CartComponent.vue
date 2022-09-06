@@ -5,7 +5,7 @@ export default {
   components: {
     CartItem,
   },
-  emits: ["changeAmountParent", "deleteItemParent"],
+  emits: ["changeAmountParent", "deleteItemParent", "buyGamesEmit"],
   props: ["gamesInfo"],
   computed: {
     totalSum() {
@@ -67,7 +67,11 @@ export default {
 
     <div class="flex items-center sm:justify-end justify-between">
       <div class="sm:pr-10">
-        <CustomBtn class="bg-custom-red text-xl text-white">Order and payment</CustomBtn>
+        <CustomBtn 
+          @click="totalSum > 0 ? $emit('buyGamesEmit', { cartId: gamesInfo.id, totalSum }) : false" 
+          class="bg-custom-red text-xl text-white">
+            Order and payment
+        </CustomBtn>
       </div>
       <div class="sm:px-5 px-3 py-2 font-bold text-2xl text-custom-red rounded inner_shadow_custom">
         <strong>{{ totalSum }} $</strong>

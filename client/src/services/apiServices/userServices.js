@@ -49,6 +49,14 @@ const userServices = {
       throw error;
     }
   },
+  async buyGames(cartId, amount) {
+    try {
+      const result = userInstance.post(`/buy_games/${cartId}`, amount);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default userServices;

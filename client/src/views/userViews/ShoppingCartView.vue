@@ -45,9 +45,23 @@ export default {
       clearTimeout(this.reqDelay)
     },
 
+    async buyGames(data) {
+      try {
+        this.$router.push({ name: "home" })
+        const { message } = (await this.$API.userServices.buyGames(data.cartId, { totalPrice: data.totalSum })).data
+        this.$store.commit("alertInfoModule/updateAlert", message)
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
+    },
+
     async deleteGameFromCart(gameId) {
-      const result = (await this.$API.userServices.deleteFromCart(gameId)).data
-      this.cartGames = result
+      try {
+        const result = (await this.$API.userServices.deleteFromCart(gameId)).data
+        this.cartGames = result
+      } catch (error) {
+        this.$store.commit("alertInfoModule/updateError", error)
+      }
     },
 
   },
@@ -68,6 +82,7 @@ export default {
       :games-info="cartGames" 
       @changeAmountParent="setupFunc" 
       @deleteItemParent="deleteGameFromCart"
+      @buyGamesEmit="buyGames"
     />
   </div>
 </template>

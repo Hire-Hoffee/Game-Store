@@ -8,5 +8,6 @@ router.post("/delete_from_cart/:gameId", authValidation, userControllers.deleteF
 router.get("/cart", authValidation, userControllers.getCartGames);
 router.post("/change_amount", authValidation, userControllers.changeAmount);
 router.post("/post_review/:gameId", authValidation, userControllers.postReview);
+router.post("/buy_games/:cartId", authValidation, userControllers.buyGames);
 
 module.exports = router;

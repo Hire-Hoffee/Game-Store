@@ -1,0 +1,38 @@
+<div style="font-size: 14px;">
+  <h2 style="margin-bottom: 20px;">Your purchase</h2>
+  <table style="width: 100%; padding: 10px; background-color: #94a3b8; border-radius: 10px;">
+    <thead>
+      <tr style="font-weight: bold;">
+        <td style="padding: 5px;">Item</td>
+        <td style="padding: 5px;">Amount</td>
+        <td style="padding: 5px;">Price</td>
+        <td style="padding: 5px;">Platform</td>
+        <td style="padding: 5px;">Keys</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orderResult.orderInfos }}
+        <tr>
+          <td style="padding: 5px;">{{ this.game.gameTitle }}</td>
+          <td style="padding: 5px;">{{ this.quantity }}</td>
+          <td style="padding: 5px;">{{ this.game.price }} $</td>
+          <td style="padding: 5px;">{{ this.platform.platformName }}</td>
+          <td style="padding: 5px;">-----------</td>
+        </tr>
+        {{#each this.keys }}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ this.key }}</td>
+          </tr>
+        {{/each }}
+      {{/each }}
+      <tr style="color: #e9322e;">
+        <td colspan="2" style="padding: 5px; font-weight: bold;">Total Price</td>
+        <td colspan="2" style="padding: 5px; font-weight: bold;">{{ orderResult.totalPrice }} $</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

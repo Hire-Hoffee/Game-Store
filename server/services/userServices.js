@@ -9,6 +9,7 @@ const {
 } = require("../models/userModels");
 const { Game, Platform, GameKey } = require("../models/gameModels");
 const { verifyToken } = require("../config/webTokens");
+const sendEmail = require("../config/nodemailer");
 const { Op } = require("sequelize");
 
 const userServices = {
@@ -234,6 +235,88 @@ const userServices = {
       await Promise.all([createGameReview(), createGameRating()]);
 
       return { message: "Review has been created" };
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async buyGamesService(data) {
+    try {
+      const jwt = data.userToken.split(" ")[1];
+      if (!jwt) {
+        throw createHttpError(404, "User information not found");
+      }
+      const { email } = verifyToken(jwt, process.env.SECRET_ACCESS, {
+        ignoreExpiration: true,
+      });
+
+      const orderResult = await Cart.findOne({
+        where: { id: data.cartId },
+        attributes: { exclude: ["id", "customerId"] },
+        include: [
+          {
+            model: OrderInfo,
+            attributes: { exclude: ["cartId", "gameId", "platformId"] },
+            include: [
+              {
+                model: Game,
+                attributes: {
+                  exclude: [
+                    "description",
+                    "releaseDate",
+                    "rating",
+                    "trailer",
+                    "developerId",
+                    "poster",
+                  ],
+                },
+              },
+              {
+                model: Platform,
+                attributes: { exclude: ["platformSVG"] },
+              },
+            ],
+          },
+        ],
+      });
+
+      const plainResult = orderResult.get({ plain: true });
+      const keysToDelete = [];
+
+      for (let i = 0; i < plainResult.orderInfos.length; i++) {
+        const gameKeys = await GameKey.findAll({
+          where: {
+            [Op.and]: [
+              { platformId: plainResult.orderInfos[i].platform.id },
+              { gameId: plainResult.orderInfos[i].game.id },
+            ],
+          },
+          attributes: { exclude: ["id", "gameId", "platformId"] },
+          limit: plainResult.orderInfos[i].quantity,
+          raw: true,
+        });
+
+        keysToDelete.push(...gameKeys);
+        plainResult.orderInfos[i].keys = gameKeys;
+      }
+
+      for (let i = 0; i < keysToDelete.length; i++) {
+        await GameKey.destroy({ where: { key: keysToDelete[i].key } });
+      }
+      await OrderInfo.destroy({ where: { cartId: data.cartId } });
+      plainResult.totalPrice = data.totalPrice;
+
+      await sendEmail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: "Your order information",
+        template: "purchasedGames",
+        context: {
+          orderResult: plainResult,
+        },
+      });
+
+      return { message: "Your order has been sent to your email address" };
     } catch (error) {
       throw error;
     }

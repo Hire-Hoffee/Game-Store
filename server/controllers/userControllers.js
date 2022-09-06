@@ -68,9 +68,23 @@ const userControllers = {
         userToken: req.headers["authorization"],
         gameId: req.params.gameId,
         content: req.body.reviewContent,
-        rating: req.body.gameRating
+        rating: req.body.gameRating,
       };
       const result = await userServices.postReviewService(reviewData);
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async buyGames(req, res, next) {
+    try {
+      const orderData = {
+        cartId: req.params.cartId,
+        totalPrice: req.body.totalPrice,
+        userToken: req.headers["authorization"],
+      };
+      const result = await userServices.buyGamesService(orderData);
       return res.json(result);
     } catch (error) {
       next(error);
