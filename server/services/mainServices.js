@@ -8,7 +8,7 @@ const {
   MinimumSR,
   RecommendedSR,
 } = require("../models/gameModels");
-const { News } = require("../models/newsModels");
+const { News, NewsImage } = require("../models/newsModels");
 const { Review, Customer, GameRating } = require("../models/userModels");
 const { Op } = require("sequelize");
 const axios = require("axios");
@@ -245,6 +245,18 @@ const mainServices = {
         throw createHttpError(404, "Result not found");
       }
 
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  async getNewsContentService(newsId) {
+    try {
+      const result = await News.findOne({
+        where: { id: newsId },
+        include: NewsImage,
+      });
       return result;
     } catch (error) {
       throw error;

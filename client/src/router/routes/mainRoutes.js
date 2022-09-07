@@ -15,13 +15,20 @@ const mainRoutes = [
       title: "All Games",
     },
   },
-
   {
     path: "/news",
     name: "gamesNews",
     component: () => import("@/views/NewsView.vue"),
     meta: {
       title: "News",
+    },
+  },
+  {
+    path: "/news/content/:newsId",
+    name: "newsContent",
+    component: () => import("@/views/NewsContentView.vue"),
+    meta: {
+      title: "News content",
     },
   },
   {

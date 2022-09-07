@@ -46,6 +46,15 @@ const mainControllers = {
     }
   },
 
+  async getNewsContent(req, res, next) {
+    try {
+      const result = await mainServices.getNewsContentService(req.params.newsId);
+      return res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async searchGames(req, res, next) {
     try {
       const result = await mainServices.searchGamesService(req.query.gameTitle);

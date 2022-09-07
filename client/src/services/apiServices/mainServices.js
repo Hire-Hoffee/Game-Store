@@ -9,7 +9,6 @@ const mainServices = {
       throw error;
     }
   },
-
   async getAllGames(pageNum = 1) {
     try {
       const result = await mainInstance.get("/games", {
@@ -20,7 +19,6 @@ const mainServices = {
       throw error;
     }
   },
-
   async getAllCategories() {
     try {
       const result = await mainInstance.get("/categories");
@@ -29,7 +27,6 @@ const mainServices = {
       throw error;
     }
   },
-
   async getGameInfo(gameTitle) {
     try {
       const result = await mainInstance.get(`/games/${gameTitle}`);
@@ -38,10 +35,17 @@ const mainServices = {
       throw error;
     }
   },
-
   async getGamesNews() {
     try {
       const result = await mainInstance.get("/news");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  async getNewsContent(newsId) {
+    try {
+      const result = await mainInstance.get(`news/content/${newsId}`);
       return result;
     } catch (error) {
       throw error;

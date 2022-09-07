@@ -16,8 +16,7 @@ export default {
   methods: {
     async getGameInfo() {
       try {
-        const urlGameTitle = this.$route.params.title
-        this.game = (await this.$API.mainServices.getGameInfo(urlGameTitle)).data
+        this.game = (await this.$API.mainServices.getGameInfo(this.$route.params.title)).data
       } catch (error) {
         this.$store.commit("alertInfoModule/updateError", error)
       }
