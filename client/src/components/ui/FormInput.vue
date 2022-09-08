@@ -2,7 +2,12 @@
 export default {
   name: "FormInput",
   props: ["inputModel", "inputId", "inputImg", "inputName", "inputPlaceholder", "inputType", "min", "max", "required"],
-  emits: ["update:inputModel"]
+  emits: ["update:inputModel"],
+  computed: {
+    imageUrl() {
+      return new URL(`/src/assets/icons/${this.inputImg}`, import.meta.url).href
+    }
+  }
 }
 </script>
 
@@ -12,7 +17,7 @@ export default {
     <label :for="inputId" class="block m-1 text-white text-lg" v-if="inputName">{{ inputName }}</label>
     <div class="relative">
       <div class="flex absolute inset-y-0 left-0 items-center pl-2 pointer-events-none" v-if="inputImg">
-        <img :src="inputImg" class="w-6 h-6" alt="icon">
+        <img :src="imageUrl" class="w-6 h-6" alt="icon">
       </div>
       <input 
         :required="required"

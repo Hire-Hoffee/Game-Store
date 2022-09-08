@@ -39,7 +39,7 @@ export default {
             :input-name="'Your Email'"
             :input-type="'email'"
             :input-id="'email_address'" 
-            :input-img="'/src/assets/icons/email.svg'" 
+            :input-img="'email.svg'" 
             :input-placeholder="'name@mail.com'"
             v-model:inputModel="userData.userEmail"
           />
@@ -51,7 +51,7 @@ export default {
             :input-name="'Your Password'"
             :input-type="'password'"
             :input-id="'user_password'" 
-            :input-img="'/src/assets/icons/password.svg'" 
+            :input-img="'password.svg'" 
             :input-placeholder="'8 to 50 characters long'"
             v-model:inputModel="userData.userPassword"
           />
@@ -63,7 +63,7 @@ export default {
             :input-name="'Repeat Password'"
             :input-type="'password'"
             :input-id="'password_again'" 
-            :input-img="'/src/assets/icons/password.svg'" 
+            :input-img="'password.svg'" 
             :input-placeholder="'8 to 50 characters long'"
             v-model:inputModel="userData.passwordAgain"
           />

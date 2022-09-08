@@ -125,7 +125,7 @@ export default {
           <FormInput
             @input="setupFunc"
             :input-id="'search_game'" 
-            :input-img="'/src/assets/icons/search.svg'" 
+            :input-img="'search.svg'" 
             :input-placeholder="'Search...'"
             v-model:inputModel="gameTitle"
           />
@@ -140,7 +140,7 @@ export default {
             @input="setupFunc"
             class="w-full"
             :input-id="'search_game_tablet'" 
-            :input-img="'/src/assets/icons/search.svg'" 
+            :input-img="'search.svg'" 
             :input-placeholder="'Search...'"
             v-model:inputModel="gameTitle"
           />
@@ -226,7 +226,7 @@ export default {
                 @input="setupFunc"
                 class="w-full"
                 :input-id="'search_game_phone'" 
-                :input-img="'/src/assets/icons/search.svg'" 
+                :input-img="'search.svg'" 
                 :input-placeholder="'Search...'"
                 v-model:inputModel="gameTitle"
               />

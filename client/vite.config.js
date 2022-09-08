@@ -16,4 +16,7 @@ export default defineConfig({
       "/images": "http://localhost:7070",
     },
   },
+  build: {
+    outDir: "../server/static/build",
+  }
 });
