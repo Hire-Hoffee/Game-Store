@@ -16,6 +16,6 @@ module.exports = {
       .json({ message: "Unexpected server error occurred" });
   },
   notFound(req, res, next) {
-    next(createHttpError(404, "API route not found"));
+    next(createHttpError(404, `API route ${chalk.magenta(req.url)} not found`));
   },
 };

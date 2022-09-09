@@ -8,12 +8,22 @@ const history = require("connect-history-api-fallback");
 const sequelize = require("./config/database");
 const routes = require("./routes");
 const { notFound, errorHandler } = require("./middleware/errorHandler");
+const chalk = require("chalk");
 require("./models");
 
 const PORT = process.env.PORT || 4221;
 const VUE_API_URL = process.env.VUE_API_URL || undefined;
 
 const app = express();
+
+const historyConfig = {
+  rewrites: [
+    {
+      from: /\/verify/,
+      to: (context) => context.parsedUrl.pathname,
+    },
+  ],
+};
 
 app.use(
   cors({
@@ -24,7 +34,7 @@ app.use(
 app.use(logger("dev"));
 app.use(cookieParser());
 app.use(express.json());
-app.use(history());
+app.use(history(historyConfig));
 app.use(express.static(path.join(__dirname, "build")));
 app.use(express.static(path.join(__dirname, "static")));
 
@@ -43,9 +53,11 @@ app.use(notFound, errorHandler);
 (async function startServer() {
   try {
     await sequelize.authenticate();
-    console.log("\nDatabase connected");
-    app.listen(PORT, () => console.log(`Server is running on port ${PORT}\n`));
+    console.log(chalk.magenta("\nDatabase connected"));
+    app.listen(PORT, () =>
+      console.log(chalk.magenta(`Server is running on port ${PORT}\n`))
+    );
   } catch (error) {
-    console.log(error);
+    console.log(`\nError message - ${chalk.red(error)}\n`);
   }
 })();

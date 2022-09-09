@@ -23,7 +23,7 @@ const authControllers = {
         req.query.token
       );
       return res.redirect(
-        `${process.env.VUE_API_URL}/auth/login?verifyEmail=${verifyEmail}`
+        `/auth/login?verifyEmail=${verifyEmail}`
       );
     } catch (error) {
       next(error);
