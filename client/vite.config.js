@@ -14,9 +14,11 @@ export default defineConfig({
   server: {
     proxy: {
       "/images": "http://localhost:7070",
+      "/api": "http://localhost:7070",
     },
   },
   build: {
-    outDir: "../server/static/build",
+    outDir: "../server/build",
+    emptyOutDir: true
   }
 });
