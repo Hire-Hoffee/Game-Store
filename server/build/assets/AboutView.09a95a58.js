@@ -1,0 +1,1 @@
+import{_ as e,o as t,a as o,e as s}from"./index.12b3a04b.js";const a={name:"AboutView"},c=s("h1",{class:"text-3xl text-center"},"About page",-1),n=[c];function r(_,i,p,d,l,u){return t(),o("div",null,n)}var x=e(a,[["render",r]]);export{x as default};

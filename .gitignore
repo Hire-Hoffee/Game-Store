@@ -10,7 +10,6 @@ lerna-debug.log*
 node_modules
 /client/node_modules
 /server/node_modules
-/server/build
 
 .env
 
