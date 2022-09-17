@@ -5,7 +5,7 @@
 <br>
 <div style="text-align:center">
   <img src="https://sun9-west.userapi.com/sun9-52/s/v1/ig2/MlL_Skv_TFxnB6_lhm-xKouaAjQdsc6wlwAuLWyVjDPvSm7SNNaCvNCEoktfjRwfHT8ySJ2CB5lqfrCpKiNO72b9.jpg?size=1906x952&quality=96&type=album" width="1000"/>
-  <img src="https://sun9-north.userapi.com/sun9-85/s/v1/ig2/4pngy4ylrZ_kQVZNNd6HOcJWPaB0UCP5Qg1RQDmLU_uDeXK6XWMPDAI62rD6i5JklAJd_ENWQzsc-qzRpACr8Eqc.jpg?0&b-qzRpACr8Eqc.jpg?0&b=um006"size=1910x956>
+  <img src="https://sun9-north.userapi.com/sun9-85/s/v1/ig2/4pngy4ylrZ_kQVZNNd6HOcJWPaB0UCP5Qg1RQDmLU_uDeXK6XWMPDAI62rD6i5JklAJd_ENWQzsc-qzRpACr8Eqc.jpg?size=1910x956&quality=96&type=album" width="1000"/>
 </div>
 <br>
 
