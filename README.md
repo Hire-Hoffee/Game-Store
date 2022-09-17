@@ -1,4 +1,4 @@
-# Play store
+# Games store
 
 #### Link to [GameMuffin](gamestore-js2a.onrender.com).
 
