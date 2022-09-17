@@ -49,7 +49,6 @@ export default {
     <div class="mb-28">
       <div class="flex justify-between mb-5">
         <h1 class="text-2xl font-bold">Coming soon</h1>
-        <h1 class="text-xl text-custom-red">View all</h1>
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
       <CustomSlider class="mt-5" v-if="comingSoonGames" :game-data="comingSoonGames" />
@@ -67,7 +66,6 @@ export default {
     <div class="mb-28">
       <div class="flex justify-between mb-5">
         <h1 class="text-2xl font-bold">Good old games</h1>
-        <h1 class="text-xl text-custom-red">View all</h1>
       </div>
       <hr class="w-full h-0.5 bg-custom-red border-none">
       <CustomSlider class="mt-5" v-if="oldGames" :game-data="oldGames" />

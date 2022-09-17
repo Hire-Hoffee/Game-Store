@@ -187,15 +187,17 @@ export default {
           </div>
         </div>
 
-        <form @submit.prevent="$emit('postReviewEmit', { reviewContent, gameRating: userGameRating, gameId: gameInfo.id })">
+        <form @submit.prevent="getUserRole ? $emit('postReviewEmit', { reviewContent, gameRating: userGameRating, gameId: gameInfo.id }) : false">
           <div class="flex justify-center">
             <textarea
               v-model="reviewContent"
-              class="w-full sm:h-56 h-36 text-lg text-custom-black p-2 rounded focus:outline-none focus:ring-custom-red focus:ring-2 inner_shadow_custom"
+              class="w-full sm:h-56 h-36 text-lg text-custom-black dark:bg-white bg-slate-200 p-2 rounded focus:outline-none focus:ring-custom-red focus:ring-2 inner_shadow_custom"
               placeholder="Type here..."></textarea>
           </div>
           <div class="flex justify-end mt-5">
-            <CustomBtn type="submit" class="w-fit text-white bg-custom-red uppercase sm:px-12 px-16">Post</CustomBtn>
+            <CustomBtn type="submit" class="w-fit text-white bg-custom-red uppercase sm:px-12 px-16">
+              {{ getUserRole ? "POST" : "Login to post" }}
+            </CustomBtn>
           </div>
         </form>
       </div>
