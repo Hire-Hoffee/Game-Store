@@ -2,6 +2,8 @@
 
 #### Link to [GameMuffin](gamestore-js2a.onrender.com).
 
+#### Figma site design - [link](https://www.figma.com/file/h8FgSc2vhMSTlUnSUqAafQ/Game-store?node-id=0%3A1).
+
 <br>
 <div style="text-align:center">
   <img src="https://sun9-west.userapi.com/sun9-52/s/v1/ig2/MlL_Skv_TFxnB6_lhm-xKouaAjQdsc6wlwAuLWyVjDPvSm7SNNaCvNCEoktfjRwfHT8ySJ2CB5lqfrCpKiNO72b9.jpg?size=1906x952&quality=96&type=album" width="1000"/>
