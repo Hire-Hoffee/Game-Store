@@ -2,7 +2,7 @@
 
 #### Ссылка на сайт [GameMuffin](gamestore-js2a.onrender.com).
 
-#### Дизайн сайта в Figma - [link](https://www.figma.com/file/h8FgSc2vhMSTlUnSUqAafQ/Game-store?node-id=0%3A1).
+#### Дизайн сайта в Figma - [ссылка](https://www.figma.com/file/h8FgSc2vhMSTlUnSUqAafQ/Game-store?node-id=0%3A1).
 
 <br>
 <div style="text-align:center">
