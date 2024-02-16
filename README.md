@@ -1,7 +1,6 @@
 # Games store
 
-#### Link to [GameMuffin](gamestore-js2a.onrender.com).
-#### Another link [GameMuffin](http://178.57.218.89:7001).
+#### Link to [GameMuffin](http://petgamemuffin.freemyip.com).
 
 #### Figma site design - [link](https://www.figma.com/file/h8FgSc2vhMSTlUnSUqAafQ/Game-store?node-id=0%3A1).
 

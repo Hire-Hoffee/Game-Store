@@ -1,6 +1,6 @@
 # Магазин игр
 
-#### Ссылка на сайт [GameMuffin](gamestore-js2a.onrender.com).
+#### Ссылка на сайт [GameMuffin](http://petgamemuffin.freemyip.com).
 
 #### Дизайн сайта в Figma - [ссылка](https://www.figma.com/file/h8FgSc2vhMSTlUnSUqAafQ/Game-store?node-id=0%3A1).
 
