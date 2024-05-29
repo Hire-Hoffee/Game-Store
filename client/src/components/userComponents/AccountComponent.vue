@@ -4,7 +4,12 @@ export default {
   components: { 
     CustomBtn 
   },
-  props: ["userInfo"]
+  props: ["userInfo"],
+  methods: {
+    notWorking() {
+      alert("Not implemented yet")
+    }
+  }
 }
 </script>
 
@@ -34,7 +39,7 @@ export default {
         </div>
         <div class="flex justify-around mt-10 space-x-4">
           <!-- <CustomBtn>Show password</CustomBtn> -->
-          <CustomBtn>Change account info</CustomBtn>
+          <CustomBtn @click="notWorking">Change account info</CustomBtn>
         </div>
       </div>
 
@@ -49,11 +54,11 @@ export default {
             </div>
             <div class="sm:w-2/3 w-full text-center">
               <div class="flex space-x-3">
-                <p class="p-2 rounded inner_shadow_custom text-xl mb-3 w-1/2 uppercase">{{userInfo.payment.cardHolder.split(" ")[0]}}</p>
-                <p class="p-2 rounded inner_shadow_custom text-xl mb-3 w-1/2 uppercase">{{userInfo.payment.cardHolder.split(" ")[1]}}</p>
+                <p class="p-2 rounded inner_shadow_custom text-xl mb-3 w-1/2 uppercase">{{userInfo.payment?.cardHolder.split(" ")[0] || "empty"}}</p>
+                <p class="p-2 rounded inner_shadow_custom text-xl mb-3 w-1/2 uppercase">{{userInfo.payment?.cardHolder.split(" ")[1] || "empty"}}</p>
               </div>
               <div>
-                <p class="p-2 rounded inner_shadow_custom text-xl mb-3">{{userInfo.payment.cardNumber}}</p>
+                <p class="p-2 rounded inner_shadow_custom text-xl mb-3">{{userInfo.payment?.cardNumber || "empty"}}</p>
               </div>
               <div class="flex space-x-3">
                 <p class="p-2 rounded inner_shadow_custom text-xl w-full uppercase">***</p>
@@ -63,7 +68,7 @@ export default {
           </div>
         </div>
         <div class="flex justify-center mt-10">
-          <CustomBtn class="">Change payment info</CustomBtn>
+          <CustomBtn @click="notWorking" class="">Change payment info</CustomBtn>
         </div>
       </div>
 

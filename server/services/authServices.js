@@ -35,6 +35,13 @@ const authServices = {
         },
         "1h"
       );
+      let mainURL = undefined;
+
+      if (process.env.STATUS === "DEV") {
+        mainURL = "http://localhost:3000"
+      } else {
+        mainURL = process.env.MAIN_URL;
+      }
 
       await sendEmail({
         from: process.env.EMAIL_USER,
@@ -42,7 +49,7 @@ const authServices = {
         subject: "Email Confirmation",
         template: "emailConfirmation",
         context: {
-          confirmationLink: `http://localhost:7070/api/auth/verify?token=${verificationToken}`,
+          confirmationLink: `${mainURL}/api/auth/verify?token=${verificationToken}`,
           userEmail: credentials.email,
         },
       });
