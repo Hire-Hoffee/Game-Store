@@ -51,6 +51,7 @@ const authServices = {
         context: {
           confirmationLink: `${mainURL}/api/auth/verify?token=${verificationToken}`,
           userEmail: credentials.email,
+          mainURL: process.env.MAIN_URL || "http://localhost:3000",
         },
       });
 

@@ -1,6 +1,6 @@
 <div style="font-size: 14px;">
   <h2 style="margin-bottom: 20px;">Your purchase</h2>
-  <table style="width: 100%; padding: 10px; background-color: #94a3b8; border-radius: 10px;">
+  <table role="presentation" width="100%" style="border-spacing: 0; padding: 10px; background-color: #94a3b8; border-radius: 10px;">
     <thead>
       <tr style="font-weight: bold;">
         <td style="padding: 5px;">Item</td>
@@ -21,17 +21,17 @@
         </tr>
         {{#each this.keys }}
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{{ this.key }}</td>
+            <td style="padding: 5px;"></td>
+            <td style="padding: 5px;"></td>
+            <td style="padding: 5px;"></td>
+            <td style="padding: 5px;"></td>
+            <td style="padding: 5px;">{{ this.key }}</td>
           </tr>
         {{/each }}
       {{/each }}
-      <tr style="color: #e9322e;">
-        <td colspan="2" style="padding: 5px; font-weight: bold;">Total Price</td>
-        <td colspan="2" style="padding: 5px; font-weight: bold;">{{ orderResult.totalPrice }} $</td>
+      <tr style="color: #e9322e; font-weight: bold;">
+        <td colspan="3" style="padding: 5px;">Total Price</td>
+        <td colspan="2" style="padding: 5px;">{{ orderResult.totalPrice }} $</td>
       </tr>
     </tbody>
   </table>

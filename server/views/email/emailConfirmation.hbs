@@ -1,8 +1,30 @@
-<div style="background-color: #19171a; text-align: center; border-radius: 0.25rem;">
-  <h2 style="padding: 1rem; color: #e9322e;">Email Confirmation</h2>
-  <h3 style="padding: 0.25rem; color: white;">Welcome {{userEmail}}!</h3>
-  <p style="padding: 0.25rem; color: white; font-size: 1.2rem;">To confirm your email, please click button below</p>
-  <button style="background-color: #e9322e; font-size: 1rem; padding: 1rem; margin: 2rem; border-radius: 0.25rem; border: none;">
-    <a href="{{confirmationLink}}" target="_blank" style="color: white; text-decoration: none;">Confirm your email</a>
-  </button>
-</div>
+<table role="presentation" width="100%" style="background-color: #19171a; text-align: center; border-radius: 0.25rem;">
+  <tr>
+    <td style="padding: 1rem;">
+      <h2 style="color: #e9322e; margin: 0;">Email Confirmation</h2>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 0.25rem;">
+      <h3 style="color: white; margin: 0;">Welcome {{userEmail}}!</h3>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 0.25rem;">
+      <p style="color: white; font-size: 1.2rem; margin: 0;">To confirm your email, please click the button below</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 2rem;">
+      <table role="presentation" align="center" style="margin: 0 auto; padding: 0;">
+        <tr>
+          <td style="background-color: #e9322e; font-size: 1rem; padding: 1rem; border-radius: 0.25rem; text-align: center;">
+            <a href="{{confirmationLink}}" target="_blank" style="color: white; text-decoration: none; display: inline-block;">
+              Confirm your email
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

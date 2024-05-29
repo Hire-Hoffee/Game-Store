@@ -313,6 +313,7 @@ const userServices = {
         template: "purchasedGames",
         context: {
           orderResult: plainResult,
+          mainURL: process.env.MAIN_URL || "http://localhost:3000",
         },
       });
 
