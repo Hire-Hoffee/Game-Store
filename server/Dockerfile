@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 7001
 
-CMD cp -r /build/out ./build && npm start
+CMD rm -rf ./build && cp -r /build/out ./build && npm start
